@@ -14,8 +14,8 @@ require_once "php/navbar.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/profile.css" async>
-    <link rel="stylesheet" href="css/navbar.css" async>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/navbar.css" >
     <title>Book Sharing</title>
 </head>
 <?php
@@ -52,7 +52,7 @@ $row = mysqli_fetch_assoc($result);
                 <h1>Edit Profile</h1>
                 <img src="img/done.svg" alt="">
             </div>
-            <form method="post" disabled="disabled">
+            <form id="profileForm" method="post" disabled="disabled">
                 <label class="dp" for="profiledp">
                     <img src="<?php echo $row['Profile_photo']; ?>" id="userimg" alt="">
                     <span class="changeimgicon"><img src="img/add_a_photo.svg" class="edit_icon"></span>
@@ -81,7 +81,7 @@ $row = mysqli_fetch_assoc($result);
                 <img src="img/edit_icon.svg" alt="" class="edit_icon">
             </form>
             <div class="response">
-                hello S
+               
             </div>
         </div>
 

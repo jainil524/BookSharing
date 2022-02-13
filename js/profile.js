@@ -33,9 +33,12 @@ hoverefect.forEach((lis) => {
 //for send data after changed
 done.addEventListener("click", () => {
     formdata = new FormData();
-    formdata.append("Ch");
-    ajax("profile", response, response, formdata, false);
+
+    formdata.append("ProfileData", document.querySelector("#profileForm"));
+    ajax("profile", response, response, formdata, true);
+
 });
+
 //for logout of user
 function logout() {
     let conformation = confirm("Are you really want to LogOut?");
@@ -52,7 +55,6 @@ function userimgchanger() {
     var files = imgsource.files;
     var file = files[0];
     imginer.src = URL.createObjectURL(file);
-    // if (imginer.src != "media/profile_photos/default_photo.svg") {
-    //     ajax("profile", response, response, imginer.src, true);
-    // }
+
+
 }
