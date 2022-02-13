@@ -7,6 +7,7 @@ header {
     width: 100%;
     height: 3.2rem;
     padding: .2rem;
+    background-color: #7dfdc1;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -44,7 +45,8 @@ a {
     width: 100%;
     align-items: center;
     justify-content: flex-end;
-    gap: 1.3rem;
+    gap: 1.8rem;
+    padding-right: 3rem;
 }
 
 header #burger {
@@ -68,8 +70,6 @@ header #burger {
 }
 
 #navbar li {
-    width: 5rem;
-    height: 2rem;
     line-height: 2rem;
     text-align: center;
 }

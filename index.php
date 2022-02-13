@@ -1,4 +1,7 @@
 <?php
+if ($_SESSION["role"] == "admin") {
+    header("Location: admindashboard.php");
+}
 $title = "Dachboard - Book sharing";
 $css_file_name = "dahboard";
 require "php/dbconfig.php";
@@ -28,9 +31,7 @@ require "php/navbar.php";
                 "</a>";
         }
     } else {
-        echo "<h1 class='error'>
-                    No Book For Sell
-            </h1>";
+        echo "<h1 class='error'>No Book For Sell</h1>";
     }
     ?>
 </div>

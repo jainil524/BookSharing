@@ -1,0 +1,26 @@
+#main {
+    padding: 1.3rem;
+    font-weight: normal;
+    padding-top: 4rem;
+}
+
+.mytable,
+.mytable tr,
+.mytable td,
+.mytable th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: .2rem .5rem;
+}
+
+.mytable tr td:last-child {
+    text-align: center;
+}
+
+#DataTables_Table_0_filter {
+    margin-bottom: 1rem;
+}
+
+#DataTables_Table_0_paginate {
+    margin-top: 1rem;
+}
