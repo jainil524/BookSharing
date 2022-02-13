@@ -17,7 +17,7 @@ body {
     max-width: 700px;
     width: 100%;
     /* background-color: rgb(192, 238, 231); */
-    background: linear-gradient(135deg, #65f8a7, teal);
+    background: #7fdbb0;
     padding: 25px 30px;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -42,7 +42,7 @@ textarea {
     border-radius: 5px;
     padding-left: 15px;
     padding-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #2e407c;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
 }
@@ -113,7 +113,7 @@ form .img-box label.details {
     font-size: 16px;
     border-radius: 5px;
     padding-left: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #2e407c;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
 }
@@ -133,7 +133,7 @@ form .img-box label.details {
 
 #UploadCover {
     padding: 8px 12px;
-    background: white;
+    background: #7fdbb0;
 }
 
 .user-details .img-box:hover {
@@ -202,7 +202,7 @@ form .button input,
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #65f8a7, teal);
+    background: #27e58c;
 }
 
 form .button input:hover {

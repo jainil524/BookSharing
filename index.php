@@ -1,11 +1,12 @@
 <?php
+$title = "Dachboard - Book sharing";
+$css_file_name = "dahboard";
+
+require "php/dbconfig.php";
+require "php/navbar.php";
 if ($_SESSION["role"] == "admin") {
     header("Location: admindashboard.php");
 }
-$title = "Dachboard - Book sharing";
-$css_file_name = "dahboard";
-require "php/dbconfig.php";
-require "php/navbar.php";
 ?>
 
 <div id="search_bar">
