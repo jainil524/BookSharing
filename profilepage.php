@@ -46,17 +46,15 @@ $row = mysqli_fetch_assoc($result);
                 </div>
                 <div>
                     <label>User Name</label>
-                    <input type="text" name="username" value="<?php echo $row['user_name']; ?>" class="user_info" id="" disabled>
+                    <input type="text" name="username" value="<?php echo $row['user_name']; ?>" class="user_info" disabled>
                 </div>
                 <div>
                     <label>Email</label>
-                    <input type="email" name="email" value="<?php echo $row['email']; ?>" class="user_info" id="" disabled>
+                    <input type="email" name="email" value="<?php echo $row['email']; ?>" class="user_info" disabled>
                 </div>
                 <div>
                     <label>Address</label>
-                    <textarea type="text" name="address" class="user_info" rows="3" cols="30" disabled>
-                        <?php echo $row['address']; ?>
-                    </textarea>
+                    <textarea type="text" name="address" class="user_info" rows="3" cols="30" disabled><?php echo $row['address']; ?></textarea>
                 </div>
                 <div>
                     <label>Pincode</label>
