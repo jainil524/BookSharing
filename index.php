@@ -4,7 +4,8 @@ $css_file_name = "dahboard";
 
 require "php/dbconfig.php";
 require "php/navbar.php";
-if ($_SESSION["role"] == "admin") {
+require "php/LoginCheck.php";
+if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     header("Location: admindashboard.php");
 }
 ?>
@@ -19,7 +20,7 @@ if ($_SESSION["role"] == "admin") {
     $result = mysqli_query($con, $query);
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
-            echo "<a href='#' class='book-container'>" .
+            echo "<a href='view.php?id=" . $row["book_id"] . "' class='book-container'>" .
                 "<div class='bookimg'>" .
                 "<img src='" . $row["book_coverpage"] . "'>" .
                 "</div>" .

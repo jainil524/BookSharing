@@ -25,4 +25,4 @@ if (mysqli_num_rows($result)) {
     }
 }
 
-echo empty($returnString) ? "<h2 style='width: 100vw; text-align: center; background-color: #d57777;'> No Book Found</h2>" : $returnString;
+echo empty($returnString) ? "<h2 class='error'> No Book Found</h2>" : $returnString;
