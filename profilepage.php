@@ -17,13 +17,9 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div id="profileinfo">
                 <ul>
-
                     <li class="active">Profile</li>
-
                     <li>Sold Books</li>
-
                     <li>Bought Books</li>
-
                     <li onclick="logout()">Logout</li>
                     <span class='activator'></span>
                 </ul>
@@ -67,7 +63,7 @@ $row = mysqli_fetch_assoc($result);
                     <input type="number" name="pincode" value="<?php echo $row['pincode']; ?>" class="user_info" id="" disabled>
                 </div>
             </form>
-            <div class="Formactive response" >
+            <div class="Formactive response">
                 <div><img src="img/warning_icon.svg"></div>
                 <div class="errorMsg"></div>
             </div>
