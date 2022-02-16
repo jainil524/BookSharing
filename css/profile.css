@@ -3,7 +3,6 @@
 }
 
 body {
-    font-size: 16px !important;
     width: 100vw;
     height: 100vh;
     background-color: rgb(231, 231, 231);
@@ -165,107 +164,109 @@ body {
 
 #profile {
     width: 80%;
+    height: 90%;
     padding: .4rem .3rem;
     background-color: rgb(253, 253, 253);
     box-shadow: 0px 0px 15px rgb(160, 157, 157);
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-self: flex-start;
-    overflow: hidden
 }
 
 
 /* profile container title*/
 
 #profile .header {
+    width: 100%;
     display: flex;
+    padding: .5rem;
 }
 
 
 /* user dp updater area*/
 
 .header img {
-    margin-top: .3rem;
     align-self: flex-start;
-    visibility: hidden;
+    cursor: pointer;
 }
 
 #profile h1 {
     width: 100%;
     align-self: flex-start;
-    margin: 1.5rem 0rem 2rem 0rem;
     text-align: center;
 }
 
 #profile form {
-    width: 55%;
-    display: grid;
-    grid-template-columns: 1fr 3fr .5fr;
-    row-gap: 1rem;
-    justify-self: center;
-    align-self: center;
-    place-items: center;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#profile form input {
+#profile form>div {
+    display: flex;
     width: 100%;
-    border: none;
-    padding: .4rem .2rem;
-    border-bottom: 2px solid black;
-    background: transparent;
-    justify-self: baseline;
-}
-
-#profile form label {
-    font-size: .9rem;
-    justify-self: flex-start;
-    color: rgb(37, 39, 44);
-}
-
-#profile form label:nth-child(1) {
-    justify-self: center;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    cursor: pointer;
+    padding: .3rem;
 }
 
 #profile form .dp {
-    width: 6rem;
+    width: 100%;
     height: 6rem;
-    grid-column-start: 1;
-    grid-column-end: 4;
     display: flex;
-    position: relative;
-    border-radius: 50%;
-    pointer-events: none;
+    justify-content: center;
 }
 
-.dp .changeimgicon img {
+.dp>div {
+    width: 5rem;
+    height: 5rem;
+    position: relative;
+}
+
+.dp #userimg {
     width: 100%;
     height: 100%;
-    border-radius: 50px;
+    text-align: center;
     object-fit: contain;
+    border-radius: 50%;
 }
 
-.dp .changeimgicon {
-    pointer-events: all;
+.changeimgicon {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    width: 1.5rem !important;
     height: 1.5rem;
     bottom: -.2rem;
-    right: 0.4rem;
     border-radius: 50%;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
+    left: 75%;
 }
 
-#profile form .dp img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+.changeimgicon img {
+    width: 90%;
+    height: 90%;
     object-fit: contain;
+}
+
+#profile form input,
+#profile form textarea {
+    width: 70%;
+    border: none;
+    padding: .4rem .2rem;
+    font-size: small;
+    border-bottom: 2px solid black;
+    background: transparent;
+    justify-self: baseline;
+    resize: none;
+}
+
+#profile form label {
+    width: 5rem;
+    font-size: .7rem;
+    display: flex;
+    align-items: center;
+    color: rgb(37, 39, 44);
 }
 
 #profile #profiledp {
@@ -273,13 +274,46 @@ body {
 }
 
 #profile .response {
-    align-self: center;
     justify-self: flex-end;
     width: 100%;
-    margin: 1rem;
-    padding: 1rem;
+    margin: 3rem;
+    background-color: white;
+    border: 2px solid rgb(172, 6, 6);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.response div:first-child {
+    height: 100%;
+    width: 4rem;
     text-align: center;
-    background-color: aqua;
+    align-self: center;
+    background-color: rgb(172, 6, 6);
+}
+
+.response .errorMsg {
+    height: 100%;
+    display: grid;
+    padding: 0 1rem;
+    place-content: center;
+    font-size: .95rem;
+    font-family: sans-serif;
+}
+
+
+/* .response::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+} */
+
+.Formactive {
+    display: none !important;
 }
 
 @media only screen and (max-width:770px) {

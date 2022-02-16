@@ -1,7 +1,7 @@
 <?php
-if ($_SESSION["role"] == "admin") {
-    header("Location: admindashboard.php");
-}
+// if ($_SESSION["role"] == "admin") {
+//     header("Location: admindashboard.php");
+// }
 $title = "Dachboard - Book sharing";
 $css_file_name = "dahboard";
 require "php/dbconfig.php";
@@ -20,8 +20,8 @@ require "php/navbar.php";
         while ($row = mysqli_fetch_array($result)) {
             echo "<a href='#' class='book-container'>" .
                 "<div class='bookimg'>" .
-                "<img src='" . $row["book_coverpage"] . "'>" .
-                "</div>" .
+                "<img src='" . (file_exists($row["book_coverpage"])== false?'img/Logo2.png':$row["book_coverpage"]) . "'>" .
+                "</div>". 
                 "<div class='description'>" .
                 "<h4 class='book-name'>" . $row['book_name'] . "</h4>" .
                 "<h5 class='author'><span>Author: </span>" . $row["book_author"] . "</h5>" .

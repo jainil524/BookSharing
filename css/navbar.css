@@ -19,8 +19,9 @@ header {
 }
 
 header .logo_container {
-    width: 5rem;
-    height: 100%;
+    margin-left: .51rem;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .logo_container img {
