@@ -32,7 +32,8 @@
 }
 
 .info-container div h5 {
-    width: 6rem;
+    width: 9rem;
+    font-weight: 600;
 }
 
 .info-container div h3 {
