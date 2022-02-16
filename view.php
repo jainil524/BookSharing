@@ -8,6 +8,12 @@ require "php/navbar.php";
 $select_book_query = "SELECT * FROM book_transaction LEFT JOIN user ON book_transaction.seller_id = user.user_id WHERE book_id = " . $_GET["id"];
 $fire_query = mysqli_query($con, $select_book_query);
 $book = mysqli_fetch_assoc($fire_query);
+if (empty($book)) {
+    $erro_title = "Opps! Book Not Found...";
+    $erro_desc = "Sorry Book is not found someone buyed or removed by seller";
+    require "php/error.php";
+    exit;
+}
 ?>
 <div class="book-container">
     <div class="img-con">

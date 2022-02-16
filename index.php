@@ -5,6 +5,7 @@ $css_file_name = "dahboard";
 require "php/dbconfig.php";
 require "php/navbar.php";
 require "php/LoginCheck.php";
+
 if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     header("Location: admindashboard.php");
 }
