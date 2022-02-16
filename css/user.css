@@ -4,7 +4,17 @@
     padding-top: 4rem;
 }
 
-.mytable,
+.mytable tr td:nth-child(2) img {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.mytable tr td:nth-child(2) {
+    display: flex;
+    gap: .8rem;
+}
+
 .mytable tr,
 .mytable td,
 .mytable th {
@@ -13,8 +23,10 @@
     padding: .2rem .5rem;
 }
 
-.mytable tr td:last-child {
+.mytable tr td:last-child,
+.mytable tr td:first-child {
     text-align: center;
+    width: 2rem;
 }
 
 #DataTables_Table_0_filter {

@@ -6,7 +6,10 @@ if (empty($_FILES["coverimg"]['name']) || empty($_POST["bname"]) || empty($_POST
   echo "ALL field required";
   exit();
 } else {
-
+  if ($_POST["byear"] > date("Y")) {
+    echo "Challu banta hai ham tumse bhi bada chalu hai";
+    exit;
+  }
   $image = $_FILES['coverimg']['name'];
   $imageArr = explode('.', $image);
   $rand = rand(10000, 99999);

@@ -4,8 +4,14 @@
 // }
 $title = "Dachboard - Book sharing";
 $css_file_name = "dahboard";
+
 require "php/dbconfig.php";
 require "php/navbar.php";
+require "php/LoginCheck.php";
+
+if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+    header("Location: admindashboard.php");
+}
 ?>
 
 <div id="search_bar">
@@ -18,7 +24,7 @@ require "php/navbar.php";
     $result = mysqli_query($con, $query);
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
-            echo "<a href='#' class='book-container'>" .
+            echo "<a href='view.php?id=" . $row["book_id"] . "' class='book-container'>" .
                 "<div class='bookimg'>" .
                 "<img src='" . (file_exists($row["book_coverpage"])== false?'img/Logo2.png':$row["book_coverpage"]) . "'>" .
                 "</div>". 
