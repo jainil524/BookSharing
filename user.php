@@ -5,11 +5,13 @@ require "php/dbconfig.php";
 require "php/navbar.php";
 ?>
 <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<h3 class="titleofpage" > List of All Users</h3>
+
 <div id="main">
     <table class="mytable">
         <thead>
             <tr>
-                <th>No</th>
+                <th>Sr no</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Status</th>
@@ -18,17 +20,17 @@ require "php/navbar.php";
         </thead>
         <tbody>
             <?php
-            $query = "SELECT user_name,email,Status,Profile_photo  FROM user ORDER BY status DESC";
+            $query = "SELECT user_name,email,Status  FROM user ORDER BY status DESC";
             $userResult = mysqli_query($con, $query);
             $no = 1;
             if (mysqli_num_rows($userResult)) {
                 while ($user = mysqli_fetch_assoc($userResult)) {
                     echo '<tr>
-                        <td> '  . $no . '</td>
-                        <td><div><img src="' . $user["Profile_photo"] . '"></div>' . $user["user_name"] . '</td>
+                        <td>' . $no . '</td>
+                        <td>' . $user["user_name"] . '</td>
                         <td>' . $user["email"] . '</td>
                         <td>' . ($user["Status"] ? "Active" : "Deactive") . '</td>
-                        <td><img src="img/options.png" onclick="showActionBox()"></td>
+                        <td><img src="img/options.png"></td>
                     </tr>';
                     $no++;
                 }
@@ -40,8 +42,8 @@ require "php/navbar.php";
 
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.steps.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="js/user.js"></script>
 <script>
     $(document).ready(function() {
         $('.mytable').DataTable({
