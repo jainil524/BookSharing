@@ -77,11 +77,11 @@ function SendData() {
             }
         }
         xmlxhr.open("POST", "php/profile.php", true);
-        xmlxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // xmlxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var formD = new FormData(document.querySelector("#ProfileForm"));
         xmlxhr.send(formD);
     }
-    console.log(document.querySelector("#ProfileForm"))
+    console.log(formD)
 }
 
 //for logout of user

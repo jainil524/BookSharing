@@ -34,9 +34,9 @@ $row = mysqli_fetch_assoc($result);
                 <img src="img/close.svg" class="Formactive" id="CloseIcon" onclick="MakeFormDisable()">
                 <h1>Edit Profile</h1>
                 <img src="img/edit_icon.svg" alt="" onclick="MakeFormEditable()" id="EditIcon">
-                <img src="img/done.svg" alt="" onclick="SendData()" class ="Formactive" id="SubmitIcon">
+                <img src="img/done.svg" alt="" onclick="SendData()" class="Formactive" id="SubmitIcon">
             </div>
-            <form method="post" disabled="disabled" id="ProfileForm">
+            <form method="post" id="ProfileForm">
                 <div class="dp">
                     <div>
                         <img src="<?php echo $row['Profile_photo']; ?>" id="userimg" alt="">
@@ -58,7 +58,9 @@ $row = mysqli_fetch_assoc($result);
                 </div>
                 <div>
                     <label>Address</label>
-                    <textarea type="text" name="address" class="user_info" rows="3" cols="30" disabled><?php echo $row['address']; ?></textarea>
+                    <textarea type="text" name="address" class="user_info" rows="3" cols="30" disabled>
+                        <?php echo $row['address']; ?>
+                    </textarea>
                 </div>
                 <div>
                     <label>Pincode</label>
@@ -67,7 +69,7 @@ $row = mysqli_fetch_assoc($result);
             </form>
             <div class="Formactive response" >
                 <div><img src="img/warning_icon.svg"></div>
-                <div class="errorMsg">fd f cxf fxdfcvx dvcx xfcv</div>
+                <div class="errorMsg"></div>
             </div>
         </div>
     </div>
