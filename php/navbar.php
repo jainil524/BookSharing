@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="css/navbar.css">
     <title><?php echo $title; ?></title>
 </head>
+
 <body>
     <header>
         <div class="logo_container">
-            <img src="./img/Logo2.png" alt="">
+            <img src="./img/logos.png" alt="">
         </div>
         <ul id="navbar">
             <?php
