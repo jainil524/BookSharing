@@ -1,13 +1,13 @@
 <?php
-// if ($_SESSION["role"] == "admin") {
-//     header("Location: admindashboard.php");
-// }
 $title = "Dachboard - Book sharing";
 $css_file_name = "dahboard";
 
 require "php/dbconfig.php";
 require "php/navbar.php";
 require "php/LoginCheck.php";
+if ($_SESSION["role"] == "admin") {
+    header("Location: admindashboard.php");
+}
 
 if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     header("Location: admindashboard.php");
@@ -20,8 +20,9 @@ if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     </div>
     <div id="main">
         <?php
-        $query = "SELECT * FROM book_transaction";
+        $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL";
         $result = mysqli_query($con, $query);
+
         if (mysqli_num_rows($result)) {
             while ($row = mysqli_fetch_array($result)) {
                 echo "<a href='view.php?id=" . $row["book_id"] . "' class='book-container'>" .

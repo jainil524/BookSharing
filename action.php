@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     <title>Action</title>
 </head>
 <?php
@@ -38,7 +37,6 @@ if (!$con) {
                         where delivery_guy_id = " . $_GET['id'];
         $result = mysqli_query($con, $selectquery);
         $raw = mysqli_fetch_assoc($result);
-
     } elseif (isset($_POST['submit'])) {
         $name = $_POST['name'];
         $did = $_POST['did'];
@@ -48,7 +46,7 @@ if (!$con) {
         $status = $_POST['status'];
         $pincode = $_POST['zipcode'];
         $pass = $_POST['pass'];
-//New   
+        //New   
         //$pass = md5($pass);
 
         if (isset($_POST['edit'])) {
@@ -68,8 +66,8 @@ if (!$con) {
                 echo "Error1: " . $updatequery . "<br>" . mysqli_error($con);
             }
         } else {
-            $query = "INSERT INTO `delivery_guy`(`delivery_guy_id`, `delivery_guy_name`, `delivery_guy_email`, `delivery_guy_dob`, `status`, `delivery_guy_address`,`delivery_guy_pincode`, `delivery_guy_password`) 
-            VALUES ($did,'$name','$email','$dob',1,'$addr',$pincode,'$pass') ";
+            $query = "INSERT INTO `delivery_guy`(`delivery_guy_name`, `delivery_guy_email`, `delivery_guy_dob`, `status`, `delivery_guy_address`,`delivery_guy_pincode`, `delivery_guy_password`) 
+            VALUES ('$name','$email','$dob',1,'$addr',$pincode,'$pass') ";
             if (mysqli_query($con, $query)) {
                 echo "<script>alert('" . $name . " record created successfully'); window.close();</script>";
             } else {

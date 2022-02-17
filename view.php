@@ -37,13 +37,18 @@ if (empty($book)) {
             <h3><?php echo $book["book_price"]; ?></h3>
         </div>
         <div class="btn-container">
-            <button>Buy</button>
+            <button onclick="buy()">Buy</button>
         </div>
         <div class="seller-detail">
             <h5>Seller:</h5>
             <h3><?php echo $book["user_name"]; ?></h3>
         </div>
+        <div class="error">
+            <h5>Success</h5>
+        </div>
     </div>
 </div>
+<script src="js/AJAX.js"></script>
+<script src="./js/view.js"></script>
 
 <?php include_once "php/footer.php"; ?>
