@@ -9,12 +9,20 @@ const afterimage = document.querySelector(".dp .changeimgicon");
 const done = document.querySelector(".header img");
 const response = document.querySelector(".response");
 const hoverefect = document.querySelectorAll("#profileinfo li");
-const ProfileContainer = document.querySelector("#profile");
+const ProfileContainer = document.querySelectorAll(".profile_container");
+// const Links = document.querySelectorAll("#profileinfo ul li");
 
 
 let ChangedInputs = [];
 let OldInputValues = [];
 let IsEdited = false;
+
+// // page changer dynamicaly
+// Links.forEach((LinksEle, index) => {
+//     LinksEle.addEventListener("click",(e)=>{
+//         e.
+//     }) 
+// })
 
 //clicking event on icon to edit info
 function MakeFormEditable() {
@@ -51,6 +59,19 @@ hoverefect.forEach((lis) => {
             lis.classList.remove("active");
         });
         e.target.classList.add("active");
+        if (e.target.innerText == "Profile") {
+            ProfileContainer[0].classList.add("ProfileActive")
+            ProfileContainer[1].classList.remove("ProfileActive")
+            ProfileContainer[2].classList.remove("ProfileActive")
+        } else if (e.target.innerText == "Sold Books") {
+            ProfileContainer[0].classList.remove("ProfileActive")
+            ProfileContainer[1].classList.add("ProfileActive")
+            ProfileContainer[2].classList.remove("ProfileActive")
+        } else if (e.target.innerText == "Bought Books") {
+            ProfileContainer[0].classList.remove("ProfileActive")
+            ProfileContainer[1].classList.remove("ProfileActive")
+            ProfileContainer[2].classList.add("ProfileActive")
+        }
     });
 });
 
@@ -81,7 +102,6 @@ function SendData() {
             }
         }
         xmlxhr.open("POST", "php/profile.php", true);
-        // xmlxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var formD = new FormData(document.querySelector("#ProfileForm"));
         xmlxhr.send(formD);
     }
@@ -91,10 +111,9 @@ function SendData() {
 //for logout of user
 function logout() {
     let conformation = confirm("Are you really want to LogOut?");
-    if (conformation) {
-        window.location.assign(
-            "http://localhost/BookSharing/profilepage.php?logout=true"
-        );
+    console.log(conformation)
+    if (conformation == true) {
+        window.location.assign("http://localhost/BookSharing/profilepage.php?logout=true");
     }
 }
 
