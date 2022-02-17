@@ -161,7 +161,7 @@ $row = mysqli_fetch_assoc($result);
                             
                         }
                     else{
-                        echo "<p class='BookError'>No books Bought yet <a href='SellBook.php'> Sell Book Now</a></p>";
+                        echo "<p class='BookError'>No books Bought yet <a href='index.php'> Buy Book Now</a></p>";
                     }
                 ?>
             </div>
