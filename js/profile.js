@@ -2,6 +2,7 @@ const editprofile = document.querySelectorAll(".edit_icon");
 const EditIcon = document.querySelector("#EditIcon");
 const submitIcon = document.querySelector("#SubmitIcon");
 const CloseIcon = document.querySelector("#CloseIcon");
+const DpIcon = document.querySelector(".changeimgicon");
 const userdetails = document.querySelectorAll(".user_info");
 const imgcontainer = document.querySelector(".dp");
 const afterimage = document.querySelector(".dp .changeimgicon");
@@ -21,6 +22,7 @@ function MakeFormEditable() {
     EditIcon.classList.add("Formactive");
     submitIcon.classList.remove("Formactive");
     CloseIcon.classList.remove("Formactive");
+    DpIcon.classList.remove("Formactive");
 
     userdetails.forEach((detailsInput, index) => {
         detailsInput.removeAttribute("disabled");
@@ -34,6 +36,8 @@ function MakeFormDisable() {
     EditIcon.classList.remove("Formactive");
     submitIcon.classList.add("Formactive");
     CloseIcon.classList.add("Formactive");
+    DpIcon.classList.add("Formactive");
+
     userdetails.forEach((detailsInput, index) => {
         detailsInput.setAttribute("disabled", "disabled");
         detailsInput.value = OldInputValues[index];
