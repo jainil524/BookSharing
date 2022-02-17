@@ -75,13 +75,29 @@
 }
 
 .error {
-    width: 100vw;
-    font-size: 1.5rem;
-    text-align: center;
-    background-color: #d57777;
-    color: black;
+    width: 100%;
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
     user-select: none;
-    border-radius: 2px;
+    font-family: POPPINS;
+    /* background: linear-gradient(to right, rgb(116, 116, 116) 20%, rgb(185, 185, 180) 40%, rgb(143, 143, 134) 60%, rgb(202, 193, 193) 80%);*/
+    background: linear-gradient(to right, rgb(178, 169, 179) 50%, rgb(73, 69, 69) 70%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    text-emphasis-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: error 5s linear infinite;
+}
+
+@keyframes error {
+    to {
+        background-position: -200%;
+    }
 }
 
 @media only screen and (max-width:520px) {

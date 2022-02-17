@@ -1,10 +1,11 @@
 <?php
 require "dbconfig.php";
+session_start();
 
 if (empty($_POST["book-name"])) {
-    $query = "SELECT * FROM book_transaction";
+    $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL AND  NOT seller_id =" . $_SESSION["userID"];
 } else {
-    $query = "SELECT * FROM book_transaction WHERE book_name like'%" . $_POST['book-name'] . "%'";
+    $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL AND  NOT seller_id =" . $_SESSION["userID"] . " AND book_name like'%" . $_POST['book-name'] . "%'";
 }
 
 $returnString = "";
@@ -13,7 +14,7 @@ if (mysqli_num_rows($result)) {
     while ($row = mysqli_fetch_array($result)) {
         $returnString .= "<a href='#' class='book-container'>" .
             "<div class='bookimg'>" .
-            "<img src='" . $row["book_coverpage"] . "'>" .
+            "<img src='" . (file_exists($row["book_coverpage"]) == false ? 'img/logos.png' : $row["book_coverpage"]) . "'>" .
             "</div>" .
             "<div class='description'>" .
             "<h4 class='book-name'>" . $row['book_name'] . "</h4>" .

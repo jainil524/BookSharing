@@ -5,13 +5,13 @@ require "php/dbconfig.php";
 require "php/navbar.php";
 ?>
 <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-<h3 class="titleofpage" > List of All Users</h3>
 
 <div id="main">
+    <h3 class="titleofpage"> Users</h3>
     <table class="mytable">
         <thead>
             <tr>
-                <th>Sr no</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Status</th>
@@ -44,6 +44,7 @@ require "php/navbar.php";
 <script src="js/jquery.steps.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<?php include "php/footer.php"; ?>
 <script>
     $(document).ready(function() {
         $('.mytable').DataTable({

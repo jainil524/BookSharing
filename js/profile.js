@@ -110,10 +110,11 @@ function SendData() {
 
 //for logout of user
 function logout() {
-    let conformation = confirm("Are you really want to LogOut?");
-    console.log(conformation)
-    if (conformation == true) {
-        window.location.assign("http://localhost/BookSharing/profilepage.php?logout=true");
+    let conformation = confirm("Are you really want to Log out?");
+    if (conformation) {
+        window.location.assign(
+            "http://localhost/BookSharing/profilepage.php?logout=true"
+        );
     }
 }
 

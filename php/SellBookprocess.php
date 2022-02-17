@@ -7,7 +7,7 @@ if (empty($_FILES["coverimg"]['name']) || empty($_POST["bname"]) || empty($_POST
   exit();
 } else {
   if ($_POST["byear"] > date("Y")) {
-    echo "Challu banta hai ham tumse bhi bada chalu hai";
+    echo "Invalid year..";
     exit;
   }
   $image = $_FILES['coverimg']['name'];
