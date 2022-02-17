@@ -36,7 +36,7 @@ $row = mysqli_fetch_assoc($result);
                 <div class="dp">
                     <div>
                         <img src="<?php echo $row['Profile_photo']; ?>" id="userimg" alt="">
-                        <label class="changeimgicon" for="profiledp"><img src="img/add_a_photo.svg" class="edit_icon"></label>
+                        <label class="changeimgicon Formactive" for="profiledp"><img src="img/add_a_photo.svg" class="edit_icon"></label>
                     </div>
                     <input type="file" name="dp" id="profiledp" onchange="userimgchanger()" class="user_info" accept="image/*" disabled>
                 </div>
