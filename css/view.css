@@ -3,13 +3,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 10rem;
+    gap: 10%;
     padding: 5rem 2rem 1.5rem;
-    margin: 1rem 0;
 }
 
 .img-con {
     width: 30%;
+    height: 80%;
 }
 
 .img-con img {
@@ -59,4 +59,40 @@
     display: none;
     padding: .5rem;
     border-radius: 5px;
+}
+
+.back-btn {
+    height: 2rem;
+    width: 2rem;
+}
+
+.back-btn img {
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+}
+
+.seller-detail h3 {
+    display: flex;
+    justify-content: row;
+}
+
+.seller-detail h3:hover .chat-icon,
+.seller-detail h3:hover .report-icon {
+    display: block;
+}
+
+.info-container .chat-icon,
+.info-container .report-icon {
+    width: 3rem;
+    height: 2rem;
+    padding: 0 .5rem;
+    display: none;
+}
+
+.chat-icon img,
+.report-icon img {
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
 }

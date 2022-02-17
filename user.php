@@ -11,7 +11,7 @@ require "php/navbar.php";
     <table class="mytable">
         <thead>
             <tr>
-                <th>Sr no</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Status</th>

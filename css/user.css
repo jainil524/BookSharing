@@ -8,6 +8,12 @@
     display: flex;
 }
 
+.mytable tr td:last-child,
+.mytable tr td:first-child {
+    width: 2rem;
+    text-align: center;
+}
+
 .delivery-title input {
     margin-top: 3.5rem;
 }
