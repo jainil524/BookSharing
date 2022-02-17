@@ -1,7 +1,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    display: grid;
+    display: grid !important;
     grid-template-columns: 2fr var(--MsgContainerWidth);
     column-gap: 0;
     font-size: 16px;
