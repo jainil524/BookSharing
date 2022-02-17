@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <title><?php echo $title; ?></title>
 </head>
+
 <body>
     <header>
         <div class="logo_container">
