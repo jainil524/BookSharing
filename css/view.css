@@ -77,18 +77,18 @@
     justify-content: row;
 }
 
-.seller-detail h3:hover .chat-icon,
-.seller-detail h3:hover .report-icon {
-    display: block;
-}
-
 .info-container .chat-icon,
 .info-container .report-icon {
     width: 3rem;
     height: 2rem;
     padding: 0 .5rem;
-    display: none;
 }
+
+
+/* .seller-detail h3:hover .chat-icon,
+.seller-detail h3:hover .report-icon {
+    display: block;
+} */
 
 .chat-icon img,
 .report-icon img {

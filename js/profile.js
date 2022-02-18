@@ -15,7 +15,9 @@ const ProfileContainer = document.querySelectorAll(".profile_container");
 
 let ChangedInputs = [];
 let OldInputValues = [];
+let NewInputValues = [];
 let IsEdited = false;
+let IsSubmited = false;
 
 // // page changer dynamicaly
 // Links.forEach((LinksEle, index) => {
@@ -41,6 +43,7 @@ function MakeFormEditable() {
 
 function MakeFormDisable() {
     IsEdited = false;
+
     EditIcon.classList.remove("Formactive");
     submitIcon.classList.add("Formactive");
     CloseIcon.classList.add("Formactive");
@@ -48,7 +51,10 @@ function MakeFormDisable() {
 
     userdetails.forEach((detailsInput, index) => {
         detailsInput.setAttribute("disabled", "disabled");
-        detailsInput.value = OldInputValues[index];
+        if (!IsSubmited) {
+            detailsInput.value = OldInputValues[index];
+            IsSubmited = false;
+        }
     })
 }
 
@@ -78,6 +84,7 @@ hoverefect.forEach((lis) => {
 //for send data after changed
 function SendData() {
     if (IsEdited) {
+        IsSubmited = true;
         var xmlxhr = new XMLHttpRequest();
         xmlxhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

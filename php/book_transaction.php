@@ -5,7 +5,7 @@ $query = "UPDATE book_transaction SET buyer_id=" . $_SESSION["userID"] . " WHERE
 
 $result = mysqli_query($con, $query);
 if ($result) {
-    echo "success";
+    echo "Book succesfully reach to you in 1 week";
 } else {
     echo "Something went wrong.Pleace try again";
 }

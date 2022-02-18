@@ -35,7 +35,7 @@
                 <li><a href="SellBook.php">Sell</a></li>
                 <li><a href="chat.php">Chat</a></li>
                 <li><a href=""><img src="img/notification_icon.svg" alt=""></a></li>
-                <li><a href="profilepage.php"><img src="<?php echo (empty($_SESSION['profile_photo']) == true?$_SESSION['userphoto']:$_SESSION['profile_photo'])?>" alt=""></a></li>
+                <li><a href="profilepage.php"><img src="<?php if(empty($_SESSION['profile_photo'])==true) echo $_SESSION['userphoto']; else echo $_SESSION['profile_photo']?>" alt=""></a></li>
             <?php } ?>
         </ul>
 

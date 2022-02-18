@@ -117,7 +117,7 @@ $row = mysqli_fetch_assoc($result);
             </div>
         </div>
 
-        <!-- Bouht book page structure -->
+        <!-- Bought book page structure -->
         <div class="profile_container">
             <div class="header">
                 <h1> Bought Book</h1>
@@ -126,18 +126,15 @@ $row = mysqli_fetch_assoc($result);
             <?php
                     $SelectSoldBookQuery ='SELECT book_name,book_coverpage,book_description,(SELECT fname from user where user_id = btr.seller_id) as sellerId,(SELECT fname from user where user_id = btr.buyer_id) As buyerId 
                                         FROM book_transaction btr WHERE buyer_id = '.$_SESSION['userID'].' ';
-                                        // echo $SelectSoldBookQuery;
-                                        // exit();
                     $SelectSoldBookFire = mysqli_query($con,$SelectSoldBookQuery);
-                    // print_r($SelectSoldBookFire);
-                    // exit();
+
                     if(mysqli_num_rows($SelectSoldBookFire) != 0){
                         
                         while($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)){
                             echo  '<div class="card">
                                 <div class="book-header">
                                     <div class="book-photo">
-                                        <img src="'.file_exists($SelectSoldBookResult['book_coverpage']==false?"media/bslogo.jpeg":$SelectSoldBookResult['book_coverpage']).'">
+                                        <img src="'.(file_exists($SelectSoldBookResult['book_coverpage']) == false ? "media/profile_photo/bslogo.jpeg" : $SelectSoldBookResult['book_coverpage']).'">
                                     </div>
                                     <div class="book-title">'.$SelectSoldBookResult['book_name'].'</div>
                                 </div>

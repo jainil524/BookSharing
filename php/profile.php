@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "dbconfig.php";
-$uimg = "";
+
 $dprofile = $_FILES["dp"];
 $na = $_POST['fname'];
 $una = $_POST['username'];
@@ -9,6 +9,7 @@ $adr = $_POST['address'];
 $em = $_POST['email'];
 $pinc = $_POST['pincode'];
 $fileUpload = "";
+
 if (empty($na) || empty($una) || empty($adr) || empty($na)) {
     echo "Please fill all fields";
 }
@@ -24,9 +25,9 @@ $UpdateQuery = "UPDATE user
                     SET fname = '" . $na . "',
                     email= '" . $em . "',
                     user_name= '" . $una . "',
-                   " . $fileUpload . "
+                    " . $fileUpload . "
                     address = '" . $adr . "',
-                    pincode=  '" . $pinc . "'
+                    pincode=  " . $pinc . "
                     WHERE user_name ='" . $_SESSION['username'] . "' ";
 
 mysqli_query($con, $UpdateQuery);
