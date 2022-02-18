@@ -106,7 +106,7 @@ if (!$con) {
                 <input type="email" value="<?php echo $raw['delivery_guy_email']; ?>" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="dob">DOB</label> <input type="date" value="<?php echo $raw['delivery_guy_dob']; ?>" name="dob" class="form-control" id="exampleInputPassword1">
+                <label for="dob">DOB</label> <input type="date" value="<?php echo ($raw['delivery_guy_dob']==""?date("d-m-Y"):$raw['delivery_guy_dob']); ?>" name="dob" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="form-group">
                 <label for="addr">Address</label>
