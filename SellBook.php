@@ -1,8 +1,9 @@
 <?php
-$title = "Sell Book - Book Sharing";
+$title = "Sell Book - Book sharing";
 $css_file_name = "SellBook";
-require "php/LoginCheck.php";
+
 require "php/navbar.php";
+require "php/LoginCheck.php";
 ?>
 <div class="sell-container">
   <div class="container">
