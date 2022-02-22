@@ -186,6 +186,12 @@ form .button {
     margin: 20px 0;
 }
 
+form input[type="submit"]:disabled {
+    background-color: gray;
+    pointer-events: none;
+    cursor: wait;
+}
+
 form .button input,
 #error {
     height: 100%;

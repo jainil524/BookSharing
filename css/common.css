@@ -31,3 +31,7 @@ body {
     --MsgContainerWidth: 75%;
     --ConUserInfoHeight: 50px;
 }
+
+.buttonCursor {
+    cursor: pointer;
+}

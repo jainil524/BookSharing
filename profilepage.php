@@ -19,6 +19,7 @@ $row = mysqli_fetch_assoc($result);
                 <li class="active">Profile</li>
                 <li>Sold Books</li>
                 <li>Bought Books</li>
+                <li onclick="DeleteAccount()">Delete Account</li>
                 <li onclick="logout()">Logout</li>
                 <span class='activator'></span>
             </ul>
@@ -39,7 +40,7 @@ $row = mysqli_fetch_assoc($result);
                         <img src="<?php echo $row['Profile_photo']; ?>" id="userimg" alt="">
                         <label class="changeimgicon Formactive" for="profiledp"><img src="img/add_a_photo.svg" class="edit_icon"></label>
                     </div>
-                    <input type="file" name="dp" id="profiledp" onchange="userimgchanger()" class="user_info" accept="image/*" disabled>
+                    <input type="file" name="dp" id="profiledp" onchange="ImgPreview()" class="user_info" accept="image/*" disabled>
                 </div>
                 <div>
                     <label>Full Name</label>
@@ -62,10 +63,7 @@ $row = mysqli_fetch_assoc($result);
                     <input type="number" name="pincode" value="<?php echo $row['pincode']; ?>" class="user_info" id="" disabled>
                 </div>
             </form>
-            <div class="Formactive response">
-                <div><img src="img/warning_icon.svg"></div>
-                <div class="errorMsg"></div>
-            </div>
+
         </div>
 
         <!-- sold book page structure -->
@@ -75,8 +73,15 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div class="card-container">
                 <?php
-                    $SelectSoldBookQuery ='SELECT book_name,book_coverpage,book_description,(SELECT fname from user where user_id = btr.seller_id) as sellerId,(SELECT fname from user where user_id = btr.buyer_id) As buyerId 
-                                        FROM book_transaction btr WHERE seller_id = '.$_SESSION['userID'].' ';
+                    $SelectSoldBookQuery ='SELECT book_id,
+                                            book_name,
+                                            book_coverpage,
+                                            book_description,
+                                            (SELECT fname from user where user_id = btr.seller_id) as sellerId,
+                                            (SELECT fname from user where user_id = btr.buyer_id) As buyerId,
+                                            buyer_id 
+                                            FROM book_transaction btr
+                                            WHERE seller_id = '.$_SESSION['userID'].' ';
                                         // echo $SelectSoldBookQuery;
                                         // exit();
                     $SelectSoldBookFire = mysqli_query($con,$SelectSoldBookQuery);
@@ -84,28 +89,36 @@ $row = mysqli_fetch_assoc($result);
                     // exit();
                     if(mysqli_num_rows($SelectSoldBookFire) != 0){
                         while($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)){
-                            echo  '<div class="card">
-                                <div class="book-header">
-                                    <div class="book-photo">
-                                        <img src="'.$SelectSoldBookResult['book_coverpage'].'">
-                                    </div>
-                                    <div class="book-title">'.$SelectSoldBookResult['book_name'].'</div>
-                                </div>
-                                <div class="book-body">
-                                    <div class="book-details">
-                                        <div class="book-description">'.$SelectSoldBookResult['book_description'].'</div>
-                                    </div>
-                                    <div class="book-seller-buyer">
-                                        <div>
-                                            <span>seller</span>
-                                            <span>Buyer</span>
+                            $Purchesed = "";
+                            if(is_null($SelectSoldBookResult['buyer_id'])){
+                                $Purchesed = '  <div class="actionsBtn">
+                                                    <button ><img src="img/edit_icon.svg" class="buttonCursor" onclick="EditBookInfo(event,'.$SelectSoldBookResult['book_id'].')"></button>
+                                                    <button ><img src="img/delete_icon.svg" class="buttonCursor" onclick="DeleteBook(event,'.$SelectSoldBookResult['book_id'].')"></button>
+                                                </div>';
+                            }
+                            echo  ' <div class="card">
+                                        '.$Purchesed.'
+                                        <div class="book-header">
+                                            <div class="book-photo">
+                                                <img src="'.$SelectSoldBookResult['book_coverpage'].'">
+                                            </div>
+                                            <div class="book-title">'.$SelectSoldBookResult['book_name'].'</div>
                                         </div>
-                                        <div>
-                                            <span class="book-seller">'.$SelectSoldBookResult['sellerId'].'</span>
-                                            <span class="book-buyer">'.($SelectSoldBookResult['buyerId']==""?"Not yet":$SelectSoldBookResult['buyerId']).'</span>
+                                        <div class="book-body">
+                                            <div class="book-details">
+                                                <div class="book-description">'.$SelectSoldBookResult['book_description'].'</div>
+                                            </div>
+                                            <div class="book-seller-buyer">
+                                                <div>
+                                                    <span>seller</span>
+                                                    <span>Buyer</span>
+                                                </div>
+                                                <div>
+                                                    <span class="book-seller">'.$SelectSoldBookResult['sellerId'].'</span>
+                                                    <span class="book-buyer">'.($SelectSoldBookResult['buyerId']==""?"Not yet":$SelectSoldBookResult['buyerId']).'</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
                                     </div>';
                             }
                             
@@ -162,6 +175,11 @@ $row = mysqli_fetch_assoc($result);
                     }
                 ?>
             </div>
+        </div>
+        
+        <div class="Formactive response">
+            <div><img src="img/warning_icon.svg"></div>
+            <div class="errorMsg"></div>
         </div>
     </div>
 </div>
