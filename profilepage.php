@@ -77,8 +77,8 @@ $row = mysqli_fetch_assoc($result);
                                             book_name,
                                             book_coverpage,
                                             book_description,
-                                            (SELECT fname from user where user_id = btr.seller_id) as sellerId,
-                                            (SELECT fname from user where user_id = btr.buyer_id) As buyerId,
+                                            (SELECT user_name from user where user_id = btr.seller_id) as sellerId,
+                                            (SELECT user_name from user where user_id = btr.buyer_id) As buyerId,
                                             buyer_id 
                                             FROM book_transaction btr
                                             WHERE seller_id = '.$_SESSION['userID'].' ';

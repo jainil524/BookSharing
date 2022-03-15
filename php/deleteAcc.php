@@ -7,17 +7,16 @@
     $CheckPasswordData = mysqli_query($con,$CheckPassword);
 
     if(mysqli_num_rows($CheckPasswordData) > 0){
-        $DeleteAccQuery = " DELETE ut
-                            FROM user ut
-                            LEFT JOIN book_transaction on (ut.user_id = book_transaction.seller_id) 
-                            AND (ut.user_id != book_transaction.buyer_id)
-                            WHERE ut.user_id = ".$_SESSION['userID']." ";
+        $DeleteAccQuery = " DELETE FROM user WHERE user_id = ".$_SESSION['userID']." ";
         $DeleteAccFireQuery = mysqli_query($con,$DeleteAccQuery);
 
         // echo $DeleteAccQuery;
 
         if($DeleteAccFireQuery){
             echo trim("success");
+
+            $DeleteBookQuery = " DELETE FROM book_transaction WHERE (seller_id = NULL OR seller_id = ".$_SESSION['userID'].") OR buyer_id = '' ";
+            $DeleteBookFireQuery = mysqli_query($con,$DeleteBookQuery);
             session_destroy();
         }
         else{
@@ -28,4 +27,3 @@
         echo "Incorrect password";
     }
 ?> 
-

@@ -37,7 +37,19 @@ function userid(id) {
 }
 
 function usersSearches() {
-    ajax("userview", userlist, userlist, new FormData(searchuserform), false);
+    let xmlxhr = new XMLHttpRequest();
+    xmlxhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.response == "") {
+                userlist.innerHTML = "<span class='NoUser'>No User Found</span>";
+            } else {
+                userlist.innerHTML = this.responseText;
+            }
+        }
+    }
+    xmlxhr.open('POST', 'php/userview.php', true);
+    let FormDetails = new FormData(searchuserform);
+    xmlxhr.send(FormDetails);
 }
 
 function firstfocuser() {

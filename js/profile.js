@@ -49,6 +49,8 @@ function logout() {
         window.location.assign(
             "http://localhost/BookSharing/profilepage.php?logout=true"
         );
+    } else {
+        return false;
     }
 }
 
@@ -77,7 +79,7 @@ function MakeFormDisable() {
 
     userdetails.forEach((detailsInput, index) => {
         detailsInput.setAttribute("disabled", "disabled");
-        if (IsEdited == true && IsSubmited == false) {
+        if (IsEdited == true || IsSubmited == false) {
             detailsInput.value = OldInputValues[index];
             IsSubmited = false;
             IsEdited = false;

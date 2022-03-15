@@ -8,8 +8,8 @@ body {
 
 #main {
     font-family: 'POPPINS';
-    width: 65%;
-    min-height: 75%;
+    width: 70%;
+    min-height: 85%;
     padding: 0rem .5rem 0.3rem 0rem;
     display: flex;
     align-items: center;
@@ -157,6 +157,10 @@ body {
 
 #profileinfo li:nth-child(4).active~.activator {
     transform: translateY(calc(100% * 6.8));
+}
+
+#profileinfo li:nth-child(5).active~.activator {
+    transform: translateY(calc(100% * 8.9));
 }
 
 

@@ -1,17 +1,15 @@
 <?php
-$title = "Dachboard - Book sharing";
-$css_file_name = "dahboard";
+$title = "Dashboard - Book sharing";
+$css_file_name = "dashboard";
 
 require "php/dbconfig.php";
 require "php/navbar.php";
-require "php/LoginCheck.php";
-if ($_SESSION["role"] == "admin") {
+if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"] == "admin")) {
     header("Location: admindashboard.php");
 }
 
-if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
-    header("Location: admindashboard.php");
-}
+
+
 ?>
 <div class="dashboard">
     <div id="search_bar">
@@ -20,8 +18,11 @@ if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     </div>
     <div id="main">
         <?php
-        $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL AND  NOT seller_id =" . $_SESSION["userID"];
-
+        $IsSessionStarted = "";
+        if(session_status() === PHP_SESSION_NONE){
+            $IsSessionStarted = "AND  NOT seller_id = " . $_SESSION["userID"];
+        }
+        $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL ".$IsSessionStarted;
         $result = mysqli_query($con, $query);
 
         if (mysqli_num_rows($result) > 0) {

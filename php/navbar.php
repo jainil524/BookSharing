@@ -22,7 +22,8 @@
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
-            if ($_SESSION["role"] == "admin") {
+            if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"] == "admin")) {
+
             ?>
                 <li><a href="admindashboard.php" onclick="showHome()">Dashbord</a></li>
                 <li><a href="user.php">Users</a></li>
@@ -35,7 +36,8 @@
                 <li><a href="SellBook.php">Sell</a></li>
                 <li><a href="chat.php">Chat</a></li>
                 <li><a href=""><img src="img/notification_icon.svg" alt=""></a></li>
-                <li><a href="profilepage.php"><img src="<?php if(empty($_SESSION['profile_photo'])==true) echo $_SESSION['userphoto']; else echo $_SESSION['profile_photo']?>" alt=""></a></li>
+                <li><a href="profilepage.php"><img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
+                                                        else echo $_SESSION['profile_photo'] ?>" alt=""></a></li>
             <?php } ?>
         </ul>
 
