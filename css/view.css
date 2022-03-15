@@ -84,8 +84,8 @@
 
 .info-container .chat-icon,
 .info-container .report-icon {
-    width: 3rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 1.5rem;
     padding: 0 .5rem;
     display: none;
 }

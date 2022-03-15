@@ -19,6 +19,7 @@ if (empty($book)) {
     <div class="back-btn">
         <a href="index.php"><img src="./img/back.png" alt=""></a>
     </div>
+
     <div class="book-container">
         <div class="img-con">
             <img src="<?php echo (file_exists($book["book_coverpage"]) == false ? 'img/logos.png' : $book["book_coverpage"]); ?>" alt="book_img">
@@ -55,6 +56,10 @@ if (empty($book)) {
                 <h5></h5>
             </div>
         </div>
+    </div>
+
+    <div class="report-pop-up">
+
     </div>
 </div>
 <script src="js/AJAX.js"></script>

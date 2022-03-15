@@ -26,4 +26,4 @@ if (mysqli_num_rows($result)) {
     }
 }
 
-echo empty($returnString) ? "<h2 class='error'> No Book Found</h2>" : $returnString;
+echo empty($returnString) ? "<h2 class='error'> No Book For Sell</h2>" : $returnString;
