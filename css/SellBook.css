@@ -16,7 +16,7 @@
 .container {
     max-width: 700px;
     width: 100%;
-    background: #7fdbb0;
+    background: white;
     padding: 25px 30px;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -125,12 +125,12 @@ form .img-box label.details {
     border: 1px solid rgb(0, 79, 99);
     border-bottom-width: 2px;
     transition: all 0.3s ease;
-    background-color: rgb(175, 216, 175);
+    background-color: rgb(255, 255, 255);
 }
 
 #UploadCover {
     padding: 8px 12px;
-    background: #7fdbb0;
+    background: #ffffff;
 }
 
 .user-details .img-box:hover {
@@ -184,6 +184,12 @@ form input[type="radio"] {
 form .button {
     height: 45px;
     margin: 20px 0;
+}
+
+form input[type="submit"]:disabled {
+    background-color: gray;
+    pointer-events: none;
+    cursor: wait;
 }
 
 form .button input,

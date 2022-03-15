@@ -21,9 +21,10 @@ if (!isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
     <div id="main">
         <?php
         $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL AND  NOT seller_id =" . $_SESSION["userID"];
+
         $result = mysqli_query($con, $query);
 
-        if (mysqli_num_rows($result)) {
+        if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result)) {
                 echo "<a href='view.php?id=" . $row["book_id"] . "' class='book-container'>" .
                     "<div class='bookimg'>" .

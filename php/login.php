@@ -35,16 +35,16 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		}
 	} else {
 		$_SESSION["role"] = "user";
+		$row = mysqli_fetch_array($result);
+		$_SESSION['username'] = $row['user_name'];
+		$_SESSION["userID"] = $row["user_id"];
+		$_SESSION["fname"] = $row["fname"];
+		$_SESSION["email"] = $row["email"];
+		$_SESSION["pincode"] = $row["pincode"];
+		$_SESSION["Address"] = $row["address"];
+		$_SESSION["userphoto"] = $row["Profile_photo"];
+		$_SESSION['lgcheck'] = true;
 	}
 
-	$row = mysqli_fetch_array($result);
-	$_SESSION['username'] = $row['user_name'];
-	$_SESSION["userID"] = $row["user_id"];
-	$_SESSION["fname"] = $row["fname"];
-	$_SESSION["email"] = $row["email"];
-	$_SESSION["pincode"] = $row["pincode"];
-	$_SESSION["Address"] = $row["address"];
-	$_SESSION["userphoto"] = $row["Profile_photo"];
-	$_SESSION['lgcheck'] = true;
 	echo "success";
 }
