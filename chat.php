@@ -66,18 +66,22 @@
 				</div>";
 			}
 			if (empty($users)) {
-				echo "<span class='NoUser'>No User For Chat</span>";
-			} else {
+				$users = "<span class='NoUser'>No User For Chat</span>";
+			}
 				echo $users;
 				$_SESSION['userlist'] = $users;
-			}
+			
 			?>
 		</div>
 
 	</div>
 	<div class="Msgcontainer" id="Msgcontainer">
 		<div class="ConUserInfo">
-
+		<ul id="burger" class="cancel" onclick="chttedwithusersection()">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
 		</div>
 		<div id="msgcontainer">
 

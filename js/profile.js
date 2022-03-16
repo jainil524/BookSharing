@@ -7,7 +7,7 @@ const userdetails = document.querySelectorAll(".user_info");
 const imgcontainer = document.querySelector(".dp");
 const afterimage = document.querySelector(".dp .changeimgicon");
 const done = document.querySelector(".header img");
-const hoverefect = document.querySelectorAll("#profileinfo li");
+const hoverefect = document.querySelectorAll("#profileinfo .slider");
 const ProfileContainer = document.querySelectorAll(".profile_container");
 
 let ChangedInputs = [];
