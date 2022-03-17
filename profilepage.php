@@ -16,9 +16,9 @@ $row = mysqli_fetch_assoc($result);
         </div>
         <div id="profileinfo">
             <ul>
-                <li class="active">Profile</li>
-                <li>Sold Books</li>
-                <li>Bought Books</li>
+                <li class="active slider">Profile</li>
+                <li class="slider">Sold Books</li>
+                <li class="slider">Bought Books</li>
                 <li onclick="DeleteAccount()">Delete Account</li>
                 <li onclick="logout()">Logout</li>
                 <span class='activator'></span>

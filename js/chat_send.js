@@ -53,11 +53,14 @@ function usersSearches() {
 }
 
 function firstfocuser() {
-    usersection.querySelector(".user").click();
+    if (!userlist.contains(document.querySelector(".NoUser"))) {
+        usersection.querySelector(".user").click();
+    }
 }
 
 function chttedwithusersection() {
-    if (usersshow.style.display == "none") {
+    var hasDisplayNone = (usersshow.offsetHeight === 0 && usersshow.offsetWidth === 0)
+    if (hasDisplayNone) {
         usersshow.style.display = "block";
     } else {
         usersshow.style.display = "none";
