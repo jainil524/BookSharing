@@ -23,7 +23,6 @@ if (!$con) {
     $raw['delivery_guy_name'] = "";
     $raw['delivery_guy_email'] = "";
     $raw['delivery_guy_id'] = "0";
-    $raw['delivery_guy_id'] = "";
     $raw['delivery_guy_address'] = "";
     $raw['delivery_guy_password'] = "";
     $raw['delivery_guy_pincode'] = "";
@@ -33,8 +32,7 @@ if (!$con) {
 
         $_SESSION['editdg'] = $_GET['id'];
 
-        $selectquery = "select * from delivery_guy
-                        where delivery_guy_id = " . $_GET['id'];
+        $selectquery = "SELECT * FROM delivery_guy WHERE delivery_guy_id = " . $_GET['id'];
         $result = mysqli_query($con, $selectquery);
         $raw = mysqli_fetch_assoc($result);
     } elseif (isset($_POST['submit'])) {
@@ -45,7 +43,7 @@ if (!$con) {
         $addr = $_POST['addr'];
         $status = $_POST['status'];
         $pincode = $_POST['zipcode'];
-        $pass = $_POST['pass'];
+        $pass = hash("sh1",$_POST['pass']);
         //New   
         //$pass = md5($pass);
 
@@ -95,7 +93,7 @@ if (!$con) {
                 $result = mysqli_query($con, $selectquery);
                 $newraw = mysqli_fetch_assoc($result);
 
-                $deliveryguy_Id = $newraw['deliveryguy_Id'];
+                $deliveryguy_Id = $newraw['delivery_guy_id'];
             }
             ?>
             <div class="form-group">

@@ -25,10 +25,11 @@ body {
     width: 30%;
     height: 100%;
     background-color: rgb(1, 4, 34);
-    display: grid;
-    grid-template-rows: 1fr 3fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 5;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     padding: 2rem 0rem 3rem 0rem;
 }
 
@@ -38,9 +39,7 @@ body {
 #sidebar #profilephoto {
     width: 6rem;
     height: 6rem;
-    border-radius: 50%;
     justify-self: center;
-    overflow: hidden;
 }
 
 
@@ -49,6 +48,7 @@ body {
 #profilephoto img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -79,14 +79,12 @@ body {
 /* sidebar options */
 
 #profileinfo li {
-    position: relative;
     width: 98%;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    isolation: isolate;
-    margin: 1.4rem 0rem;
+    margin: 1rem 0rem;
     border-bottom-left-radius: 50px;
     border-top-left-radius: 50px;
     cursor: pointer;
@@ -144,15 +142,19 @@ body {
 /* sidebar hover sliding effect */
 
 #profileinfo li:nth-child(1).active~.activator {
-    transform: translateY(calc(60% * 1));
+    transform: translateY(calc(60% * .7));
 }
 
 #profileinfo li:nth-child(2).active~.activator {
-    transform: translateY(calc(100% * 2.6));
+    transform: translateY(calc(100% * 2.1));
 }
 
 #profileinfo li:nth-child(3).active~.activator {
-    transform: translateY(calc(100% * 4.7));
+    transform: translateY(calc(100% * 3.9));
+}
+
+#profileinfo li:nth-child(4).active~.activator {
+    transform: translateY(calc(100% * 5.65));
 }
 
 
