@@ -29,10 +29,14 @@ hoverefect.forEach((lis) => {
             ProfileContainer[0].classList.add("ProfileActive")
             ProfileContainer[1].classList.remove("ProfileActive")
             ProfileContainer[2].classList.remove("ProfileActive")
-        } else if (e.target.innerText == "Sold Books") {
+        } else if (e.target.innerText == "Sell Books") {
             ProfileContainer[0].classList.remove("ProfileActive")
             ProfileContainer[1].classList.add("ProfileActive")
             ProfileContainer[2].classList.remove("ProfileActive")
+        } else if (e.target.innerText == "Sold Books") {
+            ProfileContainer[0].classList.remove("ProfileActive")
+            ProfileContainer[1].classList.remove("ProfileActive")
+            ProfileContainer[2].classList.add("ProfileActive")
         } else if (e.target.innerText == "Bought Books") {
             ProfileContainer[0].classList.remove("ProfileActive")
             ProfileContainer[1].classList.remove("ProfileActive")

@@ -125,3 +125,10 @@
     box-shadow: 0 5px rgb(163, 194, 191);
     transform: translateY(4px);
 }
+
+.actionBtn {
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
