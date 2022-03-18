@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="js/AJAX.js"></script>
-    <link rel="stylesheet" href="./css/<?php echo $css_file_name ?>.css">
-    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="css/<?php echo $css_file_name ?>.css">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/navbar.css">
     <title><?php echo $title; ?></title>
 </head>
@@ -19,10 +19,10 @@
         </div>
         <ul id="navbar">
             <?php
-            if (session_status() === PHP_SESSION_NONE) {
+            if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
-            if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"] == "admin")) {
+            if (isset($_SESSION['userID']) && (isset($_SESSION["role"]) && $_SESSION["role"] == "admin")) {
 
             ?>
                 <li><a href="admindashboard.php" onclick="showHome()">Dashbord</a></li>
@@ -36,8 +36,14 @@
                 <li><a href="SellBook.php">Sell</a></li>
                 <li><a href="chat.php">Chat</a></li>
                 <li><a href=""><img src="img/notification_icon.svg" alt=""></a></li>
-                <li><a href="profilepage.php"><img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
-                                                        else echo $_SESSION['profile_photo'] ?>" alt=""></a></li>
+                <!-- <?php if($_SESSION['role']!= "admin"){?> -->
+                    <li>
+                        <a href="profilepage.php">
+                            <img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
+                                            else echo $_SESSION['profile_photo'] ?>" alt="">
+                        </a>
+                    </li>
+                <!-- <?php }?> -->
             <?php } ?>
         </ul>
 

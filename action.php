@@ -89,11 +89,13 @@ if (!$con) {
                 echo '<input type="hidden" name="edit" value="TRUE" >';
                 $deliveryguy_Id = $raw['delivery_guy_id'];
             } else {
-                $selectquery = "SELECT d.delivery_guy_id+1 as deliveryguy_Id FROM delivery_guy d ORDER BY d.delivery_guy_id DESC LIMIT 1";
+                $selectquery = "SELECT d.delivery_guy_id+1  as deliveryguy_Id,d.delivery_guy_dob as dgd FROM delivery_guy d ORDER BY d.delivery_guy_id DESC LIMIT 1";
+                // echo $selectquery;
+                // exit();
                 $result = mysqli_query($con, $selectquery);
                 $newraw = mysqli_fetch_assoc($result);
 
-                $deliveryguy_Id = $newraw['delivery_guy_id'];
+                $deliveryguy_Id = $newraw['deliveryguy_Id'];
             }
             ?>
             <div class="form-group">
@@ -104,7 +106,7 @@ if (!$con) {
                 <input type="email" value="<?php echo $raw['delivery_guy_email']; ?>" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="dob">DOB</label> <input type="date" value="<?php echo ($raw['delivery_guy_dob']==""?date("d-m-Y"):$raw['delivery_guy_dob']); ?>" name="dob" class="form-control" id="exampleInputPassword1">
+                <label for="dob">DOB</label> <input type="date" value="<?php echo ($newraw['dgd']==""?date("d-m-Y"):$newraw['dgd']); ?>" name="dob" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="form-group">
                 <label for="addr">Address</label>
