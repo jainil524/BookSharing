@@ -6,7 +6,8 @@
     width: 100%;
     text-align: center;
     background-color: #65cb8b;
-    color: var(--textColor);
+    color: var(--textcolor);
+    ;
     padding: 0.7rem;
     margin-top: auto;
     box-shadow: 0rem .2rem .4rem rgba(100, 100, 111, 0.2);
@@ -19,7 +20,8 @@ h3 {
 
 #footer a {
     text-decoration: none;
-    color: var(--textColor);
+    color: var(--textcolor);
+    ;
 }
 
 .social-link a {

@@ -30,8 +30,8 @@ body {
     --MsgContainerWidth: 75%;
     --ConUserInfoHeight: 50px;
     --logoColor: #396449;
-    --textColor: white;
-    --logocolorlight: #65cb8b;
+    --textcolor: white;
+    --logocolorlight: #59c580;
     --ConUserInfoBGColor: var(--logocolorlight);
 }
 

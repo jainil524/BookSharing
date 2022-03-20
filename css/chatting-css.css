@@ -226,7 +226,7 @@ body {
     width: max-content;
     max-width: 45%;
     height: max-content;
-    color: white;
+    color: var(--textcolor);
     padding: .3rem .31rem;
     margin: .1rem 1rem;
 }
