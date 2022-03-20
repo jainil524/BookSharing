@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['userID']) && $_SESSION['userID'] != ""){
+if (!isset($_SESSION['userID'])) {
     echo "login";
     exit();
 }
