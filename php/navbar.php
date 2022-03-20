@@ -47,6 +47,7 @@
                                     else echo $_SESSION['profile_photo'] ?>" alt="">
                     </a>
                 </li>
+            <?php } ?>
         </ul>
 
         <ul id="burger" onclick="showNavbar()">
@@ -55,15 +56,17 @@
             <li></li>
         </ul>
     </header>
+
     <script defer>
         let navbar = document.querySelector("#navbar");
         let burger = document.querySelector("#burger");
 
         function showNavbar() {
-            if (navbar.style.transform == '')
+            if (navbar.style.transform == '') {
                 navbar.style.transform = " translateX(0%) scaleX(1)";
-            else
+            } else {
                 navbar.style.transform = "";
+            }
 
             burger.classList.toggle("cancel");
         }

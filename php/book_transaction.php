@@ -1,11 +1,8 @@
 <?php
-if (!isset($_SESSION['userID'])) {
-    echo "login";
-    exit();
-}
+
 require "dbconfig.php";
 session_start();
-$query = "UPDATE book_transaction SET buyer_id=" . $_SESSION["userID"] . " WHERE book_id=" . $_POST["book_id"];
+$query = "UPDATE book_transaction SET buyer_id=" . $_POST["userID"] . " WHERE book_id=" . $_POST["book_id"];
 
 $result = mysqli_query($con, $query);
 if ($result) {
