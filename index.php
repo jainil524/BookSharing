@@ -18,7 +18,7 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
         <?php
         $IsSessionStarted = "";
 
-        if (session_status() != PHP_SESSION_NONE) {
+        if (session_status() == PHP_SESSION_NONE) {
             $IsSessionStarted = "AND  NOT seller_id = " . $_SESSION["userID"];
         }
 
