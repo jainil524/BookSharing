@@ -43,9 +43,13 @@ if (!$con) {
         $addr = $_POST['addr'];
         $status = $_POST['status'];
         $pincode = $_POST['zipcode'];
-        $pass = hash("sh1",$_POST['pass']);
-        //New   
-        //$pass = md5($pass);
+        if(isset($_SESSION['editdg']) && empty($_POST['pass'])){
+            $pass = $row['delivery_guy_password'];
+        }
+        else{
+        $pass = hash("sha1",$_POST['pass']);
+        }
+
 
         if (isset($_POST['edit'])) {
             $updatequery = "UPDATE delivery_guy AS d SET 
@@ -56,8 +60,8 @@ if (!$con) {
                                 d.delivery_guy_address = '" . $addr . "',
                                 d.status = " . $status . ",
                                 d.delivery_guy_pincode = " . $pincode . ",
-                                d.delivery_guy_password = '" . $pass . "'
-                            WHERE d.delivery_guy_id = " . $_SESSION['editdg'];
+                                d.delivery_guy_password = '".$pass."'
+                                WHERE d.delivery_guy_id = " . $_SESSION['editdg'];
             if (mysqli_query($con, $updatequery)) {
                 echo "<script>alert('" . $name . " record updated successfully'); window.close();</script>";
             } else {
@@ -65,7 +69,7 @@ if (!$con) {
             }
         } else {
             $query = "INSERT INTO `delivery_guy`(`delivery_guy_name`, `delivery_guy_email`, `delivery_guy_dob`, `status`, `delivery_guy_address`,`delivery_guy_pincode`, `delivery_guy_password`) 
-            VALUES ('$name','$email','$dob',1,'$addr',$pincode,'$pass') ";
+                        VALUES ('$name','$email','$dob',1,'$addr',$pincode,'".$pass."') ";
             if (mysqli_query($con, $query)) {
                 echo "<script>alert('" . $name . " record created successfully'); window.close();</script>";
             } else {
@@ -90,8 +94,7 @@ if (!$con) {
                 $deliveryguy_Id = $raw['delivery_guy_id'];
             } else {
                 $selectquery = "SELECT d.delivery_guy_id+1  as deliveryguy_Id,d.delivery_guy_dob as dgd FROM delivery_guy d ORDER BY d.delivery_guy_id DESC LIMIT 1";
-                // echo $selectquery;
-                // exit();
+
                 $result = mysqli_query($con, $selectquery);
                 $newraw = mysqli_fetch_assoc($result);
 
@@ -106,7 +109,7 @@ if (!$con) {
                 <input type="email" value="<?php echo $raw['delivery_guy_email']; ?>" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="dob">DOB</label> <input type="date" value="<?php echo ($newraw['dgd']==""?date("d-m-Y"):$newraw['dgd']); ?>" name="dob" class="form-control" id="exampleInputPassword1">
+                <label for="dob">DOB</label> <input type="date" value="<?php echo (empty($newraw['dgd'])?date("d-m-Y"):date("d-m-Y",$newraw['dgd'])) ?>" name="dob" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="form-group">
                 <label for="addr">Address</label>
@@ -116,23 +119,20 @@ if (!$con) {
                 <label for="status">Status</label>
 
                 <select name="status" style='width: 45%;' class='form-control' name='status' value="">
-                    <option value="">SELECT STATUS</option>
                     <?php
-                    $statusisset = "";
-                    if ($raw['status'] == 1 || $raw['status'] == 0 && isset($_GET['id'])) {
-                        $statusisset = 'selected="selected"';
-                        // echo '<option value="1" selected="selected">Active</option>';
-                    }
-
-
+                        $statusisset = "";
+                        if ($raw['status'] == 0 && isset($_GET['id'])) {
+                            $statusisset = 'selected="selected"';
+                        }                  
                     ?>
-                    <option value="1" <?php echo $statusisset; ?>>Active</option>
+                    <option value="1" >Active</option>
                     <option value="0" <?php echo $statusisset; ?>>Inactive</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="pass">PASSWORD</label>
-                <input type="password" value="<?php echo $raw['delivery_guy_password']; ?>" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
 
             <div class="form-group"><label for="zipcode">PINCODE</label>
