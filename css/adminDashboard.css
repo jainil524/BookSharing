@@ -11,7 +11,7 @@
 
 .info-card {
     width: 15rem;
-    height: 5rem;
+    height: 6rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -120,6 +120,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    row-gap: 1rem;
 }
 
 #delivery_report table {
@@ -136,6 +137,7 @@
 .deliveryGuyList h4,
 .reportsList h4 {
     font-size: 1.2rem;
+    padding: .2rem 0;
     text-align: center;
     width: 100%;
     background-color: #444;

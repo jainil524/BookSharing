@@ -3,7 +3,7 @@ $title = "Users - Book sharing";
 $css_file_name = "user";
 
 require "php/RoleChecker.php";
-Rlchecker("admin");
+Rlchecker("admin",403,"Access Denied","You don't have access to this page");
 
 require "php/dbconfig.php";
 require "php/navbar.php";
@@ -27,7 +27,7 @@ require "php/navbar.php";
             $query = "SELECT user_id,user_name,email,IsRestricted  FROM user ORDER BY IsRestricted DESC";
             $userResult = mysqli_query($con, $query);
             $no = 1;
-            if (mysqli_num_rows($userResult)) {
+            if (mysqli_num_rows($userResult) != 0) {
                 while ($user = mysqli_fetch_assoc($userResult)) {
                     echo '<tr>
                         <td>' . $no . '</td>
@@ -49,20 +49,6 @@ require "php/navbar.php";
     </table>
 </div>
 
-<!-- <div id="action-container">
-    <div class="action-list">
-        <ul>
-            <div>
-                <img src="img/warning_icon.svg" alt="">
-                <span>Warn</span>
-            </div>
-            <div>
-                <img src="img/restrict_icon.svg" alt="">
-                <span>Restrict</span>
-            </div>
-        </ul>
-    </div>
-</div> -->
 
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.steps.min.js"></script>

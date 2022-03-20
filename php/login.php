@@ -30,9 +30,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 		if ($numrow > 0) {
 			$_SESSION["role"] = "admin";
+			$_SESSION['username'] = $adminresult['admin_name'];
 			$_SESSION["userID"] = $adminresult["admin_id"];
-			echo $adminq;
-			echo mysqli_error($con);
 			echo "successAdmin";
 		} else {
 			echo "Data not found";
