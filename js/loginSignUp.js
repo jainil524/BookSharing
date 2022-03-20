@@ -44,8 +44,32 @@ function ajaxFunc(fileName, location, formD) {
 
 function loginFunction() {
     var form = document.getElementById("login");
+    var err = document.getElementById("error-msg");
 
-    ajaxFunc("login", "index.php", new FormData(form));
+    let xmlxhr = new XMLHttpRequest();
+    xmlxhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            console.log(this.response);
+            if (this.response.endsWith('successUser')) {
+                window.location.replace("index.php");
+            } else if (this.response.endsWith('successAdmin')) {
+                window.location.replace("admindashboard.php");
+            } else {
+                err.innerText = this.response;
+                err.style.transform = "translateY(0%)";
+                err.style.display = "block";
+                setTimeout(() => {
+                    err.style.transform = "translateY(-100%)";
+                    err.innerText = "";
+                    err.style.display = "none";
+                }, 3000);
+            }
+        }
+    }
+    xmlxhr.open('POST', 'php/login.php', true);
+    let FormDetails = new FormData(form);
+    xmlxhr.send(FormDetails);
 }
 
 function signUpFunction() {

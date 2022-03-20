@@ -24,27 +24,32 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 	if ($num == 0) {
 		$adminq = "SELECT * FROM admin where admin_email  = '" . trim($email) . "' AND password = '" . trim($h_pass) . "' ";
-		$adminresult = mysqli_query($con, $adminq);
-		$numrow = mysqli_num_rows($adminresult);
+		$adminfire = mysqli_query($con, $adminq);
+		$adminresult = mysqli_fetch_assoc($adminfire);
+		$numrow = mysqli_num_rows($adminfire);
 
-		if ($numrow == 0) {
+		if ($numrow > 0) {
+			$_SESSION["role"] = "admin";
+			$_SESSION["userID"] = $adminresult["admin_id"];
+			echo $adminq;
+			echo mysqli_error($con);
+			echo "successAdmin";
+		} else {
 			echo "Data not found";
 			exit();
-		} else {
-			$_SESSION["role"] = "admin";
 		}
 	} else {
 		$_SESSION["role"] = "user";
-		$row = mysqli_fetch_array($result);
+		$row = mysqli_fetch_assoc($result);
 		$_SESSION['username'] = $row['user_name'];
-		$_SESSION["userID"] = $row["user_id"];
 		$_SESSION["fname"] = $row["fname"];
+		$_SESSION["userID"] = $row["user_id"];
 		$_SESSION["email"] = $row["email"];
 		$_SESSION["pincode"] = $row["pincode"];
 		$_SESSION["Address"] = $row["address"];
 		$_SESSION["userphoto"] = $row["Profile_photo"];
 		$_SESSION['lgcheck'] = true;
+		echo "successUser";
 	}
 
-	echo "success";
 }
