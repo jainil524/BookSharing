@@ -1,9 +1,9 @@
 <?php
 $title = "Delivery Guy - Book sharing";
 $css_file_name = "user";
-
+require "php/LoginCheck.php";
 require "php/RoleChecker.php";
-Rlchecker("admin",403,"Access Denied","You don't have permission the this page");
+Rlchecker("admin", 403, "Access Denied", "You don't have permission the this page");
 
 require "php/dbconfig.php";
 require "php/navbar.php";
@@ -38,7 +38,7 @@ require "php/navbar.php";
                         <td>' . $dg["delivery_guy_id"] . '</td>
                         <td>' . $dg["delivery_guy_name"] . '</td>
                         <td>' . $dg["delivery_guy_email"] . '</td>
-                        <td>' . date("d-m-Y",strtotime($dg["delivery_guy_dob"])) . '</td>
+                        <td>' . date("d-m-Y", strtotime($dg["delivery_guy_dob"])) . '</td>
                         <td>' . $dg["delivery_guy_address"] . ', ' . $dg["delivery_guy_pincode"] . '</td>
                         <td>' . ($dg["status"] == 1 ? "Active" : "Deactive") . '</td>
                         <td>
@@ -53,20 +53,12 @@ require "php/navbar.php";
         </tbody>
     </table>
 </div>
-
+<?php require "php/footer.php"; ?>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.steps.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.mytable').DataTable({
-            paging: true,
-            searching: true,
-            ordering: true
-        });
-    });
-
     function addemployee(id) {
         window.open('action.php?id=' + id, 'popUpWindow', 'height=500,width=800px,left=250,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no');
     }

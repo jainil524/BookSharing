@@ -1,33 +1,41 @@
+let myTable;
+$(document).ready(function() {
+    myTable = $('.mytable').DataTable({
+        paging: true,
+        searching: true,
+        ordering: true
+    });
+});
 //remove books as admin 
 function RemoveBook(e, id) {
     var confirmation = confirm("Are sure to delete Book?");
 
     if (confirmation) {
         let xmlxhr = new XMLHttpRequest();
+
         xmlxhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.response.endsWith('Successfully')) {
-                    alert(this.response)
-                    e.path[2].style.display = "none";
+                    alert(this.response);
+                    row = e.path[2];
+                    myTable.row(row).remove().draw();
+                    // e.path[2].style.display = "none";
                 } else {
                     alert(this.response);
                 }
             }
         }
+
         xmlxhr.open('POST', 'php/user_proccess.php', true);
         let FormDetails = new FormData();
         FormDetails.append("Delete", true);
         FormDetails.append("book_id", id);
         xmlxhr.send(FormDetails);
     }
-
-
-
 }
 
 //restrict user from website
 function restrictUser(e, id, name) {
-
     var conformation = confirm("Do you really want to restrict " + name + "?");
 
     if (conformation) {

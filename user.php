@@ -1,9 +1,9 @@
 <?php
 $title = "Users - Book sharing";
 $css_file_name = "user";
-
+require "php/LoginCheck.php";
 require "php/RoleChecker.php";
-Rlchecker("admin",403,"Access Denied","You don't have access to this page");
+Rlchecker("admin", 403, "Access Denied", "You don't have access to this page");
 
 require "php/dbconfig.php";
 require "php/navbar.php";
@@ -24,7 +24,7 @@ require "php/navbar.php";
         </thead>
         <tbody>
             <?php
-            $query = "SELECT user_id,user_name,email,IsRestricted  FROM user ORDER BY IsRestricted DESC";
+            $query = "SELECT user_id, user_name,email,IsRestricted  FROM user ORDER BY IsRestricted DESC";
             $userResult = mysqli_query($con, $query);
             $no = 1;
             if (mysqli_num_rows($userResult) != 0) {
@@ -36,8 +36,8 @@ require "php/navbar.php";
                         <td class="status">' . ($user["IsRestricted"] == 0 ? "Active" : "Deactive") . '</td>
                         <td>
                             <div class="actionBtn ">
-                                <img class="buttonCursor" title="Restrict user" src="img/restrict_icon.svg" onclick="restrictUser(event,'.$user["user_id"].',`'.$user["user_name"].'`)">
-                                <img class="buttonCursor" title="Warn user" src="img/warning_icon.svg"  onclick="warnUser('.$user["user_id"].')">
+                                <img class="buttonCursor" title="Restrict user" src="img/restrict_icon.svg" onclick="restrictUser(event,' . $user["user_id"] . ',`' . $user["user_name"] . '`)">
+                                <img class="buttonCursor" title="Warn user" src="img/warning_icon.svg"  onclick="warnUser(' . $user["user_id"] . ')">
                             </div>
                         </td>
                     </tr>';
@@ -55,17 +55,8 @@ require "php/navbar.php";
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <?php include "php/footer.php"; ?>
-<script>
-    $(document).ready(function() {
-        $('.mytable').DataTable({
-            paging: true,
-            searching: true,
-            ordering: true,
-            "error": "No Delivery Guy Found"
-        });
-    });
-</script>
-    <script src="js/user.js"></script>
+
+<script src="js/user.js"></script>
 </body>
 
 </html>

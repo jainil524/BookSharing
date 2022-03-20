@@ -5,8 +5,8 @@
 #footer {
     width: 100%;
     text-align: center;
-    background-color: #aaeff3;
-    color: black;
+    background-color: #65cb8b;
+    color: var(--textColor);
     padding: 0.7rem;
     margin-top: auto;
     box-shadow: 0rem .2rem .4rem rgba(100, 100, 111, 0.2);
@@ -15,22 +15,15 @@
 h3 {
     color: rgb(37, 73, 75);
     font-size: medium;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #footer a {
     text-decoration: none;
-    color: black;
+    color: var(--textColor);
 }
 
 .social-link a {
     padding: 1%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.social-link b {
-    color: rgb(1, 9, 12);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 footer .logo_container {
@@ -43,4 +36,8 @@ footer img {
     width: 2rem;
     height: 2rem;
     margin-left: 5%;
+}
+
+.company-name {
+    color: var(--logoColor);
 }

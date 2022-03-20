@@ -1,12 +1,9 @@
 <?php
-
 $title = "Admin Dachboard - Book sharing";
 $css_file_name = "adminDashboard";
-
-
-
+require "php/LoginCheck.php";
 require "php/RoleChecker.php";
-Rlchecker("admin",403,"Access Denied","You don't have permission the this page");
+Rlchecker("admin", 403, "Access Denied", "You don't have permission the this page");
 
 require "php/dbconfig.php";
 require "php/navbar.php";
@@ -18,23 +15,23 @@ require "php/navbar.php";
     <!-- Header section -->
     <div id="header">
 
-        <?php 
-            $StaticsticQuery = "SELECT COUNT(user_id) As userCount,
+        <?php
+        $StaticsticQuery = "SELECT COUNT(user_id) As userCount,
                                 (SELECT COUNT(Book_id) FROM book_transaction WHERE buyer_id IS NOT NULL) As SoldBookCount,
                                 (SELECT COUNT(Book_id) FROM book_transaction WHERE buyer_id IS  NULL) As AvailableBookCount,
                                 (SELECT COUNT(delivery_guy_id) FROM delivery_guy WHERE status = 0) As DeliveryGuyCount,
                                 (SELECT SUM(book_price) FROM book_transaction ) As TotalRevenue
                                 FROM user 
                                 WHERE IsRestricted = 0";
-                                
-            $StaticsticFire = mysqli_query($con,$StaticsticQuery);
-            $StaticsticResult = mysqli_fetch_assoc($StaticsticFire);
+
+        $StaticsticFire = mysqli_query($con, $StaticsticQuery);
+        $StaticsticResult = mysqli_fetch_assoc($StaticsticFire);
 
         ?>
         <!-- users info -->
         <div class="info-card">
             <div class="details">
-                <span class="numbers"><?php echo $StaticsticResult['userCount']?></span>
+                <span class="numbers"><?php echo $StaticsticResult['userCount'] ?></span>
                 <span class="title">Users</span>
             </div>
             <div class="info-card-img">
@@ -45,7 +42,7 @@ require "php/navbar.php";
         <!-- delivery guy info -->
         <div class="info-card">
             <div class="details">
-                <span class="numbers"><?php echo $StaticsticResult['DeliveryGuyCount']?></span>
+                <span class="numbers"><?php echo $StaticsticResult['DeliveryGuyCount'] ?></span>
                 <span class="title">Delivery Guy</span>
             </div>
             <div class="info-card-img">
@@ -53,10 +50,10 @@ require "php/navbar.php";
             </div>
         </div>
 
-        <!-- Available books info -->    
+        <!-- Available books info -->
         <div class="info-card">
             <div class="details">
-                <span class="numbers"><?php echo $StaticsticResult['AvailableBookCount']?></span>
+                <span class="numbers"><?php echo $StaticsticResult['AvailableBookCount'] ?></span>
                 <span class="title">Available Books</span>
             </div>
             <div class="info-card-img">
@@ -67,7 +64,7 @@ require "php/navbar.php";
         <!-- Sold books info -->
         <div class="info-card">
             <div class="details">
-                <span class="numbers"><?php echo $StaticsticResult['SoldBookCount']?></span>
+                <span class="numbers"><?php echo $StaticsticResult['SoldBookCount'] ?></span>
                 <span class="title">Sold Books</span>
             </div>
             <div class="info-card-img">
@@ -75,10 +72,10 @@ require "php/navbar.php";
             </div>
         </div>
 
-        <!-- revenue info -->      
+        <!-- revenue info -->
         <div class="info-card">
             <div class="details">
-                <span class="numbers" title="<?php echo number_format($StaticsticResult['TotalRevenue']);?>"><?php echo number_format($StaticsticResult['TotalRevenue']);?></span>
+                <span class="numbers" title="<?php echo number_format($StaticsticResult['TotalRevenue']); ?>"><?php echo number_format($StaticsticResult['TotalRevenue']); ?></span>
                 <span class="title">Revenue</span>
             </div>
             <div class="info-card-img">
@@ -95,27 +92,27 @@ require "php/navbar.php";
             <h4>Users</h4>
 
             <?php
-                $SelectUserQuery = "SELECT user_name,email,profile_photo FROM user WHERE IsRestricted = 0 LIMIT 5";
-                $SelectUserFire = mysqli_query($con,$SelectUserQuery);
-                if(mysqli_num_rows($SelectUserFire) != 0){
-                    while($SelectUserResult = mysqli_fetch_assoc($SelectUserFire)){
-                        echo '<div class="user-card">
+            $SelectUserQuery = "SELECT user_name,email,profile_photo FROM user WHERE IsRestricted = 0 LIMIT 5";
+            $SelectUserFire = mysqli_query($con, $SelectUserQuery);
+            if (mysqli_num_rows($SelectUserFire) != 0) {
+                while ($SelectUserResult = mysqli_fetch_assoc($SelectUserFire)) {
+                    echo '<div class="user-card">
                                     <div class="user-profile-img">
-                                        <img src="'.$SelectUserResult['profile_photo'].'" alt="user img">
+                                        <img src="' . $SelectUserResult['profile_photo'] . '" alt="user img">
                                     </div>
                                     <div class="user-info">
-                                        <span class="username">'.$SelectUserResult['user_name'].'</span>
-                                        <span class="email">'.$SelectUserResult['email'].'</span>
+                                        <span class="username">' . $SelectUserResult['user_name'] . '</span>
+                                        <span class="email">' . $SelectUserResult['email'] . '</span>
                                     </div>
                                 </div>
                                 ';
-                    }
-                }else{
-                    echo 'No Users Yet';
                 }
+            } else {
+                echo 'No Users Yet';
+            }
 
             ?>
-         <a href="user.php">More Details</a>
+            <a href="user.php">More Details</a>
         </div>
 
         <!-- Delivery and report both -->
@@ -131,25 +128,25 @@ require "php/navbar.php";
                         <th>Date of birth</th>
                     </tr>
                     <?php
-                        $SelectDeliveryQuery = "SELECT delivery_guy_name,delivery_guy_email,delivery_guy_dob FROM delivery_guy WHERE status = 0 LIMIT 4";
-                        $SelectDeliveryFire = mysqli_query($con,$SelectDeliveryQuery);
-                        if(mysqli_num_rows($SelectDeliveryFire) != 0){
-                            while($SelectDeliveryResult = mysqli_fetch_assoc($SelectDeliveryFire)){
-                                echo '<tr>
-                                            <td>'.$SelectDeliveryResult['delivery_guy_name'].'</td>
-                                            <td>'.$SelectDeliveryResult['delivery_guy_email'].'</td>
-                                            <td>'.$SelectDeliveryResult['delivery_guy_dob'].'</td>
+                    $SelectDeliveryQuery = "SELECT delivery_guy_name,delivery_guy_email,delivery_guy_dob FROM delivery_guy WHERE status = 0 LIMIT 4";
+                    $SelectDeliveryFire = mysqli_query($con, $SelectDeliveryQuery);
+                    if (mysqli_num_rows($SelectDeliveryFire) != 0) {
+                        while ($SelectDeliveryResult = mysqli_fetch_assoc($SelectDeliveryFire)) {
+                            echo '<tr>
+                                            <td>' . $SelectDeliveryResult['delivery_guy_name'] . '</td>
+                                            <td>' . $SelectDeliveryResult['delivery_guy_email'] . '</td>
+                                            <td>' . $SelectDeliveryResult['delivery_guy_dob'] . '</td>
                                         </tr>';
-                            }
-                        }else{
-                            echo '<tr><td></td><td>No Delivery Guy  yet</td><td></td></tr>';
                         }
+                    } else {
+                        echo '<tr><td></td><td>No Delivery Guy  yet</td><td></td></tr>';
+                    }
                     ?>
-                    
+
                 </table>
-            <a href="delivery.php">More Details</a>
+                <a href="delivery.php">More Details</a>
             </div>
-            
+
             <!-- Delivery and report both -->
             <div class="reportsList">
                 <h4>Reports</h4>
@@ -160,29 +157,29 @@ require "php/navbar.php";
                         <th>Reason</th>
                     </tr>
                     <?php
-                        $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_id) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user_id) As repoertedUser,Report_msg FROM reports LIMIT 3";
-                        $SelectReportFire = mysqli_query($con,$SelectReportQuery);
-                        if(mysqli_num_rows($SelectReportFire) != 0){
-                            while($SelectReportResult = mysqli_fetch_assoc($SelectReportFire)){
-                                echo '<tr>
-                                            <td>'.$SelectReportResult['repoerter'].'</td>
-                                            <td>'.$SelectReportResult['repoertedUser'].'</td>
-                                            <td>'.$SelectReportResult['Report_msg'].'</td>
+                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_id) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user_id) As repoertedUser,Report_msg FROM reports LIMIT 3";
+                    $SelectReportFire = mysqli_query($con, $SelectReportQuery);
+                    if (mysqli_num_rows($SelectReportFire) != 0) {
+                        while ($SelectReportResult = mysqli_fetch_assoc($SelectReportFire)) {
+                            echo '<tr>
+                                            <td>' . $SelectReportResult['repoerter'] . '</td>
+                                            <td>' . $SelectReportResult['repoertedUser'] . '</td>
+                                            <td>' . $SelectReportResult['Report_msg'] . '</td>
                                         </tr>';
-                            }
-                        }else{
-                            echo '<tr><td></td><td>No Reports yet</td><td></td></tr>';
                         }
+                    } else {
+                        echo '<tr><td></td><td>No Reports yet</td><td></td></tr>';
+                    }
                     ?>
                 </table>
                 <a href="users.php">More Details</a>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 <?php
-    require "php/footer.php";
-?>  
+require "php/footer.php";
+?>
 </body>
 
 <!-- 

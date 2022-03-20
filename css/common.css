@@ -25,11 +25,14 @@ body {
     --SearchBarBGColor: rgba(142, 124, 124, .2);
     --UserSectionBGColor: rgb(218, 218, 218);
     --UserImgBGColor: rgb(240, 240, 240);
-    --ConUserInfoBGColor: rgba(204, 204, 204, 1);
     --MsgReceiverBGColor: #143a34;
     --MsgSenderBGColor: #032f4a;
     --MsgContainerWidth: 75%;
     --ConUserInfoHeight: 50px;
+    --logoColor: #396449;
+    --textColor: white;
+    --logocolorlight: #65cb8b;
+    --ConUserInfoBGColor: var(--logocolorlight);
 }
 
 .buttonCursor {

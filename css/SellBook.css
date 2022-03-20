@@ -16,11 +16,12 @@
 .container {
     max-width: 700px;
     width: 100%;
-    background: white;
+    background: #65cb8b;
     padding: 25px 30px;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     margin-top: 2rem;
+    color: var(--textColor);
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -53,7 +54,7 @@ textarea {
     visibility: hidden;
     width: 120px;
     background-color: black;
-    color: #fff;
+    color: var(--textColor);
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
@@ -111,6 +112,7 @@ form .img-box label.details {
     border: 1px solid #2e407c;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    margin-top: .4rem;
 }
 
 .user-details .img-box {
@@ -127,17 +129,22 @@ form .img-box label.details {
 
 #UploadCover {
     padding: 8px 12px;
-    background: #ffffff;
+    background: #65cb8b;
+    color: white;
 }
 
 .user-details .img-box:hover {
     background-color: rgb(0, 79, 99);
 }
 
-.user-details .input-box input:focus,
-.user-details .input-box input:valid {
-    border-color: #2e407c;
+.user-details .input-box input:focus {
+    outline: 2px solid rgb(75, 68, 68) !important;
 }
+
+
+/* .user-details .input-box input:valid {
+    border-color: #2e407c;
+} */
 
 form .gender-details .gender-title {
     font-size: 20px;
@@ -167,20 +174,9 @@ form .category label .dot {
     transition: all 0.3s ease;
 }
 
-#dot-1:checked~.category label .one,
-#dot-2:checked~.category label .two,
-#dot-3:checked~.category label .three {
-    background: #2e407c;
-    border-color: #d9d9d9;
-}
-
 form input:focus,
 form textarea:focus {
     outline: 1px solid black !important;
-}
-
-form input[type="radio"] {
-    display: none;
 }
 
 form .button {
