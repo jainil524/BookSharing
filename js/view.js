@@ -19,3 +19,15 @@ function buy() {
     fd.append("book_id", id);
     xmlxhr.send(fd);
 }
+
+function openPopUp(e) {
+    let rc = document.querySelector(".rc");
+    console.log(e);
+    rc.style.display = "initial";
+    rc.style.top = e.clientY + 6 + "px";
+    rc.style.left = e.clientX + 2 + "px";
+}
+
+function chat(id) {
+    window.location.replace("http://localhost/BookSharing/chat.php?id=" + id)
+}

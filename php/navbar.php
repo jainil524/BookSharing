@@ -23,7 +23,6 @@
                 session_start();
             }
             if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"] == "admin")) {
-
             ?>
                 <li><a href="admindashboard.php" onclick="showHome()">Dashbord</a></li>
                 <li><a href="user.php">Users</a></li>

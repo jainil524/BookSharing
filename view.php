@@ -7,6 +7,7 @@ require "php/navbar.php";
 $select_book_query = "SELECT * FROM book_transaction LEFT JOIN user ON book_transaction.seller_id = user.user_id WHERE book_id = " . $_GET["id"];
 $fire_query = mysqli_query($con, $select_book_query);
 $book = mysqli_fetch_assoc($fire_query);
+
 if (empty($book)) {
     $erro_title = "Opps! Book Not Found...";
     $erro_desc = "Sorry Book is not found someone buyed or removed by seller";
@@ -48,8 +49,7 @@ if (empty($book)) {
                 <div class="seller-detail">
                     <h5>Seller:</h5>
                     <h3><?php echo $book["user_name"]; ?>
-                        <div class="chat-icon"><a href="chat.php?id=<?php echo $book["user_id"]; ?> "><img src="img/chat.png" alt=""></a></div>
-                        <div class="report-icon"><img src="img/report.png" alt=""></div>
+                        <span class="option" onclick="openPopUp(event)">...</span>
                     </h3>
                 </div>
                 <div class="error">
@@ -58,21 +58,47 @@ if (empty($book)) {
             </div>
         </div>
     </div>
-    <div class="report-pop-up">
-        <div class="pop-up">
-            <div class="heading">
-                Report to <span><?php echo $book["user_name"]; ?></span>
+
+    <div class="rc">
+        <div class="rc-container">
+            <div class="chat" onclick="chat(<?php echo $book['user_id'] ?>)">
+                <div class="chat-img">
+                    <img src="img/chat.png" alt="Chat">
+                </div>
+                <span>Chat</span>
             </div>
-            <!--https://cdn.optinmonster.com/wp-content/uploads/2018/02/wholewhale-website-modal-popup.jpg-->
-            <div class="reason-con">
-                <select name="reason" id="reason">
-                    <option value="some">some</option>
-                </select>
+
+            <div class="report">
+                <div class="report-tmg">
+                    <img src="img/report.png" alt="report">
+                </div>
+                <span>Report</span>
             </div>
         </div>
     </div>
+
+    <div class="report-pop-up">
+        <div class="pop-up">
+            <div class="heading"> Report to <span><?php echo $book["user_name"]; ?></span> </div>
+            <div class="reason-con">
+                <input type="radio" name="report_reson" value="Harassment or bullying" id="r1">
+                <label for="r1">Harassment or bullying</label>
+                <input type="radio" name="report_reson" value="Harmful or dangerous acts" id="r2">
+                <label for="r2">Harmful or dangerous acts</label>
+                <input type="radio" name="report_reson" value="Child abuse" id="r3">
+                <label for="r3">Child abuse</label>
+                <input type="radio" name="report_reson" value="Spam or misleading" id="r4">
+                <label for="r4">Spam or misleading</label>
+                <input type="radio" name="report_reson" value="Infringes my rights" id="r5">
+                <label for="r5">Infringes my rights</label>
+                <input type="radio" name="report_reson" value="Violent or repulsive content" id="r6">
+                <label for="r6">Violent or repulsive content</label>
+            </div>
+            <button>Report</button>
+        </div>
+    </div>
 </div>
-<script src="js/AJAX.js"></script>
-<script src="./js/view.js"></script>
 
 <?php include_once "php/footer.php"; ?>
+<script src="js/AJAX.js"></script>
+<script src="./js/view.js"></script>
