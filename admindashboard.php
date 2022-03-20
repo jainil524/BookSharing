@@ -1,8 +1,17 @@
 <?php
+
 $title = "Admin Dachboard - Book sharing";
 $css_file_name = "adminDashboard";
+
+
+
+require "php/RoleChecker.php";
+Rlchecker("admin",403,"Access Denied","You don't have permission the this page");
+
 require "php/dbconfig.php";
 require "php/navbar.php";
+
+
 ?>
 <div class="main">
 

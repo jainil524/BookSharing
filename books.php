@@ -31,18 +31,18 @@ require "php/navbar.php";
             if (mysqli_num_rows($bResult)) {
                 while ($b = mysqli_fetch_assoc($bResult)) {
                     echo '<tr>
-                        <td>' . $b["book_id"] . '</td>
-                        <td>' . $b["book_name"] . '</td>
-                        <td>' . $b["book_price"] . '</td>
-                        <td>' . $b["book_author"].'</td>
-                        <td>' . $b["book_publish_year"].'</td>
-                        <td>' . $b["book_description"].'</td>
-                        <td>' . $b["seller_id"].'</td>
-                        <td>' . ($b["buyer_id"] == "" ? "Not Buyed":$b["buyer_id"]).'</td>
+                            <td>' . $b["book_id"] . '</td>
+                            <td>' . $b["book_name"] . '</td>
+                            <td>' . $b["book_price"] . '</td>
+                            <td>' . $b["book_author"].'</td>
+                            <td>' . $b["book_publish_year"].'</td>
+                            <td>' . $b["book_description"].'</td>
+                            <td>' . $b["seller_id"].'</td>
+                            <td>' . ($b["buyer_id"] == "" ? "Not Buyed":$b["buyer_id"]).'</td>
 
-                        <td>' . $b["upload_time"] . '</td>
-                        <td><img src="img/options.png"></td>
-                    </tr>';
+                            <td>' . $b["upload_time"] . '</td>
+                            <td><img src="img/delete_icon.svg" onclick="RemoveBook(event,'.$b['book_id'].')" class="buttonCursor"></td>
+                        </tr>';
                   
                 }
             }
@@ -64,6 +64,7 @@ require "php/navbar.php";
         });
     });
 </script>
+<script src="js/user.js"></script>
 </body>
 
 </html>

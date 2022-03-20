@@ -1,6 +1,10 @@
 <?php
 $title = "Users - Book sharing";
 $css_file_name = "user";
+
+require "php/RoleChecker.php";
+Rlchecker("admin");
+
 require "php/dbconfig.php";
 require "php/navbar.php";
 ?>

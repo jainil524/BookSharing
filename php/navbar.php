@@ -15,7 +15,7 @@
 <body>
     <header>
         <div class="logo_container">
-            <img src="./img/logos.png" alt="">
+            <a href="index.php"><img src="./img/logos.png" alt=""></a>
         </div>
         <ul id="navbar">
             <?php
@@ -36,14 +36,12 @@
                 <li><a href="SellBook.php">Sell</a></li>
                 <li><a href="chat.php">Chat</a></li>
                 <li><a href=""><img src="img/notification_icon.svg" alt=""></a></li>
-                <!-- <?php if($_SESSION['role']!= "admin"){?> -->
-                    <li>
-                        <a href="profilepage.php">
-                            <img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
-                                            else echo $_SESSION['profile_photo'] ?>" alt="">
-                        </a>
-                    </li>
-                <!-- <?php }?> -->
+                <li>
+                    <a href="profilepage.php">
+                        <img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
+                                    else echo $_SESSION['profile_photo'] ?>" alt="">
+                    </a>
+                </li>
             <?php } ?>
         </ul>
 

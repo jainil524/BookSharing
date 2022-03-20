@@ -1,6 +1,10 @@
 <?php
 $title = "Delivery Guy - Book sharing";
 $css_file_name = "user";
+
+require "php/RoleChecker.php";
+Rlchecker("admin",403,"Access Denied","You don't have permission the this page");
+
 require "php/dbconfig.php";
 require "php/navbar.php";
 ?>
@@ -34,9 +38,9 @@ require "php/navbar.php";
                         <td>' . $dg["delivery_guy_id"] . '</td>
                         <td>' . $dg["delivery_guy_name"] . '</td>
                         <td>' . $dg["delivery_guy_email"] . '</td>
-                        <td>' . $dg["delivery_guy_dob"] . '</td>
+                        <td>' . date("d-m-Y",strtotime($dg["delivery_guy_dob"])) . '</td>
                         <td>' . $dg["delivery_guy_address"] . ', ' . $dg["delivery_guy_pincode"] . '</td>
-                        <td>' . ($dg["status"] ? "Active" : "Deactive") . '</td>
+                        <td>' . ($dg["status"] == 1 ? "Active" : "Deactive") . '</td>
                         <td>
                         <span>
                         <button onclick="addemployee(' . $dg["delivery_guy_id"] . ')" class="edit"> EDIT </button><br/>

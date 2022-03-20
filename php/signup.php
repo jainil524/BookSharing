@@ -35,8 +35,6 @@ if (strlen($pw) < 8) {
 	} else {
 		$qi = "INSERT INTO user(fname , user_name ,email ,address,pincode,password) values('" . $n . "' , '" . trim($un) . "' , '" . trim($ei) . "' ,'" . trim($addr) . "'," . trim($pin) . ", '" . trim($h_pass) . "')";
 		mysqli_query($con, $qi);
-		session_start();
-		$_SESSION['lgcheck'] = true;
 		echo "success";
 	}
 }

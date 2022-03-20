@@ -2,8 +2,13 @@
 $title = "View - Book sharing";
 $css_file_name = "view";
 
+require "php/RoleChecker.php";
+Rlchecker("admin");
+
 require "php/dbconfig.php";
 require "php/navbar.php";
+
+
 $select_book_query = "SELECT * FROM book_transaction LEFT JOIN user ON book_transaction.seller_id = user.user_id WHERE book_id = " . $_GET["id"];
 $fire_query = mysqli_query($con, $select_book_query);
 $book = mysqli_fetch_assoc($fire_query);

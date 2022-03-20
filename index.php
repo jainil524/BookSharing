@@ -17,7 +17,7 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
     <div id="main">
         <?php
         $IsSessionStarted = "";
-        if(session_status() != PHP_SESSION_NONE){
+        if(isset($_SESSION['userID'])){
             $IsSessionStarted = "AND  NOT seller_id = " . $_SESSION["userID"];
         }
         $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL ".$IsSessionStarted;

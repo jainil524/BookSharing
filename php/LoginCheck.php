@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if (isset($_SESSION['lgcheck']) == false) {
+if (!isset($_SESSION['userID'])) {
     header('location:login.php');
 }
 

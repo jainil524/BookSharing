@@ -1,4 +1,7 @@
 <?php
+require "php/RoleChecker.php";
+Rlchecker("user",403,"Access Denied","You don't have permission the access this page");
+
 $title = "Profile - Book Sharing";
 $css_file_name = "profile";
 require_once "php/LoginCheck.php";
@@ -17,10 +20,16 @@ $row = mysqli_fetch_assoc($result);
         <div id="profileinfo">
             <ul>
                 <li class="active slider">Profile</li>
+                <?php
+                    if($_SESSION['role'] == "user"){
+                ?>
                 <li class="slider">Sell Books</li>
                 <li class="slider">Sold Books</li>
                 <li class="slider">Bought Books</li>
                 <li onclick="DeleteAccount()">Delete Account</li>
+                <?php
+                    }
+                ?>
                 <li onclick="logout()">Logout</li>
                 <span class='activator'></span>
             </ul>
