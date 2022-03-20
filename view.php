@@ -70,7 +70,7 @@ if (empty($book) || isset($book["buyer_id"])) {
                     <span>Chat</span>
                 </div>
 
-                <div class="report">
+                <div class="report" onclick="showReport()">
                     <div class="report-tmg">
                         <img src="img/report.png" alt="report">
                     </div>
@@ -79,7 +79,7 @@ if (empty($book) || isset($book["buyer_id"])) {
             </div>
         </div>
 
-        <div class="report-pop-up">
+        <div class="report-pop-up" onclick="closePopup(event)">
             <div class="pop-up">
                 <div class="heading"> Report to <span><?php echo $book["user_name"]; ?></span> </div>
                 <div class="reason-con">

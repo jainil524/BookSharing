@@ -27,12 +27,26 @@ function buy(buyerid = "") {
 
 function openPopUp(e) {
     let rc = document.querySelector(".rc");
-    console.log(e);
     rc.style.display = "initial";
     rc.style.top = e.clientY + 6 + "px";
     rc.style.left = e.clientX + 2 + "px";
 }
+document.addEventListener("click", function(e) {
+    if (e.path[0] != document.querySelector(".option")) {
+        document.querySelector(".rc").style.display = "none";
+    }
+});
 
 function chat(id) {
     window.location.replace("http://localhost/BookSharing/chat.php?id=" + id)
+}
+
+function showReport() {
+    document.querySelector(".report-pop-up").style.display = "flex";
+}
+
+function closePopup(e) {
+    if (e.path[0] == document.querySelector(".report-pop-up")) {
+        document.querySelector(".report-pop-up").style.display = "none";
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 require "php/RoleChecker.php";
-Rlchecker("user",403,"Access Denied","You don't have permission the access this page");
+Rlchecker("user", 403, "Access Denied", "You don't have permission the access this page");
 
 $title = "Profile - Book Sharing";
 $css_file_name = "profile";
@@ -21,14 +21,14 @@ $row = mysqli_fetch_assoc($result);
             <ul>
                 <li class="active slider">Profile</li>
                 <?php
-                    if($_SESSION['role'] == "user"){
+                if ($_SESSION['role'] == "user") {
                 ?>
-                <li class="slider">Sell Books</li>
-                <li class="slider">Sold Books</li>
-                <li class="slider">Bought Books</li>
-                <li onclick="DeleteAccount()">Delete Account</li>
+                    <li class="slider">Sell Books</li>
+                    <li class="slider">Sold Books</li>
+                    <li class="slider">Bought Books</li>
+                    <li onclick="DeleteAccount()">Delete Account</li>
                 <?php
-                    }
+                }
                 ?>
                 <li onclick="logout()">Logout</li>
                 <span class='activator'></span>
@@ -83,51 +83,49 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div class="card-container">
                 <?php
-                    $SelectSoldBookQuery ='SELECT book_id,
+                $SelectSoldBookQuery = 'SELECT book_id,
                                             book_name,
                                             book_coverpage,
                                             book_description,
                                             (SELECT user_name from user where user_id = btr.seller_id) as sellerId
                                             FROM book_transaction btr
-                                            WHERE seller_id = '.$_SESSION['userID'].' AND buyer_id IS NULL';
+                                            WHERE seller_id = ' . $_SESSION['userID'] . ' AND buyer_id IS NULL';
 
-                    $SelectSoldBookFire = mysqli_query($con,$SelectSoldBookQuery);
-                    
-                    $Purchesed = "";
-                    if(mysqli_num_rows($SelectSoldBookFire) != 0){
-                        while($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)){
-                                $Purchesed = '  <div class="actionsBtn">
-                                                    <button ><img src="img/edit_icon.svg" class="buttonCursor" onclick="EditBookInfo(event,'.$SelectSoldBookResult['book_id'].')"></button>
-                                                    <button ><img src="img/delete_icon.svg" class="buttonCursor" onclick="DeleteBook(event,'.$SelectSoldBookResult['book_id'].')"></button>
+                $SelectSoldBookFire = mysqli_query($con, $SelectSoldBookQuery);
+                $Purchesed = "";
+
+                if (mysqli_num_rows($SelectSoldBookFire) != 0) {
+                    while ($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)) {
+                        $Purchesed = '  <div class="actionsBtn">
+                                                    <button ><img src="img/edit_icon.svg" class="buttonCursor" onclick="EditBookInfo(event,' . $SelectSoldBookResult['book_id'] . ')"></button>
+                                                    <button ><img src="img/delete_icon.svg" class="buttonCursor" onclick="DeleteBook(event,' . $SelectSoldBookResult['book_id'] . ')"></button>
                                                 </div>';
-                            echo  ' <div class="card">
-                                        '.$Purchesed.'
+                        echo  ' <div class="card">
+                                        ' . $Purchesed . '
                                         <div class="book-header">
                                             <div class="book-photo">
-                                                <img src="'.$SelectSoldBookResult['book_coverpage'].'">
+                                                <img src="' .  (file_exists($SelectSoldBookResult['book_coverpage']) == false ? 'img/logos.png' : $SelectSoldBookResult['book_coverpage']) . '">
                                             </div>
-                                            <div class="book-title">'.$SelectSoldBookResult['book_name'].'</div>
+                                            <div class="book-title">' . $SelectSoldBookResult['book_name'] . '</div>
                                         </div>
                                         <div class="book-body">
                                             <div class="book-details">
-                                                <div class="book-description">'.$SelectSoldBookResult['book_description'].'</div>
+                                                <div class="book-description">' . $SelectSoldBookResult['book_description'] . '</div>
                                             </div>
                                             <div class="book-seller-buyer">
                                                 <div>
                                                     <span>seller</span>
                                                 </div>
                                                 <div>
-                                                    <span class="book-seller">'.$SelectSoldBookResult['sellerId'].'</span>
+                                                    <span class="book-seller">' . $SelectSoldBookResult['sellerId'] . '</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>';
-                            }
-                            
-                        }
-                    else{
-                        echo "<p class='BookError'>No books for sell from you <a href='SellBook.php'> Sell Book Now</a></p>";
                     }
+                } else {
+                    echo "<p class='BookError'>No books for sell from you <a href='SellBook.php'> Sell Book Now</a></p>";
+                }
                 ?>
             </div>
         </div>
@@ -138,7 +136,7 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div class="card-container">
                 <?php
-                    $SelectSoldBookQuery ='SELECT book_id,
+                $SelectSoldBookQuery = 'SELECT book_id,
                                             book_name,
                                             book_coverpage,
                                             book_description,
@@ -146,24 +144,24 @@ $row = mysqli_fetch_assoc($result);
                                             (SELECT user_name from user where user_id = btr.buyer_id) As buyerId,
                                             buyer_id 
                                             FROM book_transaction btr
-                                            WHERE seller_id = '.$_SESSION['userID'].' AND buyer_id IS NOT NULL';
-                                        // echo $SelectSoldBookQuery;
-                                        // exit();
-                    $SelectSoldBookFire = mysqli_query($con,$SelectSoldBookQuery);
-                    // print_r($SelectSoldBookFire);
-                    // exit();
-                    if(mysqli_num_rows($SelectSoldBookFire) != 0){
-                        while($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)){
-                            echo  ' <div class="card">
+                                            WHERE seller_id = ' . $_SESSION['userID'] . ' AND buyer_id IS NOT NULL';
+                // echo $SelectSoldBookQuery;
+                // exit();
+                $SelectSoldBookFire = mysqli_query($con, $SelectSoldBookQuery);
+                // print_r($SelectSoldBookFire);
+                // exit();
+                if (mysqli_num_rows($SelectSoldBookFire) != 0) {
+                    while ($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)) {
+                        echo  ' <div class="card">
                                         <div class="book-header">
                                             <div class="book-photo">
-                                                <img src="'.$SelectSoldBookResult['book_coverpage'].'">
+                                                <img src="' . (file_exists($SelectSoldBookResult['book_coverpage']) == false ? 'img/logos.png' : $SelectSoldBookResult['book_coverpage'])  . '">
                                             </div>
-                                            <div class="book-title">'.$SelectSoldBookResult['book_name'].'</div>
+                                            <div class="book-title">' . $SelectSoldBookResult['book_name'] . '</div>
                                         </div>
                                         <div class="book-body">
                                             <div class="book-details">
-                                                <div class="book-description">'.$SelectSoldBookResult['book_description'].'</div>
+                                                <div class="book-description">' . $SelectSoldBookResult['book_description'] . '</div>
                                             </div>
                                             <div class="book-seller-buyer">
                                                 <div>
@@ -171,18 +169,16 @@ $row = mysqli_fetch_assoc($result);
                                                     <span>Buyer</span>
                                                 </div>
                                                 <div>
-                                                    <span class="book-seller">'.$SelectSoldBookResult['sellerId'].'</span>
-                                                    <span class="book-buyer">'.($SelectSoldBookResult['buyerId']==""?"Not yet":$SelectSoldBookResult['buyerId']).'</span>
+                                                    <span class="book-seller">' . $SelectSoldBookResult['sellerId'] . '</span>
+                                                    <span class="book-buyer">' . ($SelectSoldBookResult['buyerId'] == "" ? "Not yet" : $SelectSoldBookResult['buyerId']) . '</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>';
-                            }
-                            
-                        }
-                    else{
-                        echo "<p class='BookError'>No books sold yet</p>";
                     }
+                } else {
+                    echo "<p class='BookError'>No books sold yet</p>";
+                }
                 ?>
             </div>
         </div>
@@ -190,27 +186,27 @@ $row = mysqli_fetch_assoc($result);
         <!-- Bought book page structure -->
         <div class="profile_container">
             <div class="header">
-                <h1> Bought Book</h1>
+                <h1>Bought Book</h1>
             </div>
             <div class="card-container">
-            <?php
-                    $SelectSoldBookQuery ='SELECT book_name,book_coverpage,book_description,(SELECT fname from user where user_id = btr.seller_id) as sellerId,(SELECT fname from user where user_id = btr.buyer_id) As buyerId 
-                                        FROM book_transaction btr WHERE buyer_id = '.$_SESSION['userID'].' ';
-                    $SelectSoldBookFire = mysqli_query($con,$SelectSoldBookQuery);
+                <?php
+                $SelectSoldBookQuery = 'SELECT book_name,book_coverpage,book_description,(SELECT fname from user where user_id = btr.seller_id) as sellerId,(SELECT fname from user where user_id = btr.buyer_id) As buyerId 
+                                        FROM book_transaction btr WHERE buyer_id = ' . $_SESSION['userID'] . ' ';
+                $SelectSoldBookFire = mysqli_query($con, $SelectSoldBookQuery);
 
-                    if(mysqli_num_rows($SelectSoldBookFire) != 0){
-                        
-                        while($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)){
-                            echo  '<div class="card">
+                if (mysqli_num_rows($SelectSoldBookFire) != 0) {
+
+                    while ($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)) {
+                        echo  '<div class="card">
                                 <div class="book-header">
                                     <div class="book-photo">
-                                        <img src="'.(file_exists($SelectSoldBookResult['book_coverpage']) == false ? "media/profile_photo/bslogo.jpeg" : $SelectSoldBookResult['book_coverpage']).'">
+                                        <img src="' . (file_exists($SelectSoldBookResult['book_coverpage']) == false ? "media/profile_photo/bslogo.jpeg" : $SelectSoldBookResult['book_coverpage']) . '">
                                     </div>
-                                    <div class="book-title">'.$SelectSoldBookResult['book_name'].'</div>
+                                    <div class="book-title">' . $SelectSoldBookResult['book_name'] . '</div>
                                 </div>
                                 <div class="book-body">
                                     <div class="book-details">
-                                        <div class="book-description">'.$SelectSoldBookResult['book_description'].'</div>
+                                        <div class="book-description">' . $SelectSoldBookResult['book_description'] . '</div>
                                     </div>
                                     <div class="book-seller-buyer">
                                         <div>
@@ -218,22 +214,20 @@ $row = mysqli_fetch_assoc($result);
                                             <span>seller</span>
                                         </div>
                                         <div>
-                                            <span class="book-buyer">'.($SelectSoldBookResult['buyerId']==""?"Not yet":$SelectSoldBookResult['buyerId']).'</span>
-                                            <span class="book-seller">'.$SelectSoldBookResult['sellerId'].'</span>
+                                            <span class="book-buyer">' . ($SelectSoldBookResult['buyerId'] == "" ? "Not yet" : $SelectSoldBookResult['buyerId']) . '</span>
+                                            <span class="book-seller">' . $SelectSoldBookResult['sellerId'] . '</span>
                                         </div>
                                     </div>
                                 </div>
                                     </div>';
-                            }
-                            
-                        }
-                    else{
-                        echo "<p class='BookError'>No books Bought yet <a href='index.php'> Buy Book Now</a></p>";
                     }
+                } else {
+                    echo "<p class='BookError'>No books Bought yet <a href='index.php'> Buy Book Now</a></p>";
+                }
                 ?>
             </div>
         </div>
-        
+
         <div class="Formactive response">
             <div><img src="img/warning_icon.svg"></div>
             <div class="errorMsg"></div>

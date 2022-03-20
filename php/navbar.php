@@ -28,12 +28,6 @@
                 <li><a href="user.php">Users</a></li>
                 <li><a href="delivery.php">DeliveryGuy</a></li>
                 <li><a href="books.php">Books</a></li>
-                <li>
-                    <a href="profilepage.php">
-                        <img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
-                                    else echo $_SESSION['profile_photo'] ?>" alt="">
-                    </a>
-                </li>
             <?php
             } else {
             ?>
