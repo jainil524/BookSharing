@@ -35,7 +35,7 @@
                 <li><a href="index.php" onclick="showHome()">Home</a></li>
                 <li><a href="SellBook.php">Sell</a></li>
                 <li><a href="chat.php">Chat</a></li>
-                <li><a href=""><img src="img/notification_icon.svg" alt=""></a></li>
+                <li><a href="notification.php"><img src="img/notification_icon.svg" alt=""></a></li>
                 <li>
                     <a href="profilepage.php">
                         <img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
