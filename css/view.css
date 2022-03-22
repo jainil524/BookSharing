@@ -165,20 +165,23 @@
     flex-direction: column;
 }
 
-.reason-con input {
-    display: none;
-}
-
 .reason-con label {
-    margin-top: .5rem;
     padding: .3rem 1rem;
     cursor: pointer;
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
 }
 
-.reason-con label:before {
-    content: '•  ';
-    left: 0;
+.report span,
+.chat span {
+    margin-bottom: .7rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2rem;
+    margin-top: .5rem;
 }
 
 .pop-up button {
@@ -193,6 +196,6 @@
 }
 
 .pop-up input:checked+label {
-    transition: all .5s;
+    transition: all .3s;
     background-color: #3f483f;
 }

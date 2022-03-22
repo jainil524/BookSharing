@@ -82,22 +82,33 @@ if (empty($book) || isset($book["buyer_id"])) {
         <div class="report-pop-up" onclick="closePopup(event)">
             <div class="pop-up">
                 <div class="heading"> Report to <span><?php echo $book["user_name"]; ?></span> </div>
-                <span>Reasons</span>
                 <div class="reason-con">
-                    <input type="radio" name="report_reson" value="Harassment or bullying" id="r1">
-                    <label for="r1">Harassment or bullying</label>
-                    <input type="radio" name="report_reson" value="Harmful or dangerous acts" id="r2">
-                    <label for="r2">Harmful or dangerous acts</label>
-                    <input type="radio" name="report_reson" value="Child abuse" id="r3">
-                    <label for="r3">Child abuse</label>
-                    <input type="radio" name="report_reson" value="Spam or misleading" id="r4">
-                    <label for="r4">Spam or misleading</label>
-                    <input type="radio" name="report_reson" value="Infringes my rights" id="r5">
-                    <label for="r5">Infringes my rights</label>
-                    <input type="radio" name="report_reson" value="Violent or repulsive content" id="r6">
-                    <label for="r6">Violent or repulsive content</label>
+                    <div class="wrapper">
+                        <input type="radio" name="report_reson" value="Harassment or bullying" id="r1">
+                        <label for="r1">Harassment or bullying</label>
+                    </div>
+                    <div class="wrapper">
+                        <input type="radio" name="report_reson" value="Harmful or dangerous acts" id="r2">
+                        <label for="r2">Harmful or dangerous acts</label>
+                    </div>
+                    <div class="wrapper">
+                        <input type="radio" name="report_reson" value="Child abuse" id="r3">
+                        <label for="r3">Child abuse</label>
+                    </div>
+                    <div class="wrapper">
+                        <input type="radio" name="report_reson" value="Spam or misleading" id="r4">
+                        <label for="r4">Spam or misleading</label>
+                    </div>
+                    <div class="wrapper">
+                        <input type="radio" name="report_reson" value="Infringes my rights" id="r5">
+                        <label for="r5">Infringes my rights</label>
+                    </div>
+                    <div class="wrapper">
+                        <input type="radio" name="report_reson" value="Violent or repulsive content" id="r6">
+                        <label for="r6">Violent or repulsive content</label>
+                    </div>
                 </div>
-                <button>Report</button>
+                <button onclick="report(<?php echo $book['book_author']; ?>)">Report</button>
             </div>
         </div>
     </div>
