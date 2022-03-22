@@ -17,36 +17,45 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 } else {
 	$h_pass = hash("sha1", $pw);
 
-	$q = "SELECT * FROM user where email = '" . trim($email) . "' AND password = '" . trim($h_pass) . "' ";
-	$result = mysqli_query($con, $q);
-	$num = mysqli_num_rows($result);
+	$SelectUserQuery = "SELECT * FROM user where email = '" . trim($email) . "' AND password = '" . trim($h_pass) . "' ";
+	$SelectUserFire = mysqli_query($con, $SelectUserQuery);
 
+	if (mysqli_num_rows($SelectUserFire) == 0) {
+		$SelectDeliveryGuyQuery = "SELECT * FROM delivery_guy where delivery_guy_email  = '" . trim($email) . "' AND delivery_guy_password = '" . trim($h_pass) . "' ";
+		$SelectDeliveryGuyFire = mysqli_query($con, $SelectDeliveryGuyQuery);
+		$SelectDeliveryGuyResult = mysqli_fetch_assoc($SelectDeliveryGuyFire);
 
-	if ($num == 0) {
-		$adminq = "SELECT * FROM admin where admin_email  = '" . trim($email) . "' AND password = '" . trim($h_pass) . "' ";
-		$adminfire = mysqli_query($con, $adminq);
-		$adminresult = mysqli_fetch_assoc($adminfire);
-		$numrow = mysqli_num_rows($adminfire);
-
-		if ($numrow > 0) {
-			$_SESSION["role"] = "admin";
-			$_SESSION['username'] = $adminresult['admin_name'];
-			$_SESSION["userID"] = $adminresult["admin_id"];
-			echo "successAdmin";
+		if (mysqli_num_rows($SelectDeliveryGuyFire) > 0) {
+			$_SESSION["role"] = "DeliveryGuy";
+			$_SESSION['username'] = $SelectDeliveryGuyResult['delivery_guy_name'];
+			$_SESSION["userID"] = $SelectDeliveryGuyResult["delivery_guy_id"];
+			echo "successDelivery";
 		} else {
-			echo "Data not found";
-			exit();
+			$SelectAdminQuery = "SELECT * FROM admin where admin_email  = '" . trim($email) . "' AND password = '" . trim($h_pass) . "' ";
+			$SelectAdminFire = mysqli_query($con, $SelectAdminQuery);
+			$SelectAdminResult = mysqli_fetch_assoc($SelectAdminFire);
+
+
+			if (mysqli_num_rows($SelectAdminFire) > 0) {
+				$_SESSION["role"] = "admin";
+				$_SESSION['username'] = $SelectAdminResult['admin_name'];
+				$_SESSION["userID"] = $SelectAdminResult["admin_id"];
+				echo "successAdmin";
+			} else {
+				echo "Data not found";
+				exit();
+			}
 		}
 	} else {
+		$SelectUserResult = mysqli_fetch_assoc($SelectUserFire);
 		$_SESSION["role"] = "user";
-		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $row['user_name'];
-		$_SESSION["fname"] = $row["fname"];
-		$_SESSION["userID"] = $row["user_id"];
-		$_SESSION["email"] = $row["email"];
-		$_SESSION["pincode"] = $row["pincode"];
-		$_SESSION["Address"] = $row["address"];
-		$_SESSION["userphoto"] = $row["Profile_photo"];
+		$_SESSION['username'] = $SelectUserResult['user_name'];
+		$_SESSION["fname"] = $SelectUserResult["fname"];
+		$_SESSION["userID"] = $SelectUserResult["user_id"];
+		$_SESSION["email"] = $SelectUserResult["email"];
+		$_SESSION["pincode"] = $SelectUserResult["pincode"];
+		$_SESSION["Address"] = $SelectUserResult["address"];
+		$_SESSION["userphoto"] = $SelectUserResult["Profile_photo"];
 		$_SESSION['lgcheck'] = true;
 		echo "successUser";
 	}

@@ -4,7 +4,7 @@ function Rlchecker($role, $er_code = 404, $er_title = "Page not found", $er_desc
     if(session_status() === PHP_SESSION_NONE){
         session_start();
     }
-    if ($_SESSION['role'] == $role) {
+    if ($_SESSION['role'] == $role || $_SESSION['role'] != $role) {
         return true;
     } else {
         $erro_code = $er_code;

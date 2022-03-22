@@ -1,15 +1,17 @@
 <?php
-require "php/RoleChecker.php";
-Rlchecker("user", 403, "Access Denied", "You don't have permission the access this page");
+    require "php/RoleChecker.php";
 
-$title = "Profile - Book Sharing";
-$css_file_name = "profile";
-require_once "php/LoginCheck.php";
-require_once "php/navbar.php";
-require_once "php/dbconfig.php";
-$fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";
-$result = mysqli_query($con, $fetchuserDetails);
-$row = mysqli_fetch_assoc($result);
+    Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have permission the access this page");
+    Rlchecker("user", 403, "Access Denied", "You don't have permission the access this page");
+
+    $title = "Profile - Book Sharing";
+    $css_file_name = "profile";
+    require_once "php/LoginCheck.php";
+    require_once "php/navbar.php";
+    require_once "php/dbconfig.php";
+    $fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";
+    $result = mysqli_query($con, $fetchuserDetails);
+    $row = mysqli_fetch_assoc($result);
 ?>
 
 <div id="main">
@@ -35,6 +37,8 @@ $row = mysqli_fetch_assoc($result);
             </ul>
         </div>
     </aside>
+
+    <!-- main container where all aside's menu items content will be shown here  -->
     <div id="profile">
         <!-- profile  page structure-->
         <div class="profile_container ProfileActive">
@@ -129,6 +133,7 @@ $row = mysqli_fetch_assoc($result);
                 ?>
             </div>
         </div>
+
         <!-- sold book page structure -->
         <div class="profile_container">
             <div class="header">
@@ -145,11 +150,9 @@ $row = mysqli_fetch_assoc($result);
                                             buyer_id 
                                             FROM book_transaction btr
                                             WHERE seller_id = ' . $_SESSION['userID'] . ' AND buyer_id IS NOT NULL';
-                // echo $SelectSoldBookQuery;
-                // exit();
+
                 $SelectSoldBookFire = mysqli_query($con, $SelectSoldBookQuery);
-                // print_r($SelectSoldBookFire);
-                // exit();
+
                 if (mysqli_num_rows($SelectSoldBookFire) != 0) {
                     while ($SelectSoldBookResult = mysqli_fetch_assoc($SelectSoldBookFire)) {
                         echo  ' <div class="card">
@@ -228,16 +231,23 @@ $row = mysqli_fetch_assoc($result);
             </div>
         </div>
 
+        <!--    
+            error msg structure.
+            error will be shown here.
+        -->
         <div class="Formactive response">
             <div><img src="img/warning_icon.svg"></div>
             <div class="errorMsg"></div>
         </div>
     </div>
-</div>
-<?php include_once "php/footer.php"; ?>
-</body>
 
+</div>
+
+<?php 
+    require_once "php/footer.php"; 
+?>
+
+</body>
 <script src="js/profile.js"></script>
 <script src="js/AJAX.js"></script>
-
 </html>
