@@ -1,5 +1,6 @@
 let userID;
 let myTable;
+
 $(document).ready(function() {
     myTable = $('.mytable').DataTable({
         paging: true,
@@ -7,6 +8,7 @@ $(document).ready(function() {
         ordering: true
     });
 });
+
 //remove books as admin 
 function RemoveBook(e, id) {
     var confirmation = confirm("Are sure to delete Book?");

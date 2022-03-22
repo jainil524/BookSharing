@@ -6,6 +6,29 @@
 
 .delivery-title {
     display: flex;
+    gap: 6rem;
+    margin: 2rem auto;
+}
+
+.delivery-title h3 {
+    width: 80%;
+    margin: 0;
+}
+
+.delivery-title input.add {
+    width: 10%;
+    height: 2rem;
+    background-color: var(--logocolorlight);
+    border: none;
+    color: var(--textcolor);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 5px rgb(163, 194, 191);
+    padding: 0 20px;
+    margin: 0;
 }
 
 #DataTables_Table_0_wrapper {
@@ -58,21 +81,6 @@
 .mytable_length,
 .mytable {
     margin: 20px 0;
-}
-
-.add {
-    height: 2rem;
-    background-color: var(--logocolorlight);
-    border: none;
-    color: var(--textcolor);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 5px rgb(163, 194, 191);
-    padding: 0 20px;
-    margin: 5rem 1rem 0 1rem;
 }
 
 #DataTables_Table_0_filter {

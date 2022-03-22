@@ -58,6 +58,7 @@ require "php/navbar.php";
 <script src="js/jquery.steps.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="js/user.js"></script>
 <script>
     function addemployee(id) {
         window.open('action.php?id=' + id, 'popUpWindow', 'height=500,width=800px,left=250,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no, status=no');
