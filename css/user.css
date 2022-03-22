@@ -41,12 +41,12 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #00B0B2;
-    color: white;
+    background-color: var(--logocolorlight);
+    color: var(--textcolor);
 }
 
 .mytable th:hover {
-    background-color: #019a9c;
+    background-color: var(--logoColor);
 }
 
 .mytable_filter,
@@ -57,9 +57,9 @@
 
 .add {
     height: 2rem;
-    background-color: #00B0B2;
+    background-color: var(--logocolorlight);
     border: none;
-    color: white;
+    color: var(--textcolor);
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -102,10 +102,10 @@
 
 .edit {
     height: 2rem;
-    background-color: #00B0B2;
+    background-color: var(--logocolorlight);
     border: none;
     display: block;
-    color: white;
+    color: var(--textcolor);
     text-align: center;
     text-decoration: none;
     display: inline-block;

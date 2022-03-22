@@ -21,7 +21,8 @@
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     margin-top: 2rem;
-    color: var(--textColor);
+    color: var(--textcolor);
+    ;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -54,7 +55,8 @@ textarea {
     visibility: hidden;
     width: 120px;
     background-color: black;
-    color: var(--textColor);
+    color: var(--textcolor);
+    ;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
@@ -130,7 +132,7 @@ form .img-box label.details {
 #UploadCover {
     padding: 8px 12px;
     background: #65cb8b;
-    color: white;
+    color: var(--textcolor);
 }
 
 .user-details .img-box:hover {

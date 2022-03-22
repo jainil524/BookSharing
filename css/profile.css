@@ -1,5 +1,5 @@
 :root {
-    --hoverEffectColor: white;
+    --hoverEffectcolor: var(--textcolor);
 }
 
 body {
@@ -304,7 +304,7 @@ body {
     justify-self: flex-end;
     width: 100%;
     margin: 3rem;
-    background-color: white;
+    background-color: var(--textcolor);
     border: 2px solid rgb(172, 6, 6);
     display: flex;
     align-items: center;
@@ -498,7 +498,7 @@ body {
         gap: .5rem;
     }
     #profileinfo li.active {
-        color: white;
+        color: var(--textcolor);
     }
     #profileinfo .activator {
         all: unset;
@@ -507,7 +507,7 @@ body {
         all: unset;
     }
     #profileinfo .active a {
-        color: white;
+        color: var(--textcolor);
     }
     #profile {
         width: 100%;

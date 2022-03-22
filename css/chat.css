@@ -1,4 +1,4 @@
-body {
+.main-container {
     width: 100vw;
     height: 100vh;
     display: grid !important;
@@ -8,8 +8,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     background-color: var(--BodyBGColor);
-    image-rendering: optimizeSpeed;
-    text-rendering: optimizeSpeed;
+    border-top: 1px solid black;
 }
 
 .chattedwithusersection {
@@ -62,8 +61,8 @@ body {
 #searchuser {
     font-size: 16px;
     width: 100%;
-    background: var(--ConUserInfoBGColor);
     display: flex;
+    background: var(--logocolorlight);
     flex-direction: column;
     text-align: center;
     position: relative;
@@ -74,6 +73,7 @@ body {
     margin: auto;
     width: 90%;
     display: block;
+    background-color: white;
     padding: .2rem .4rem;
     margin-bottom: .4rem;
     border-radius: 50px;
@@ -168,12 +168,12 @@ body {
 
 .ConUserInfo {
     position: absolute;
-    top: 0;
+    top: calc(var(--ConUserInfoHeight) - 4px);
     right: 0;
     width: var(--MsgContainerWidth);
     height: var(--ConUserInfoHeight);
     background: var(--ConUserInfoBGColor);
-    box-shadow: 0 0 12px var(--DarkThemeColor);
+    border-bottom: 1px solid black;
     display: flex;
 }
 
@@ -226,7 +226,7 @@ body {
     width: max-content;
     max-width: 45%;
     height: max-content;
-    color: white;
+    color: var(--textcolor);
     padding: .3rem .31rem;
     margin: .1rem 1rem;
 }

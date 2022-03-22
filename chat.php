@@ -3,15 +3,19 @@
 <head>
 	<?php
 	require "php/Logincheck.php";
+	$title="Chat - BookSharing";
+	$css_file_name="chat.css";
+	require "php/navbar.php";
 	?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="js/AJAX.js"></script>
-	<link rel="stylesheet" href="css/chatting-css.css">
+	<link rel="stylesheet" href="css/chat.css">
 	<link rel="stylesheet" href="css/common.css">
 	<title>CHATTING APPLICATION</title>
 </head>
 
 <body onsubmit="return false;" onload="firstfocuser()">
+<div class="main-container">
 	<div class="chattedwithusersection">
 		<div id="searchuser">
 			<div id="accountOwner">
@@ -21,7 +25,7 @@
 				<span id="user_name">
 					<span><?php echo $_SESSION['username']; ?>
 						<h6 style="margin-left:.5rem;display: inline;color:teal;font-weight:bold;">
-							<sub>(YOU)</sub>
+							<sub style="font-size:10px;">(YOU)</sub>
 						</h6>
 					</span>
 				</span>
@@ -101,6 +105,7 @@
 			<button type="submit" id="sendMSG" value="send"><img src="img/send.svg"></button>
 		</div>
 	</form>
+</div>
 </body>
 <script type="text/javascript" src="js/chat_send.js"></script>
 

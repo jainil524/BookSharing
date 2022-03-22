@@ -78,7 +78,7 @@ button {
     height: 36px;
     border-radius: 50px;
     background-color: black;
-    color: white;
+    color: var(--textcolor);
     cursor: pointer;
     border: none;
 }
