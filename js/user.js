@@ -1,4 +1,6 @@
+let userID;
 let myTable;
+
 $(document).ready(function() {
     myTable = $('.mytable').DataTable({
         paging: true,
@@ -6,6 +8,7 @@ $(document).ready(function() {
         ordering: true
     });
 });
+
 //remove books as admin 
 function RemoveBook(e, id) {
     var confirmation = confirm("Are sure to delete Book?");
@@ -61,6 +64,30 @@ function restrictUser(e, id, name) {
 }
 
 //warn user to their misbehaviour towrods  
-function warnUser(id) {
+function warnUser(name, id) {
+    document.querySelector(".report-pop-up").style.display = "flex";
+    document.querySelector(".heading span").innerHTML = name;
+    userID = id;
 
+}
+
+function closePopup(e) {
+    if (e == "popUp" || e.path[0] == document.querySelector(".report-pop-up")) {
+        document.querySelector(".report-pop-up").style.display = "none";
+    }
+}
+
+function warn() {
+    let xmlxhr = new XMLHttpRequest();
+    xmlxhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert(this.response);
+            closePopup("popUp");
+        }
+    }
+    xmlxhr.open('POST', 'php/warn.php', true);
+    let FormDetails = new FormData();
+    FormDetails.append("reason", document.querySelector("#reason").value);
+    FormDetails.append("userId", userID);
+    xmlxhr.send(FormDetails);
 }

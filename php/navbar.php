@@ -26,7 +26,7 @@
             ?>
                 <li><a href="admindashboard.php" onclick="showHome()">Dashbord</a></li>
                 <li><a href="user.php">Users</a></li>
-                <li><a href="delivery.php">DeliveryGuy</a></li>
+                <li><a href="deliveryGuys.php">DeliveryGuy</a></li>
                 <li><a href="books.php">Books</a></li>
                 <li><a href="?logout=true">Logout</a></li>
             <?php

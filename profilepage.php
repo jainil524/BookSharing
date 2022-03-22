@@ -1,17 +1,15 @@
 <?php
-    require "php/RoleChecker.php";
+require_once "php/LoginCheck.php";
+require "php/RoleChecker.php";
+Rlchecker("user", 403, "Access Denied", "You don't have permission the access this page");
 
-    Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have permission the access this page");
-    Rlchecker("user", 403, "Access Denied", "You don't have permission the access this page");
-
-    $title = "Profile - Book Sharing";
-    $css_file_name = "profile";
-    require_once "php/LoginCheck.php";
-    require_once "php/navbar.php";
-    require_once "php/dbconfig.php";
-    $fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";
-    $result = mysqli_query($con, $fetchuserDetails);
-    $row = mysqli_fetch_assoc($result);
+$title = "Profile - Book Sharing";
+$css_file_name = "profile";
+require_once "php/navbar.php";
+require_once "php/dbconfig.php";
+$fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";
+$result = mysqli_query($con, $fetchuserDetails);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <div id="main">
@@ -243,11 +241,12 @@
 
 </div>
 
-<?php 
-    require_once "php/footer.php"; 
+<?php
+require_once "php/footer.php";
 ?>
 
 </body>
 <script src="js/profile.js"></script>
 <script src="js/AJAX.js"></script>
+
 </html>

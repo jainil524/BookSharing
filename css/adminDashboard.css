@@ -67,6 +67,7 @@
     padding: .3rem;
     display: flex;
     justify-content: space-around;
+    margin-top: 1rem;
 }
 
 #list-container a {
@@ -131,6 +132,10 @@
 
 #delivery_report table td {
     text-align: center;
+}
+
+.reportsList {
+    margin-top: 1rem;
 }
 
 #list-container #usersList h4,

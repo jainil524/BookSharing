@@ -7,8 +7,6 @@ Rlchecker("admin", 403, "Access Denied", "You don't have permission the this pag
 
 require "php/dbconfig.php";
 require "php/navbar.php";
-
-
 ?>
 <div class="main">
 
@@ -98,7 +96,7 @@ require "php/navbar.php";
                 while ($SelectUserResult = mysqli_fetch_assoc($SelectUserFire)) {
                     echo '<div class="user-card">
                                     <div class="user-profile-img">
-                                        <img src="' . $SelectUserResult['profile_photo'] . '" alt="user img">
+                                        <img src="' . (file_exists($SelectUserResult['profile_photo']) == false ? 'media/profile_photos/default_photo.svg' : $SelectUserResult['profile_photo'])  . '" alt="user img">
                                     </div>
                                     <div class="user-info">
                                         <span class="username">' . $SelectUserResult['user_name'] . '</span>
@@ -133,10 +131,10 @@ require "php/navbar.php";
                     if (mysqli_num_rows($SelectDeliveryFire) != 0) {
                         while ($SelectDeliveryResult = mysqli_fetch_assoc($SelectDeliveryFire)) {
                             echo '<tr>
-                                            <td>' . $SelectDeliveryResult['delivery_guy_name'] . '</td>
-                                            <td>' . $SelectDeliveryResult['delivery_guy_email'] . '</td>
-                                            <td>' . $SelectDeliveryResult['delivery_guy_dob'] . '</td>
-                                        </tr>';
+                                    <td>' . $SelectDeliveryResult['delivery_guy_name'] . '</td>
+                                    <td>' . $SelectDeliveryResult['delivery_guy_email'] . '</td>
+                                    <td>' . $SelectDeliveryResult['delivery_guy_dob'] . '</td>
+                                </tr>';
                         }
                     } else {
                         echo '<tr><td></td><td>No Delivery Guy  yet</td><td></td></tr>';
@@ -144,7 +142,7 @@ require "php/navbar.php";
                     ?>
 
                 </table>
-                <a href="delivery.php">More Details</a>
+                <a href="deliveryGuys.php">More Details</a>
             </div>
 
             <!-- Delivery and report both -->
@@ -157,7 +155,7 @@ require "php/navbar.php";
                         <th>Reason</th>
                     </tr>
                     <?php
-                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_id) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user_id) As repoertedUser,Report_msg FROM reports LIMIT 3";
+                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_user) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user) As repoertedUser,Report_msg FROM reports LIMIT 3";
                     $SelectReportFire = mysqli_query($con, $SelectReportQuery);
                     if (mysqli_num_rows($SelectReportFire) != 0) {
                         while ($SelectReportResult = mysqli_fetch_assoc($SelectReportFire)) {
