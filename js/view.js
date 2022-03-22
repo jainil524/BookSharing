@@ -50,3 +50,22 @@ function closePopup(e) {
         document.querySelector(".report-pop-up").style.display = "none";
     }
 }
+
+function report() {
+    let xmlxhr = new XMLHttpRequest();
+    xmlxhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.response);
+
+            // if (this.response.endsWith('success')) {
+
+            // } else {
+
+            // }
+        }
+    }
+    xmlxhr.open('POST', 'php\report.php', true);
+    let FormDetails = new FormData();
+    FormDetails.append("reason", document.querySelector(".pop-up input:checked").value);
+    xmlxhr.send(FormDetails);
+}
