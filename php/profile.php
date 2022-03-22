@@ -1,15 +1,14 @@
 <?php
 session_start();
 require "dbconfig.php";
-if (isset($_POST['DeleteRequest']) && $_POST['DeleteRequest'] == true) {
-    $DeleteBookQuery = "DELETE FROM book_transaction WHERE book_id = ".$_POST['Book_id']." AND buyer_id IS NULL";
-    $DeleteBookFire = mysqli_query($con,$DeleteBookQuery);
-    echo $DeleteBookFire;
-    if($DeleteBookFire){
-        echo "Book Deleted successfully";
 
-    }
-    else{
+if (isset($_POST['DeleteRequest']) && $_POST['DeleteRequest'] == true) {
+    $DeleteBookQuery = "DELETE FROM book_transaction WHERE book_id = " . $_POST['Book_id'] . " AND buyer_id IS NULL";
+    $DeleteBookFire = mysqli_query($con, $DeleteBookQuery);
+    echo $DeleteBookFire;
+    if ($DeleteBookFire) {
+        echo "Book Deleted successfully";
+    } else {
         echo "Something went worng";
     }
 } else {

@@ -1,10 +1,10 @@
 <?php
+require_once "php/LoginCheck.php";
 require "php/RoleChecker.php";
 Rlchecker("user", 403, "Access Denied", "You don't have permission the access this page");
 
 $title = "Profile - Book Sharing";
 $css_file_name = "profile";
-require_once "php/LoginCheck.php";
 require_once "php/navbar.php";
 require_once "php/dbconfig.php";
 $fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";

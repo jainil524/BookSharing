@@ -41,31 +41,31 @@ function chat(id) {
     window.location.replace("http://localhost/BookSharing/chat.php?id=" + id)
 }
 
-function showReport() {
-    document.querySelector(".report-pop-up").style.display = "flex";
+function showReport(buyerid = "") {
+    if (buyerid == "") {
+        window.location.assign("login.php");
+    } else {
+        document.querySelector(".report-pop-up").style.display = "flex";
+    }
 }
 
 function closePopup(e) {
-    if (e.path[0] == document.querySelector(".report-pop-up")) {
+    if (e == "popUp" || e.path[0] == document.querySelector(".report-pop-up")) {
         document.querySelector(".report-pop-up").style.display = "none";
     }
 }
 
-function report() {
+function report(id) {
     let xmlxhr = new XMLHttpRequest();
     xmlxhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.response);
-
-            // if (this.response.endsWith('success')) {
-
-            // } else {
-
-            // }
+            alert(this.response);
+            closePopup("popUp");
         }
     }
-    xmlxhr.open('POST', 'php\report.php', true);
+    xmlxhr.open('POST', 'php/report.php', true);
     let FormDetails = new FormData();
     FormDetails.append("reason", document.querySelector(".pop-up input:checked").value);
+    FormDetails.append("repotedUser", id);
     xmlxhr.send(FormDetails);
 }

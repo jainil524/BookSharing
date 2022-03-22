@@ -37,7 +37,7 @@ require "php/navbar.php";
                         <td>
                             <div class="actionBtn ">
                                 <img class="buttonCursor" title="Restrict user" src="img/restrict_icon.svg" onclick="restrictUser(event,' . $user["user_id"] . ',`' . $user["user_name"] . '`)">
-                                <img class="buttonCursor" title="Warn user" src="img/warning_icon.svg"  onclick="warnUser(' . $user["user_id"] . ')">
+                                <img class="buttonCursor" title="Warn user" src="img/warning_icon.svg"  onclick="warnUser(`' . $user["user_name"] . '`,' . $user["user_id"] . ')">
                             </div>
                         </td>
                     </tr>';
@@ -47,10 +47,20 @@ require "php/navbar.php";
             ?>
         </tbody>
     </table>
+
+
+
+    <div class="report-pop-up" onclick="closePopup(event)">
+        <div class="pop-up">
+            <div class="heading">Warn to <span></span> </div>
+            <textarea name="reason" id="reason"></textarea>
+            <button onclick="warn()">Warn</button>
+        </div>
+    </div>
 </div>
 
 
-<script src="js/jquery.min.js"></script>
+<script src=" js/jquery.min.js"></script>
 <script src="js/jquery.steps.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>

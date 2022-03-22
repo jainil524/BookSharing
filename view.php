@@ -17,7 +17,6 @@ if (empty($book) || isset($book["buyer_id"])) {
 } else {
 ?>
     <div>
-
         <div class="main-con">
             <div class="back-btn">
                 <a href="index.php"><img src="./img/back.png" alt=""></a>
@@ -70,7 +69,7 @@ if (empty($book) || isset($book["buyer_id"])) {
                     <span>Chat</span>
                 </div>
 
-                <div class="report" onclick="showReport()">
+                <div class="report" onclick="showReport(<?php echo (isset($_SESSION['userID']) ? $_SESSION['userID'] : ''); ?> )">
                     <div class="report-tmg">
                         <img src="img/report.png" alt="report">
                     </div>
@@ -108,7 +107,7 @@ if (empty($book) || isset($book["buyer_id"])) {
                         <label for="r6">Violent or repulsive content</label>
                     </div>
                 </div>
-                <button onclick="report(<?php echo $book['book_author']; ?>)">Report</button>
+                <button onclick="report(<?php echo $book['user_id'] ?>)">Report</button>
             </div>
         </div>
     </div>
