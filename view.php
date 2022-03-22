@@ -82,6 +82,7 @@ if (empty($book) || isset($book["buyer_id"])) {
         <div class="report-pop-up" onclick="closePopup(event)">
             <div class="pop-up">
                 <div class="heading"> Report to <span><?php echo $book["user_name"]; ?></span> </div>
+                <span>Reasons</span>
                 <div class="reason-con">
                     <input type="radio" name="report_reson" value="Harassment or bullying" id="r1">
                     <label for="r1">Harassment or bullying</label>

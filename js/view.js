@@ -28,8 +28,8 @@ function buy(buyerid = "") {
 function openPopUp(e) {
     let rc = document.querySelector(".rc");
     rc.style.display = "initial";
-    rc.style.top = e.clientY + 6 + "px";
-    rc.style.left = e.clientX + 2 + "px";
+    rc.style.top = e.clientY + 15 + "px";
+    rc.style.left = e.clientX + 15 + "px";
 }
 document.addEventListener("click", function(e) {
     if (e.path[0] != document.querySelector(".option")) {
