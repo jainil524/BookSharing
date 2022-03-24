@@ -3,7 +3,7 @@
 
 
     <div class="logo_container">
-        <img src="img/logos.png" alt="BookSharing" srcset="">
+        <img src="img/logo_with_text.png" alt="BookSharing" srcset="">
     </div>
 
     <div class="copyright">

@@ -135,7 +135,7 @@ $address = "";
                                         ' . $Purchesed . '
                                         <div class="book-header">
                                             <div class="book-photo">
-                                                <img src="' .  (file_exists($SelectSoldBookResult['book_coverpage']) == false ? 'img/logos.png' : $SelectSoldBookResult['book_coverpage']) . '">
+                                                <img src="' .  (file_exists($SelectSoldBookResult['book_coverpage']) == false ? 'img/logo_with_text.png' : $SelectSoldBookResult['book_coverpage']) . '">
                                             </div>
                                             <div class="book-title">' . $SelectSoldBookResult['book_name'] . '</div>
                                         </div>
@@ -185,7 +185,7 @@ $address = "";
                         echo  ' <div class="card">
                                         <div class="book-header">
                                             <div class="book-photo">
-                                                <img src="' . (file_exists($SelectSoldBookResult['book_coverpage']) == false ? 'img/logos.png' : $SelectSoldBookResult['book_coverpage'])  . '">
+                                                <img src="' . (file_exists($SelectSoldBookResult['book_coverpage']) == false ? 'img/logo_with_text.png' : $SelectSoldBookResult['book_coverpage'])  . '">
                                             </div>
                                             <div class="book-title">' . $SelectSoldBookResult['book_name'] . '</div>
                                         </div>

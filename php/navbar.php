@@ -9,7 +9,7 @@
     <script defer src="js/AJAX.js"></script>
     <link rel="stylesheet" href="css/<?php echo $css_file_name ?>.css">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="shortcut icon" href="img/logos.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo_with_text.png" type="image/x-icon">
     <link rel="stylesheet" href="css/navbar.css">
     <title><?php echo $title; ?></title>
 </head>
@@ -17,7 +17,7 @@
 <body>
     <header>
         <div class="logo_container">
-            <a href="index.php"><img src="./img/logos.png" alt=""></a>
+            <a href="index.php"><img src="./img/logo_with_text.png" alt=""></a>
         </div>
         <ul id="navbar">
             <?php

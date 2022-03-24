@@ -24,7 +24,7 @@ if (empty($book) || isset($book["buyer_id"])) {
 
             <div class="book-container">
                 <div class="img-con">
-                    <img src="<?php echo (file_exists($book["book_coverpage"]) == false ? 'img/logos.png' : $book["book_coverpage"]); ?>" alt="book_img">
+                    <img src="<?php echo (file_exists($book["book_coverpage"]) == false ? 'img/logo_with_text.png' : $book["book_coverpage"]); ?>" alt="book_img">
                 </div>
                 <div class="info-container">
                     <h2><?php echo $book["book_name"]; ?></h2>
