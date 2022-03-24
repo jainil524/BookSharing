@@ -9,6 +9,7 @@
     <script defer src="js/AJAX.js"></script>
     <link rel="stylesheet" href="css/<?php echo $css_file_name ?>.css">
     <link rel="stylesheet" href="css/common.css">
+    <link rel="shortcut icon" href="img/logos.png" type="image/x-icon">
     <link rel="stylesheet" href="css/navbar.css">
     <title><?php echo $title; ?></title>
 </head>
