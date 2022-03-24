@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    link:
     <script defer src="js/AJAX.js"></script>
     <link rel="stylesheet" href="css/<?php echo $css_file_name ?>.css">
     <link rel="stylesheet" href="css/common.css">
@@ -29,6 +30,12 @@
                 <li><a href="deliveryGuys.php">DeliveryGuy</a></li>
                 <li><a href="books.php">Books</a></li>
                 <li><a href="?logout=true">Logout</a></li>
+            <?php
+            }else if ((isset($_SESSION["role"]) && $_SESSION["role"] == "DeliveryGuy")) {
+            ?>
+                <li><a href="deliverys.php">Deliverys</a></li>
+                <li><a href="notification.php"><img src="img/notification_icon.svg" alt=""></a></li>
+                <li><a href="profilepage.php">profile</a></li>
             <?php
             } else {
             ?>
