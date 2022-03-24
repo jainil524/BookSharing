@@ -155,7 +155,7 @@ require "php/navbar.php";
                         <th>Reason</th>
                     </tr>
                     <?php
-                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_user) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user) As repoertedUser,Report_msg FROM reports LIMIT 3";
+                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_id) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user_id) As repoertedUser,Report_msg FROM reports LIMIT 3";
                     $SelectReportFire = mysqli_query($con, $SelectReportQuery);
                     if (mysqli_num_rows($SelectReportFire) != 0) {
                         while ($SelectReportResult = mysqli_fetch_assoc($SelectReportFire)) {

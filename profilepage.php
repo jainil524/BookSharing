@@ -7,15 +7,42 @@ $title = "Profile - Book Sharing";
 $css_file_name = "profile";
 require_once "php/navbar.php";
 require_once "php/dbconfig.php";
-$fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";
-$result = mysqli_query($con, $fetchuserDetails);
-$row = mysqli_fetch_assoc($result);
-?>
+
+$profilePhoto = "";
+$fullname = "";
+$email = "";
+$username = "";
+$pincode = "";
+$address = "";
+        if($_SESSION['role'] == "user"){
+            $fetchuserDetails = "SELECT * FROM user WHERE user_id = " . $_SESSION['userID'] . " ";
+            $result = mysqli_query($con, $fetchuserDetails);
+            $row = mysqli_fetch_assoc($result);
+            
+            $profilePhoto = $row['Profile_photo'];
+            $fullname = $row['fname'];
+            $username = $row['user_name'];
+            $email = $row['email'];
+            $address = $row['address'];
+            $pincode = $row['pincode'];
+        }
+        else if($_SESSION['role'] == "DeliveryGuy"){
+            $fetchDeliveryDetails = "SELECT * FROM delivery_guy WHERE delivery_guy_id = " . $_SESSION['userID'] . " ";
+            $result = mysqli_query($con, $fetchDeliveryDetails);
+            $row = mysqli_fetch_assoc($result);
+            $profilePhoto = $row['Profile_photo'];
+            $fullname = $row['delivery_guy_name'];
+            $username = $row['delivery_guy_name'];
+            $email = $row['delivery_guy_email'];
+            $address = $row['delivery_guy_address'];
+            $pincode = $row['delivery_guy_pincode'];
+        }
+        ?>
 
 <div id="main">
     <aside id="sidebar">
         <div id="profilephoto">
-            <img src="<?php echo $row['Profile_photo']; ?>" id="profileimg">
+            <img src="<?php echo (empty($profilePhoto)?"media/profile_photos/default_photo.svg":$profilePhoto); ?>" id="profileimg">
         </div>
         <div id="profileinfo">
             <ul>
@@ -40,39 +67,41 @@ $row = mysqli_fetch_assoc($result);
     <div id="profile">
         <!-- profile  page structure-->
         <div class="profile_container ProfileActive">
+            <?php if($_SESSION['role']=="user"){?>
             <div class="header">
                 <img src="img/close.svg" class="Formactive" id="CloseIcon" onclick="MakeFormDisable()">
                 <h1>Edit Profile</h1>
                 <img src="img/edit_icon.svg" alt="" onclick="MakeFormEditable()" id="EditIcon">
                 <img src="img/done.svg" alt="" onclick="SendData()" class="Formactive" id="SubmitIcon">
             </div>
+            <?php }?>
             <form method="post" id="ProfileForm">
                 <div class="dp">
                     <div>
-                        <img src="<?php echo $row['Profile_photo']; ?>" id="userimg" alt="">
+                        <img src="<?php echo (empty($profilePhoto)?"media/profile_photos/default_photo.svg":$profilePhoto) ?>" id="userimg" alt="">
                         <label class="changeimgicon Formactive" for="profiledp"><img src="img/add_a_photo.svg" class="edit_icon"></label>
                     </div>
                     <input type="file" name="dp" id="profiledp" onchange="ImgPreview()" class="user_info" accept="image/*" disabled>
                 </div>
                 <div>
                     <label>Full Name</label>
-                    <input type="text" name="fname" class="user_info" value="<?php echo $row['fname']; ?>" disabled>
+                    <input type="text" name="fname" class="user_info" value="<?php echo $fullname; ?>" disabled>
                 </div>
                 <div>
                     <label>User Name</label>
-                    <input type="text" name="username" value="<?php echo $row['user_name']; ?>" class="user_info" disabled>
+                    <input type="text" name="username" value="<?php echo $username; ?>" class="user_info" disabled>
                 </div>
                 <div>
                     <label>Email</label>
-                    <input type="email" name="email" value="<?php echo $row['email']; ?>" class="user_info" disabled>
+                    <input type="email" name="email" value="<?php echo $email; ?>" class="user_info" disabled>
                 </div>
                 <div>
                     <label>Address</label>
-                    <textarea type="text" name="address" class="user_info" rows="3" cols="30" disabled><?php echo $row['address']; ?></textarea>
+                    <textarea type="text" name="address" class="user_info" rows="3" cols="30" disabled><?php echo $address; ?></textarea>
                 </div>
                 <div>
                     <label>Pincode</label>
-                    <input type="number" name="pincode" value="<?php echo $row['pincode']; ?>" class="user_info" id="" disabled>
+                    <input type="number" name="pincode" value="<?php echo $pincode; ?>" class="user_info" id="" disabled>
                 </div>
             </form>
 

@@ -75,10 +75,6 @@ header #burger {
     text-align: center;
 }
 
-#navbar li:nth-child(4) {
-    width: 2rem;
-}
-
 #navbar li:last-child a img {
     border-radius: 50%;
 }

@@ -1,7 +1,3 @@
-:root {
-    --hoverEffectcolor: var(--textcolor);
-}
-
 body {
     background-color: rgb(231, 231, 231);
 }
@@ -112,7 +108,7 @@ body {
     border-bottom-left-radius: 50px;
     border-top-left-radius: 50px;
     transition: .3s ease-in-out;
-    background: var(--hoverEffectColor);
+    background: white;
 }
 
 

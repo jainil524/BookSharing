@@ -56,7 +56,7 @@ function loginFunction() {
             } else if (this.response.endsWith('successAdmin')) {
                 window.location.replace("admindashboard.php");
             } else if (this.response.endsWith('successDelivery')) {
-                window.location.replace("admindashboard.php");
+                window.location.replace("deliverys.php");
             } else {
                 err.innerText = this.response;
                 err.style.transform = "translateY(0%)";
