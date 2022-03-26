@@ -85,6 +85,10 @@ header #burger {
     object-fit: cover;
 }
 
+img[src="img/login_icon.svg"] {
+    filter: invert(1);
+}
+
 @media screen and (max-width: 520px) {
     header {
         padding: 0;
