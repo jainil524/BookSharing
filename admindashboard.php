@@ -18,7 +18,7 @@ require "php/navbar.php";
                                 (SELECT COUNT(Book_id) FROM book_transaction WHERE buyer_id IS NOT NULL) As SoldBookCount,
                                 (SELECT COUNT(Book_id) FROM book_transaction WHERE buyer_id IS  NULL) As AvailableBookCount,
                                 (SELECT COUNT(delivery_guy_id) FROM delivery_guy WHERE status = 0) As DeliveryGuyCount,
-                                (SELECT SUM(book_price) FROM book_transaction ) As TotalRevenue
+                                (SELECT SUM(book_price)*5/100 FROM book_transaction WHERE buyer_id IS NOT NULL) As TotalRevenue
                                 FROM user 
                                 WHERE IsRestricted = 0";
 
@@ -126,7 +126,7 @@ require "php/navbar.php";
                         <th>Date of birth</th>
                     </tr>
                     <?php
-                    $SelectDeliveryQuery = "SELECT delivery_guy_name,delivery_guy_email,delivery_guy_dob FROM delivery_guy WHERE status = 0 LIMIT 4";
+                    $SelectDeliveryQuery = "SELECT delivery_guy_name,delivery_guy_email,delivery_guy_dob FROM delivery_guy WHERE status = 0  LIMIT 4";
                     $SelectDeliveryFire = mysqli_query($con, $SelectDeliveryQuery);
                     if (mysqli_num_rows($SelectDeliveryFire) != 0) {
                         while ($SelectDeliveryResult = mysqli_fetch_assoc($SelectDeliveryFire)) {
@@ -155,7 +155,7 @@ require "php/navbar.php";
                         <th>Reason</th>
                     </tr>
                     <?php
-                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_id) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user_id) As repoertedUser,Report_msg FROM reports LIMIT 3";
+                    $SelectReportQuery = "SELECT (SELECT user_name FROM user WHERE user_id = reporter_user) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user) As repoertedUser,Report_msg FROM reports LIMIT 3";
                     $SelectReportFire = mysqli_query($con, $SelectReportQuery);
                     if (mysqli_num_rows($SelectReportFire) != 0) {
                         while ($SelectReportResult = mysqli_fetch_assoc($SelectReportFire)) {
@@ -170,7 +170,7 @@ require "php/navbar.php";
                     }
                     ?>
                 </table>
-                <a href="users.php">More Details</a>
+                <a href="reports.php">More Details</a>
             </div>
         </div>
     </div>

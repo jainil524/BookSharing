@@ -108,5 +108,6 @@
 </div>
 </body>
 <script type="text/javascript" src="js/chat_send.js"></script>
-
+<!-- rM=c6S_n|8SWI{o*-->
+<!-- id18675036_book_sharing -->
 </html>

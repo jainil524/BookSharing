@@ -30,6 +30,7 @@
                 <li><a href="user.php">Users</a></li>
                 <li><a href="deliveryGuys.php">DeliveryGuy</a></li>
                 <li><a href="books.php">Books</a></li>
+                <li><a href="reports.php">Reports</a></li>
                 <li><a href="?logout=true">Logout</a></li>
             <?php
             }else if ((isset($_SESSION["role"]) && $_SESSION["role"] == "DeliveryGuy")) {

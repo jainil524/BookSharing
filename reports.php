@@ -32,8 +32,8 @@ require "php/navbar.php";
                     echo '<tr>
                             <td>' . $no . '</td>
                             <td>' . $user["Report_msg"] . '</td>
-                            <td>' . $user["reporter_id"] . '</td>
-                            <td>' .$user['reported_user_id'].'</td>
+                            <td>' . $user["reporter_user"] . '</td>
+                            <td>' .$user['reported_user'].'</td>
                             <td style="width:290px;">'.$user['report_time'].'</td>
                         </tr>';
                     $no++;
@@ -50,16 +50,6 @@ require "php/navbar.php";
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <?php include "php/footer.php"; ?>
-<script>
-    $(document).ready(function() {
-        $('.mytable').DataTable({
-            paging: true,
-            searching: true,
-            ordering: true,
-            "error": "No Delivery Guy Found"
-        });
-    });
-</script>
     <script src="js/user.js"></script>
 </body>
 

@@ -62,12 +62,12 @@ if (empty($book) || isset($book["buyer_id"])) {
 
         <div class="rc">
             <div class="rc-container">
-                <div class="chat" onclick="chat(<?php echo $book['user_id'] ?>)">
-                    <div class="chat-img">
-                        <img src="img/chat.png" alt="Chat">
-                    </div>
-                    <span>Chat</span>
-                </div>
+                    <a class="chat" href="chat.php?+<?php echo $book["user_id"]; ?>">
+                        <div class="chat-img">
+                            <img src="img/chat.png" alt="Chat">
+                        </div>
+                        <span>Chat</span>
+                    </a>
 
                 <div class="report" onclick="showReport(<?php echo (isset($_SESSION['userID']) ? $_SESSION['userID'] : ''); ?> )">
                     <div class="report-tmg">
