@@ -54,9 +54,8 @@ hoverefect.forEach((lis) => {
 function logout() {
     let conformation = confirm("Are you really want to Log out?");
     if (conformation) {
-        window.location.assign(
-            "http://localhost/BookSharing/profilepage.php?logout=true"
-        );
+        let location = window.location;
+        window.location.assign(location + "?logout=true");
     } else {
         return false;
     }
