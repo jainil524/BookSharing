@@ -1,19 +1,20 @@
 <?php
 require "dbconfig.php";
 session_start();
-if (isset($_POST['Isedited']) && !$_POST['Isedited']=="") {
-  if (empty($_FILES["coverimg"]['name']) || empty($_POST["bname"]) || empty($_POST["bauthor"]) || empty($_POST["byear"]) || empty($_POST["bprice"])) {
+if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
+  // if(isset($_POST['BookImg']) && $_POST['BookImg'] != ""){}
+  if (empty($_POST["bname"]) || empty($_POST["bauthor"]) || empty($_POST["byear"]) || empty($_POST["bprice"])) {
     echo "ALL field required";
     exit();
   } else if ($_POST["byear"] > date("Y")) {
     echo "Invalid year..";
-    exit;
+    exit();
   }
 
   $image = $_FILES['coverimg']['name'];
   $imageArr = explode('.', $image);
-  $rand = rand(10000, 99999);
-  $newImageName = $imageArr[0] . $rand . '.' . $imageArr[1];
+  // $rand = rand(10000, 99999);
+  $newImageName = $_SESSION['username'].'_'.$_POST['bname'].'.' . $imageArr[1];
   $uploadPath = "media/Book_cover_image/" . $newImageName;
   $isUploaded = move_uploaded_file($_FILES["coverimg"]["tmp_name"], "../" . $uploadPath);
 

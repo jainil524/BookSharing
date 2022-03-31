@@ -24,8 +24,9 @@ if (isset($_POST['DeleteRequest']) && $_POST['DeleteRequest'] == true) {
         echo "Please fill all fields";
     }
     if (!empty($_FILES['dp']["name"])) {
-        if (move_uploaded_file($_FILES['dp']['tmp_name'], "../media/profile_photos/" . $_FILES['dp']['name'])) {
-            $uimg = "media/profile_photos/" . $_FILES['dp']['name'];
+            $ImgCustomName = explode(".",$_FILES['dp']['name']);
+        if (move_uploaded_file($_FILES['dp']['tmp_name'], "../media/profile_photos/" . $_SESSION['username']."_profilePic.".$ImgCustomName[1])) {
+            $uimg = "media/profile_photos/" . $_SESSION['username']."_profilePic.".$ImgCustomName[1];
             $fileUpload = " Profile_photo= '" . $uimg . "',";
         }
     } else {

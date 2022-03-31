@@ -21,10 +21,11 @@ require "php/LoginCheck.php";
       ?>
       <form action="#" onsubmit="return false" id="sell-form" enctype="multipart/form-data">
         <input type="hidden" name="Isedited" value="<?php echo (isset($_GET['Bid']) == true ? $_GET['Bid'] : "") ?>">
+        <input type="hidden" name="BookImg" value<?php echo (isset($_GET['Bid']) == true ? $EditDBookInfoResult['book_coverpage']: "") ?>">
         <div class="user-details">
           <div class="input-box">
             <span class="details"> Cover Image
-              <input type="file" name="coverimg" id="UploadCover" style="display: block;" value="<?php echo (isset($EditDBookInfoResult['book_coverpage']) == true ? $EditDBookInfoResult['book_coverpage'] : ""); ?>" accept="image/x-png,image/gif,image/jpeg" >
+              <input type="file" name="coverimg" id="UploadCover" style="display: block;" value="<?php echo (isset($EditDBookInfoResult['book_coverpage']) == true ? $EditDBookInfoResult['book_coverpage'] : ""); ?>">
             </span>
           </div>
 
