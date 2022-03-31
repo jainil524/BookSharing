@@ -51,24 +51,6 @@ textarea {
     position: relative;
 }
 
-.details .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: var(--textcolor);
-    ;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-}
-
-.details:hover .tooltiptext {
-    visibility: visible;
-}
-
 .container .title::before {
     content: "";
     position: absolute;
@@ -105,7 +87,8 @@ form .img-box label.details {
     color: rgb(39, 142, 226);
 }
 
-.user-details .input-box input {
+.user-details .input-box input,
+.user-details .input-box select {
     height: 45px;
     width: 100%;
     font-size: 16px;
@@ -139,46 +122,10 @@ form .img-box label.details {
     background-color: rgb(0, 79, 99);
 }
 
-.user-details .input-box input:focus {
-    outline: 2px solid rgb(75, 68, 68) !important;
-}
-
-
-/* .user-details .input-box input:valid {
-    border-color: #2e407c;
-} */
-
-form .gender-details .gender-title {
-    font-size: 20px;
-    font-weight: 500;
-}
-
-form .category {
-    display: flex;
-    width: 80%;
-    margin: 14px 0;
-    justify-content: space-between;
-}
-
-form .category label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-form .category label .dot {
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background: #d9d9d9;
-    border: 5px solid transparent;
-    transition: all 0.3s ease;
-}
-
-form input:focus,
-form textarea:focus {
-    outline: 1px solid black !important;
+.user-details .input-box input:focus,
+.user-details .input-box textarea:focus,
+.user-details .input-box select:focus {
+    outline: 1px solid rgb(75, 68, 68) !important;
 }
 
 form .button {

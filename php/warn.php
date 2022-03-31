@@ -1,7 +1,7 @@
 <?php
 require "dbconfig.php";
 
-$query = "INSERT INTO `warn_user_delivery_guy`(`warn_user_id`, `warning_messge`) VALUES (" . $_POST["userId"] . ",'" . $_POST["reason"] . "')";
+$query = "INSERT INTO `warn_user_delivery_guy`(`warn_user_id`, `warning_message`) VALUES (" . $_POST["userId"] . ",'" . $_POST["reason"] . "')";
 
 $result = mysqli_query($con, $query);
 

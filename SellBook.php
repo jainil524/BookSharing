@@ -13,7 +13,7 @@ require "php/LoginCheck.php";
       <?php
       if (isset($_GET['Bid'])) {
         global $con;
-        $EditDBookInfoQuery = "SELECT * FROM book_transaction WHERE book_id=" . $_GET['Bid'] . " AND seller_id = " . $_SESSION['userID'];
+        $EditDBookInfoQuery = "SELECT * FROM book_transaction bt WHERE bt.book_id=" . $_GET['Bid'] . " AND bt.seller_id = " . $_SESSION['userID'] . "";
         $EditDBookInfoFire = mysqli_query($con, $EditDBookInfoQuery);
 
         $EditDBookInfoResult = mysqli_fetch_assoc($EditDBookInfoFire);
@@ -23,22 +23,23 @@ require "php/LoginCheck.php";
         <input type="hidden" name="Isedited" value="<?php echo (isset($_GET['Bid']) == true ? $_GET['Bid'] : "") ?>">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Book Cover Image
-              <input type="file" name="coverimg" id="UploadCover" style="display: block;" value="<?php echo (isset($EditDBookInfoResult['book_coverpage']) == true ? $EditDBookInfoResult['book_coverpage'] : ""); ?>" accept="image/x-png,image/gif,image/jpeg">
+            <span class="details"> Cover Image
+              <input type="file" name="coverimg" id="UploadCover" style="display: block;" value="<?php echo (isset($EditDBookInfoResult['book_coverpage']) == true ? $EditDBookInfoResult['book_coverpage'] : ""); ?>" accept="image/x-png,image/gif,image/jpeg" >
             </span>
           </div>
 
           <div class="input-box">
-            <span class="details">Book Name
+            <span class="details"> Name
               <input type="text" name="bname" value="<?php echo (isset($EditDBookInfoResult['book_name']) == true ? $EditDBookInfoResult['book_name'] : "") ?>">
             </span>
           </div>
 
           <div class="input-box">
-            <span class="details">Book Author
+            <span class="details"> Author
               <input type="text" name="bauthor" value="<?php echo (isset($EditDBookInfoResult['book_author']) == true ? $EditDBookInfoResult['book_author'] : "") ?>">
             </span>
           </div>
+
 
           <div class="input-box">
             <span class="details">Publish Year
@@ -47,16 +48,17 @@ require "php/LoginCheck.php";
           </div>
 
           <div class="input-box">
-            <span class="details">Book Price
+            <span class="details"> Price
               <input type="number" name="bprice" value="<?php echo (isset($EditDBookInfoResult['book_price']) == true ? $EditDBookInfoResult['book_price'] : "") ?>">
             </span>
           </div>
 
           <div class="input-box">
-            <span class="details">Book Description
+            <span class="details"> Description
               <textarea name="bdesc" cols="30" rows="10"><?php echo (isset($EditDBookInfoResult['book_description']) == true ? $EditDBookInfoResult['book_description'] : "") ?></textarea>
             </span>
           </div>
+
         </div>
 
         <div class="button">
