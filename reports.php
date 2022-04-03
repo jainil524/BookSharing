@@ -5,6 +5,7 @@ $css_file_name = "user";
 require "php/RoleChecker.php";
 Rlchecker("admin");
 
+require "php/LoginCheck.php";
 require "php/dbconfig.php";
 require "php/navbar.php";
 ?>
@@ -24,7 +25,7 @@ require "php/navbar.php";
         </thead>
         <tbody>
             <?php
-            $SelectReportsquery = "SELECT * FROM reports ORDER BY report_time ASC";
+            $SelectReportsquery = "SELECT *,(SELECT user_name FROM user WHERE user_id = reporter_user) As repoerter,(SELECT user_name FROM user WHERE user_id = reported_user) As repoertedUser FROM reports ORDER BY report_time DESC";
             $SelectReportsFire = mysqli_query($con, $SelectReportsquery);
             $no = 1;
             if (mysqli_num_rows($SelectReportsFire) != 0) {
@@ -32,8 +33,8 @@ require "php/navbar.php";
                     echo '<tr>
                             <td>' . $no . '</td>
                             <td>' . $user["Report_msg"] . '</td>
-                            <td>' . $user["reporter_user"] . '</td>
-                            <td>' .$user['reported_user'].'</td>
+                            <td>' . $user["repoerter"] . '</td>
+                            <td>' .$user['repoertedUser'].'</td>
                             <td style="width:290px;">'.$user['report_time'].'</td>
                         </tr>';
                     $no++;

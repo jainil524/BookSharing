@@ -37,6 +37,32 @@ function RemoveBook(e, id) {
     }
 }
 
+//verfiy the user by otp for give him book
+function VerifyByOtp(currentRow, bookId, userId) {
+    let Otp = prompt("Enter the Book PIN:");
+    if (isNaN(Otp) == false && Otp.length == 6) {
+        let xmlxhr = new XMLHttpRequest();
+        xmlxhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.response.endsWith('successfully')) {
+                    alert("Book PIN matched");
+                    document.querySelector(".mytable").row(currentRow.path[2]).remove().draw();
+
+                } else {
+                    alert(this.response);
+                }
+            }
+        }
+        xmlxhr.open('POST', 'php/user_proccess.php', true);
+        let FormDetails = new FormData();
+        FormDetails.append("OTP", Otp);
+        FormDetails.append("bookid", bookId);
+        xmlxhr.send(FormDetails);
+    } else {
+        alert("Book pin must be between in 0 - 9 and must have 6 digits");
+    }
+}
+
 //restrict user from website
 function restrictUser(e, id, name) {
     var conformation = confirm("Do you really want to restrict " + name + "?");

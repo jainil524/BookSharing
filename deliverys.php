@@ -20,17 +20,18 @@ Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have access to this pa
                 <th>drop to</th>
                 <th>Seller</th>
                 <th>Buyer</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $query = "SELECT book_name,seller_id , buyer_id,
+            $query = "SELECT book_id,book_name,seller_id , buyer_id,
                         (SELECT address FROM user WHERE user_id = bt.seller_id) as pickaddr ,
                         (SELECT address FROM user WHERE user_id = bt.buyer_id) as dropaddr,
                         (SELECT user_name FROM user WHERE user_id = bt.seller_id) as seller,
                         (SELECT user_name FROM user WHERE user_id = bt.buyer_id) as buyer   
                         FROM book_transaction bt 
-                        WHERE delivery_guy_id = " . $_SESSION['userID'];
+                        WHERE IsDelivered = 0 AND delivery_guy_id = " . $_SESSION['userID'];
             $userResult = mysqli_query($con, $query);
             $no = 1;
             if (mysqli_num_rows($userResult) != 0) {
@@ -42,6 +43,7 @@ Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have access to this pa
                         <td >' . $user['dropaddr'] . '</td>
                         <td>' . $user['seller'] . '</td>
                         <td>' . $user['buyer'] . '</td>
+                        <td><button style="background:var(--logoColor);color:white;padding:.3rem 1rem;border:1px solid var(--logocolorlight);border-radius:5px;" onclick="VerifyByOtp(event,'.$user['book_id'].','.$user['seller_id'].')" class="buttonCursor">Verify</button></td>
                     </tr>';
                     $no++;
                 }

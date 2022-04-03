@@ -29,7 +29,7 @@ require "php/navbar.php";
         </thead>
         <tbody>
             <?php
-            $query = "SELECT * FROM `book_transaction`";
+            $query = "SELECT *,(SELECT user_name FROM user WHERE user_id = seller_id) AS seller,(SELECT user_name FROM user WHERE user_id = buyer_id) AS buyer FROM `book_transaction`";
             $bResult = mysqli_query($con, $query);
 
             if (mysqli_num_rows($bResult)) {
@@ -41,8 +41,8 @@ require "php/navbar.php";
                             <td>' . $b["book_author"] . '</td>
                             <td>' . $b["book_publish_year"] . '</td>
                             <td>' . $b["book_description"] . '</td>
-                            <td>' . $b["seller_id"] . '</td>
-                            <td>' . ($b["buyer_id"] == "" ? "Not Buyed" : $b["buyer_id"]) . '</td>
+                            <td>' . $b["seller"] . '</td>
+                            <td>' . ($b["buyer"] == "" ? "Not Buyed" : $b["buyer"]) . '</td>
 
                             <td>' . $b["upload_time"] . '</td>
                             <td><img src="img/delete_icon.svg" onclick="RemoveBook(event,' . $b['book_id'] . ')" class="buttonCursor"></td>

@@ -126,7 +126,7 @@ require "php/navbar.php";
                         <th>Date of birth</th>
                     </tr>
                     <?php
-                    $SelectDeliveryQuery = "SELECT delivery_guy_name,delivery_guy_email,delivery_guy_dob FROM delivery_guy WHERE status = 0  LIMIT 4";
+                    $SelectDeliveryQuery = "SELECT delivery_guy_name,delivery_guy_email,delivery_guy_dob FROM delivery_guy WHERE status = 1  LIMIT 4";
                     $SelectDeliveryFire = mysqli_query($con, $SelectDeliveryQuery);
                     if (mysqli_num_rows($SelectDeliveryFire) != 0) {
                         while ($SelectDeliveryResult = mysqli_fetch_assoc($SelectDeliveryFire)) {

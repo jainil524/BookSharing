@@ -17,7 +17,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 } else {
 	$h_pass = hash("sha1", $pw);
 
-	$SelectUserQuery = "SELECT * FROM user where email = '" . trim($email) . "' AND password = '" . trim($h_pass) . "' ";
+	$SelectUserQuery = "SELECT * FROM user WHERE IsRestricted = 0 AND (email = '" . trim($email) . "' AND password = '" . trim($h_pass) . "') ";
 	$SelectUserFire = mysqli_query($con, $SelectUserQuery);
 
 	if (mysqli_num_rows($SelectUserFire) == 0) {
@@ -42,7 +42,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$_SESSION["userID"] = $SelectAdminResult["admin_id"];
 				echo "successAdmin";
 			} else {
-				echo "Data not found";
+				echo "Invalid Email/password\nor may be\n Your account is restricted";
 				exit();
 			}
 		}
