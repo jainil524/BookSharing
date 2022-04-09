@@ -38,6 +38,8 @@
                 -201 371 -399 458 -129 58 -111 57 -1092 57 l-902 0 2 -762z" />
           </g>
         </svg>
+        <p class="FirstWave"></p>
+        <p class="secondWave"></p>
     </div>
 </div>
     <header>

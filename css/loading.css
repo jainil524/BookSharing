@@ -33,9 +33,8 @@ g {
     fill: #396449;
 }
 
-.imgContainer::after {
+.imgContainer .FirstWave {
     position: absolute;
-    content: "";
     z-index: 3;
     top: -5px;
     left: -35%;
@@ -48,7 +47,7 @@ g {
     animation: rotatingContainer 1.69s linear 0.3s infinite, transformContainer 1.7s linear 0.3s infinite alternate;
 }
 
-.imgContainer::before {
+.imgContainer .secondWave {
     position: absolute;
     content: "";
     z-index: 3;
