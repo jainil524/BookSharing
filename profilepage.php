@@ -50,9 +50,9 @@ $address = "";
                 <?php
                 if ($_SESSION['role'] == "user") {
                 ?>
-                    <li class="slider">Sell Books</li>
+                    <li class="slider">Your Books</li>
                     <li class="slider">Sold Books</li>
-                    <li class="slider">Bought Books</li>
+                    <li class="slider">Purchased Books</li>
                     <li onclick="DeleteAccount()">Delete Account</li>
                 <?php
                 }
@@ -110,7 +110,7 @@ $address = "";
         <!-- sell book page structure -->
         <div class="profile_container">
             <div class="header">
-                <h1>Sell Books</h1>
+                <h1>Your Books</h1>
             </div>
             <div class="card-container">
                 <?php
@@ -216,7 +216,7 @@ $address = "";
         <!-- Bought book page structure -->
         <div class="profile_container">
             <div class="header">
-                <h1>Bought Book</h1>
+                <h1>Purchased Book</h1>
             </div>
             <div class="card-container">
                 <?php

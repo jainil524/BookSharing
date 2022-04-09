@@ -1,0 +1,76 @@
+/* for loading screen */
+
+#loader {
+    position: absolute;
+    inset: 0;
+    /* width: 100vw !important;
+    height: 100vh !important; */
+    z-index: 79887686;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgContainer {
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+svg {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}
+
+g {
+    fill: #396449;
+}
+
+.imgContainer::after {
+    position: absolute;
+    content: "";
+    z-index: 3;
+    top: -5px;
+    left: -35%;
+    width: 170%;
+    height: 140%;
+    background-color: #59c580;
+    border-radius: 30%;
+    transform-origin: center;
+    transform: rotate(60deg) translateY(0%);
+    animation: rotatingContainer 1.69s linear 0.3s infinite, transformContainer 1.7s linear 0.3s infinite alternate;
+}
+
+.imgContainer::before {
+    position: absolute;
+    content: "";
+    z-index: 3;
+    top: -10px;
+    left: -35%;
+    width: 170%;
+    height: 140%;
+    background-color: #59c580;
+    border-radius: 30%;
+    transform-origin: center;
+    transform: rotate(0deg) translateY(0%);
+    animation: rotatingContainer 1.69s linear 0.3s infinite, transformContainer 1.7s linear 0.3s infinite alternate;
+}
+
+@keyframes rotatingContainer {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes transformContainer {
+    to {
+        transform: translateY(100%);
+    }
+}
