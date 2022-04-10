@@ -4,7 +4,7 @@
 	<?php
 	require "php/Logincheck.php";
 	$title="Chat - BookSharing";
-	$css_file_name="chat.css";
+	$css_file_name="chat";
 	require "php/navbar.php";
 	?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

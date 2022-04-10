@@ -1,15 +1,16 @@
-const wait = (delay = 0) =>
-    new Promise(resolve => setTimeout(resolve, delay));
-
+//to hide every this exept loader
 document.querySelector("body #loader+*").style.display = "none";
 
-document.addEventListener('DOMContentLoaded', () =>
-    wait(1770).then(() => {
+
+//to hide loader when page load completly
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
         document.querySelector("#loader").style.display = "none";
 
         document.querySelector(".imgContainer .FirstWave").style.animation = "unset";
         document.querySelector(".imgContainer .secondWave").style.animation = "unset";
 
         document.querySelector("body #loader+*").style.display = "flex";
+    }, 1600);
 
-    }));
+});

@@ -25,6 +25,27 @@ function sendrequest() {
     xmlxhr.send(formD);
 }
 
+function DeleteChat(e, userID, msgID) {
+    var confirmation = confirm("Are sure to delete this msg?");
+    if (confirmation) {
+        let xmlxhr = new XMLHttpRequest();
+        xmlxhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.response.endsWith('successfully')) {
+                    e.path[3].style.display = "none";
+                } else {
+                    console.log(this.response)
+                }
+            }
+        }
+        xmlxhr.open('POST', 'php/chatsend.php', true);
+        let FormDetails = new FormData();
+        FormDetails.append("Deleted", true);
+        FormDetails.append("msgID", msgID);
+        xmlxhr.send(FormDetails);
+    }
+}
+
 function userid(id) {
     var rid = "Rid=" + id;
     ajax("userview", rusercontainer, rusercontainer, rid, true);

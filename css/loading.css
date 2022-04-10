@@ -33,7 +33,8 @@ g {
     fill: #396449;
 }
 
-.imgContainer .FirstWave {
+.imgContainer .FirstWave,
+.imgContainer .secondWave {
     position: absolute;
     z-index: 3;
     top: -5px;
@@ -43,11 +44,12 @@ g {
     background-color: #59c580;
     border-radius: 30%;
     transform-origin: center;
-    transform: rotate(60deg) translateY(0%);
+    transform: rotate(10deg) translateY(20%);
     animation: rotatingContainer 1.69s linear 0.3s infinite, transformContainer 1.7s linear 0.3s infinite alternate;
 }
 
-.imgContainer .secondWave {
+
+/* .imgContainer .secondWave {
     position: absolute;
     content: "";
     z-index: 3;
@@ -58,9 +60,9 @@ g {
     background-color: #59c580;
     border-radius: 30%;
     transform-origin: center;
-    transform: rotate(0deg) translateY(0%);
+    transform: rotate(0deg) translateY(30%);
     animation: rotatingContainer 1.69s linear 0.3s infinite, transformContainer 1.7s linear 0.3s infinite alternate;
-}
+} */
 
 @keyframes rotatingContainer {
     to {

@@ -14,6 +14,7 @@
     justify-content: flex-end;
     background-color: var(--BodyBGColor);
     border-top: 1px solid black;
+    overflow: hidden;
 }
 
 .chattedwithusersection {
@@ -228,11 +229,12 @@
     font-family: var(--FontFamily);
     border-radius: .4rem;
     font-size: .8rem;
+    min-width: 3rem;
     width: max-content;
     max-width: 45%;
     height: max-content;
     color: var(--textcolor);
-    padding: .3rem .31rem;
+    padding: .3rem .41rem;
     margin: .1rem 1rem;
 }
 
@@ -240,6 +242,29 @@
     padding: .1rem .5rem;
     word-wrap: break-word;
     overflow: hidden;
+}
+
+.msgshowingarea.sender .msgcontainer {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: .2rem;
+}
+
+.msgshowingarea.sender .msgcontainer span:last-child {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.msgshowingarea.sender:hover>.msgcontainer span:last-child {
+    visibility: visible;
+    pointer-events: all;
+}
+
+.msgcontainer span:last-child img {
+    width: .9rem;
+    height: .9rem;
+    cursor: pointer;
+    filter: contrast(0) brightness(100%);
 }
 
 .msgownername {
