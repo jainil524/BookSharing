@@ -1,6 +1,5 @@
 #container {
     width: 100%;
-    min-height: 72.3vh;
     padding: .3rem;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .Warnings .card {
-    background-color: rgba(251, 23, 23, 0.13);
+    background-color: rgba(235, 179, 179, 0.663);
     color: rgb(105, 18, 18);
 }
 
