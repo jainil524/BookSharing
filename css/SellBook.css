@@ -5,7 +5,6 @@
 }
 
 .sell-container {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +35,7 @@ input[type=number]::-webkit-outer-spin-button {
 textarea {
     height: 100px;
     max-width: 100%;
-    width: 294px;
+    width: 100%;
     resize: none;
     border-radius: 5px;
     padding: 5px 10px;

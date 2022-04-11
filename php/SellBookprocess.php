@@ -36,7 +36,8 @@ if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
                         book_author='" . $book_author . "',
                         book_publish_year = '" . $book_publish_year . "',
                         book_description = '" . $book_description . "',
-                        book_coverpage='" . $book_cover . "' 
+                        book_coverpage='" . $book_cover . "', 
+                        category_id='" . $_POST['category'] . "' 
                         WHERE book_id = ".$_POST['Isedited']." ";
 
     mysqli_query($con, $UpdateBookInfo);
@@ -47,7 +48,7 @@ if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
   }
 } else {
 
-  if (empty($_FILES["coverimg"]['name']) || empty($_POST["bname"]) || empty($_POST["bauthor"]) || empty($_POST["byear"]) || empty($_POST["bprice"])) {
+  if (empty($_FILES["coverimg"]['name']) || empty($_POST["bname"]) || empty($_POST["bauthor"]) || $_POST['category'] != "#" || empty($_POST["byear"]) || empty($_POST["bprice"])) {
     echo "ALL field required";
     exit();
   } else {
@@ -74,7 +75,7 @@ if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
     $book_price = $_POST['bprice'];
 
     if (!mysqli_error($con)) {
-      $sql = "INSERT INTO book_transaction(book_name,book_price,book_author,book_publish_year,book_description,book_coverpage,seller_id) VALUES('$book_name',$book_price,'$book_author',$book_publish_year,'$book_description','$book_cover',{$_SESSION['userID']})";
+      $sql = "INSERT INTO book_transaction(book_name,book_price,book_author,book_publish_year,book_description,book_coverpage,seller_id,category_id) VALUES('$book_name',$book_price,'$book_author',$book_publish_year,'$book_description','$book_cover',{$_SESSION['userID']},".$POST['category'].")";
       mysqli_query($con, $sql);
       echo "Success";
     } else {

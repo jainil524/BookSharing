@@ -41,6 +41,20 @@ require "php/LoginCheck.php";
             </span>
           </div>
 
+          <div class="input-box">
+            <span class="details"> Category
+              <select name="category">
+                <option value="#">Select Category</option>
+                <?php
+                  $SelectCategoryQuery = "SELECT * FROM category";
+                  $SelectCategoryFire = mysqli_query($con,$SelectCategoryQuery);
+                    while($SelectCategoryResult = mysqli_fetch_assoc($SelectCategoryFire)){
+                      echo '<option value="'.$SelectCategoryResult['category_id'].'">'.$SelectCategoryResult['category_type'].'</option>';
+                    }
+                ?>
+              </select>
+            </span>
+          </div>
 
           <div class="input-box">
             <span class="details">Publish Year

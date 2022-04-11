@@ -11,8 +11,21 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
 ?>
 <div class="dashboard">
     <div id="search_bar">
-        <img src="./img/search.png" id="search-icon">
-        <input type="search" oninput="search()" id="book-name" name="book-name" placeholder="Search a book">
+        <!-- <div> -->
+            <img src="./img/search.png" id="search-icon">
+            <input type="search" oninput="search()" id="book-name" name="book-name" placeholder="Search a book">
+        <!-- </div>
+        <div>
+            <img src="img/filter_icon.svg" class="buttonCursor">
+            <div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div> -->
+        </div>
     </div>
     <div id="main">
         <?php
