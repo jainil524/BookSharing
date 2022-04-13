@@ -10,19 +10,16 @@ function sellBook() {
             let data = xmlhttp.response;
 
             if (data == "Success") {
-                document.querySelector("input[type=submit]").disabled = false;
-                document.querySelector("input[type=submit]").value = "Sell";
-                error.style.display = "block";
                 error.style.backgroundColor = "#57c557";
                 error.innerHTML = "Book Successfully uploaded";
                 document.querySelector("#sell-form").reset();
             } else {
-                document.querySelector("input[type=submit]").disabled = false;
-                document.querySelector("input[type=submit]").value = "Sell";
-                error.style.display = "block";
                 error.style.backgroundColor = "#f8d7da";
                 error.innerText = this.responseText;
             }
+            document.querySelector("input[type=submit]").disabled = false;
+            document.querySelector("input[type=submit]").value = "Sell";
+            error.style.display = "block";
         }
     }
 
