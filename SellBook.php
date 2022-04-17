@@ -14,18 +14,18 @@ require "php/LoginCheck.php";
       if (isset($_GET['Bid'])) {
         global $con;
         $EditDBookInfoQuery = "SELECT * FROM book_transaction bt WHERE bt.book_id=" . $_GET['Bid'] . " AND bt.seller_id = " . $_SESSION['userID'] . "";
+        // echo $EditDBookInfoQuery;
+        // exit();
         $EditDBookInfoFire = mysqli_query($con, $EditDBookInfoQuery);
-
         $EditDBookInfoResult = mysqli_fetch_assoc($EditDBookInfoFire);
       }
       ?>
       <form action="#" onsubmit="return false" id="sell-form" enctype="multipart/form-data">
         <input type="hidden" name="Isedited" value="<?php echo (isset($_GET['Bid']) == true ? $_GET['Bid'] : "") ?>">
-        <input type="hidden" name="BookImg" value<?php echo (isset($_GET['Bid']) == true ? $EditDBookInfoResult['book_coverpage']: "") ?>">
         <div class="user-details">
           <div class="input-box">
             <span class="details"> Cover Image
-              <input type="file" name="coverimg" id="UploadCover" style="display: block;" value="<?php echo (isset($EditDBookInfoResult['book_coverpage']) == true ? $EditDBookInfoResult['book_coverpage'] : ""); ?>">
+              <input type="file" name="coverimg" id="UploadCover" style="display: block;">
             </span>
           </div>
 

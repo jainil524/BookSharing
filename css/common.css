@@ -41,7 +41,8 @@ body {
 
 button:focus,
 a:focus,
-input:focus textarea:focus,
+input:focus,
+textarea:focus,
 li:focus {
     outline: .9px solid black !important;
 }

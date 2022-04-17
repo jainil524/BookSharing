@@ -2,7 +2,6 @@
 require "dbconfig.php";
 session_start();
 if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
-  // if(isset($_POST['BookImg']) && $_POST['BookImg'] != ""){}
   if (empty($_POST["bname"]) || empty($_POST["bauthor"]) || empty($_POST["byear"]) || empty($_POST["bprice"])) {
     echo "ALL field required";
     exit();
@@ -10,18 +9,17 @@ if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
     echo "Invalid year..";
     exit();
   }
+  $book_cover = "";
 
+  if (isset($_FILES['coverimg']['name']) && !empty($_FILES['coverimg']['name'])){
   $image = $_FILES['coverimg']['name'];
   $imageArr = explode('.', $image);
-  // $rand = rand(10000, 99999);
   $newImageName = $_SESSION['username'].'_'.$_POST['bname'].'.' . $imageArr[1];
   $uploadPath = "media/Book_cover_image/" . $newImageName;
   $isUploaded = move_uploaded_file($_FILES["coverimg"]["tmp_name"], "../" . $uploadPath);
 
-  if ($isUploaded)
-    $book_cover = $uploadPath;
-  else
-    $book_cover = "";
+  $book_cover = $uploadPath;
+  }
 
   $book_name = $_POST['bname'];
   $book_author = $_POST['bauthor'];
