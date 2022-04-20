@@ -8,19 +8,19 @@ function search() {
 }
 
 function Category(type) {
-    var bookCon = document.querySelectorAll(".book-container");
+    var bookCard = document.querySelectorAll(".book-container");
     let ShowcategoryCon = document.querySelector(" .filterRemove");
     let ShowcategoryName = document.querySelector(" .filterRemove .Category_name");
-    bookCon.forEach((e, index) => {
-        console.log(e.dataset.category == type);
+
+    bookCard.forEach((ele, index) => {
         ShowcategoryCon.style.visibility = "visible";
         ShowcategoryCon.style.pointerEvents = "all";
-        if (e.dataset.category != type) {
+        if (ele.dataset.category != type) {
             ShowcategoryName.innerText = type.toString();
-            e.style.display = "none";
+            ele.style.display = "none";
 
         } else {
-            e.style.display = "flex";
+            ele.style.display = "flex";
             ShowcategoryName.innerText = type.toString();
         }
     })

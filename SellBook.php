@@ -68,7 +68,7 @@ require "php/LoginCheck.php";
             </span>
           </div>
 
-          <div class="input-box">
+          <div class="input-box textAreaBox">
             <span class="details"> Description
               <textarea name="bdesc" cols="30" rows="10"><?php echo (isset($EditDBookInfoResult['book_description']) == true ? $EditDBookInfoResult['book_description'] : "") ?></textarea>
             </span>
