@@ -25,19 +25,19 @@ require "php/LoginCheck.php";
         <div class="user-details">
           <div class="input-box">
             <span class="details"> Cover Image
-              <input type="file" name="coverimg" id="UploadCover" style="display: block;">
+              <input type="file" name="coverimg" id="UploadCover" style="display: block;" title="Upload Cover Page of Book">
             </span>
           </div>
 
           <div class="input-box">
             <span class="details"> Name
-              <input type="text" name="bname" value="<?php echo (isset($EditDBookInfoResult['book_name']) == true ? $EditDBookInfoResult['book_name'] : "") ?>">
+              <input type="text" name="bname" placeholder="Ex. Python For Beginners" value="<?php echo (isset($EditDBookInfoResult['book_name']) == true ? $EditDBookInfoResult['book_name'] : "") ?>">
             </span>
           </div>
 
           <div class="input-box">
             <span class="details"> Author
-              <input type="text" name="bauthor" value="<?php echo (isset($EditDBookInfoResult['book_author']) == true ? $EditDBookInfoResult['book_author'] : "") ?>">
+              <input type="text" name="bauthor" placeholder="Ex. Dhruv Raval" value="<?php echo (isset($EditDBookInfoResult['book_author']) == true ? $EditDBookInfoResult['book_author'] : "") ?>">
             </span>
           </div>
 
@@ -58,19 +58,19 @@ require "php/LoginCheck.php";
 
           <div class="input-box">
             <span class="details">Publish Year
-              <input type="number" min="1900" max="2022" name="byear" value="<?php echo (isset($EditDBookInfoResult['book_publish_year']) == true ? $EditDBookInfoResult['book_publish_year'] : "") ?>">
+              <input type="number" min="1900" max="2022" placeholder="Ex. <?= date("Y")?>" name="byear" value="<?php echo (isset($EditDBookInfoResult['book_publish_year']) == true ? $EditDBookInfoResult['book_publish_year'] : "") ?>">
             </span>
           </div>
 
           <div class="input-box">
             <span class="details"> Price
-              <input type="number" name="bprice" value="<?php echo (isset($EditDBookInfoResult['book_price']) == true ? $EditDBookInfoResult['book_price'] : "") ?>">
+              <input type="number" name="bprice" placeholder="Ex. 50" value="<?php echo (isset($EditDBookInfoResult['book_price']) == true ? $EditDBookInfoResult['book_price'] : "") ?>">
             </span>
           </div>
 
           <div class="input-box textAreaBox">
             <span class="details"> Description
-              <textarea name="bdesc" cols="30" rows="10"><?php echo (isset($EditDBookInfoResult['book_description']) == true ? $EditDBookInfoResult['book_description'] : "") ?></textarea>
+              <textarea name="bdesc" cols="30" rows="10" placeholder="Ex. It provides a clear, easy to follow, introduction to Python programming."><?php echo (isset($EditDBookInfoResult['book_description']) == true ? $EditDBookInfoResult['book_description'] : "") ?></textarea>
             </span>
           </div>
 

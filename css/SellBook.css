@@ -115,8 +115,9 @@ form .img-box label.details {
 }
 
 #UploadCover {
+    background-color: white !important;
     padding: 8px 12px;
-    color: var(--textcolor);
+    color: black;
 }
 
 .user-details .img-box:hover {
