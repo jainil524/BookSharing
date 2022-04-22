@@ -7,6 +7,8 @@ require "php/LoginCheck.php";
 require "php/RoleChecker.php";
 Rlchecker("user", 403, "Access Denied", "You don't have access to this page");
 Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have access to this page");
+$Pin = "pin";
+$warning = "warning";
 ?>
 
 <div id="container">
@@ -30,6 +32,9 @@ Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have access to this pa
                                 </div>';
                     }
                 }
+                else{
+                    $Pin = "";
+                }
                 ?>
         </div>
         <!-- Warning msgs container -->
@@ -49,6 +54,13 @@ Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have access to this pa
                                     <div class="watermark">Warning</div>
                                 </div>';
                     }
+                }else{
+                    $warning = "";
+                }
+
+                if(empty($Pin) && empty($warning))
+                {
+                    echo "<p class='PinMsg'>No Notification yet</p>";
                 }
             ?>
         </div>
