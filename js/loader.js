@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector("body #loader+*").style.display = "flex";
         document.querySelector("body").style.overflow = "auto";
 
-    }, 600);
+    }, 1770);
 
 });
