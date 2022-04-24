@@ -1,5 +1,9 @@
 let main = document.querySelector("#main");
 let bookName = document.querySelector("#book-name");
+let ShowcategoryCon = document.querySelector(" .filterRemove");
+let ShowcategoryName = document.querySelector(" .filterRemove .Category_name");
+
+var bookCard = document.querySelectorAll(".book-container");
 
 function search() {
     let fd = new FormData()
@@ -8,33 +12,29 @@ function search() {
 }
 
 function Category(type) {
-    var bookCard = document.querySelectorAll(".book-container");
-    let ShowcategoryCon = document.querySelector(" .filterRemove");
-    let ShowcategoryName = document.querySelector(" .filterRemove .Category_name");
+    ShowcategoryCon.style.visibility = "visible";
+    ShowcategoryCon.style.pointerEvents = "all";
 
-    bookCard.forEach((ele, index) => {
-        ShowcategoryCon.style.visibility = "visible";
-        ShowcategoryCon.style.pointerEvents = "all";
-        if (ele.dataset.category != type) {
+    bookCard.forEach((Book) => {
+        if (Book.dataset.category != type) {
             ShowcategoryName.innerText = type.toString();
-            ele.style.display = "none";
+            Book.style.display = "none";
 
         } else {
-            ele.style.display = "flex";
+            Book.style.display = "flex";
             ShowcategoryName.innerText = type.toString();
         }
     })
 }
 
 function RemoveCategory() {
-    var bookCon = document.querySelectorAll(".book-container");
-    let ShowcategoryCon = document.querySelector(".filterRemove");
-    let ShowcategoryName = document.querySelector(".filterRemove .Category_name");
+    ShowcategoryCon.style.visibility = "hidden";
+    ShowcategoryCon.style.pointerEvents = "none";
 
-    bookCon.forEach((e, index) => {
-        e.style.display = "flex";
-        ShowcategoryCon.style.visibility = "hidden";
-        ShowcategoryCon.style.pointerEvents = "none";
+    bookCon.forEach((Book) => {
+        if (Book.style.display != "none") return false;
 
+        Book.style.display = "flex";
+        ShowcategoryName.innerText = "";
     })
 }

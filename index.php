@@ -41,7 +41,16 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
             $IsSessionStarted = "AND  NOT seller_id = " . $_SESSION["userID"];
         }
 
-        $query = "SELECT book_id,book_name,book_coverpage,book_author,book_publish_year,book_price,category_id,(SELECT category_type FROM category WHERE category.category_id = book_transaction.category_id) AS category FROM book_transaction WHERE buyer_id IS NULL " . $IsSessionStarted;
+        $query = "SELECT book_id,
+                    book_name,
+                    book_coverpage,
+                    book_author,
+                    book_publish_year,
+                    book_price,
+                    category_id,
+                    (SELECT category_type FROM category WHERE category.category_id = book_transaction.category_id) AS category
+                    FROM book_transaction 
+                    WHERE buyer_id IS NULL ${IsSessionStarted} LIMIT 100";
         $result = mysqli_query($con, $query);
 
         if (mysqli_num_rows($result) > 0) {
