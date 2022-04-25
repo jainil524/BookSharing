@@ -53,6 +53,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$_SESSION['username'] = $SelectUserResult['user_name'];
 		$_SESSION["userphoto"] = $SelectUserResult["Profile_photo"];
 		$_SESSION['lgcheck'] = true;
-		echo "successUser";
+				echo "successUser";
 	}
 }

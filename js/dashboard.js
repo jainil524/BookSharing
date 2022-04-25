@@ -31,7 +31,7 @@ function RemoveCategory() {
     ShowcategoryCon.style.visibility = "hidden";
     ShowcategoryCon.style.pointerEvents = "none";
 
-    bookCon.forEach((Book) => {
+    bookCard.forEach((Book) => {
         if (Book.style.display != "none") return false;
 
         Book.style.display = "flex";
