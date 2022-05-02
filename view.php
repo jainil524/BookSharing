@@ -49,15 +49,16 @@ if (empty($book) || isset($book["buyer_id"])) {
                         <h5>Price:</h5>
                         <h3>&#8377; <?php echo $book["book_price"]; ?></h3>
                     </div>
-                    <div class="btn-container">
-                        <button onclick="buy(<?php echo (isset($_SESSION['userID']) ? $_SESSION['userID'] : '') ?>)">Buy</button>
-                    </div>
                     <div class="seller-detail">
                         <h5>Seller:</h5>
                         <h3><?php echo $book["user_name"]; ?>
-                            <span class="option" onclick="openPopUp(event)">...</span>
-                        </h3>
-                    </div>
+                        <span class="option" onclick="openPopUp(event)">...</span>
+                    </h3>
+                </div>
+                <div class="btn-container">
+                    <button onclick="buy(<?php echo (isset($_SESSION['userID']) ? $_SESSION['userID'] : '') ?>)">Buy</button>
+                    <button>Add to cart</button>
+                </div>
                     <div class="error">
                         <h5></h5>
                     </div>
@@ -76,7 +77,7 @@ if (empty($book) || isset($book["buyer_id"])) {
 
                 <div class="report" onclick="showReport(<?php echo (isset($_SESSION['userID']) ? $_SESSION['userID'] : ''); ?> )">
                     <div class="report-tmg">
-                        <img src="img/report.png" alt="report">
+                        <img src="img/report_icon.svg" alt="report">
                     </div>
                     <span>Report</span>
                 </div>

@@ -16,15 +16,18 @@ let NewInputValues = [];
 let IsEdited = false;
 let IsSubmited = false;
 
+var xmlxhr = new XMLHttpRequest();
 var Msgresponse = document.querySelector(".response");
 
 //hover effect and container change for all option at side bar
 hoverefect.forEach((lis) => {
     lis.addEventListener("click", (e) => {
-        hoverefect.forEach((lis) => {
-            lis.classList.remove("active");
-        });
+        hoverefect.forEach((lisa) => {
+            lisa.classList.remove("active")
+        })
+        lis.classList.remove("active");
         e.target.classList.add("active");
+
         if (e.target.innerText == "Profile") {
             ProfileContainer[0].classList.add("ProfileActive")
             ProfileContainer[1].classList.remove("ProfileActive")
@@ -108,7 +111,6 @@ function ImgPreview() {
 function SendData() {
     if (IsEdited) {
         IsSubmited = true;
-        var xmlxhr = new XMLHttpRequest();
         xmlxhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var Msgresponse = document.querySelector(".response");

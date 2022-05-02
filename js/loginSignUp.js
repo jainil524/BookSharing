@@ -1,6 +1,7 @@
+var xmlhttp = new XMLHttpRequest();
+
 function change(fileName) {
     var bd = document.getElementById("main");
-    var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -19,7 +20,6 @@ function change(fileName) {
 
 function ajaxFunc(fileName, location, formD) {
     var err = document.getElementById("error-msg");
-    var xmlhttp = new XMLHttpRequest();
     err.style.transform = "translateY(-100%)";
 
     xmlhttp.onreadystatechange = function() {
@@ -46,7 +46,6 @@ function loginFunction() {
     var form = document.getElementById("login");
     var err = document.getElementById("error-msg");
 
-    let xmlxhr = new XMLHttpRequest();
     xmlxhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 

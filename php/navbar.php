@@ -72,6 +72,7 @@
                 <li><a href="SellBook.php">Sell</a></li>
                 <li><a href="chat.php">Chat</a></li>
                 <li><a href="notification.php"><img src="img/notification_icon.svg" alt=""></a></li>
+                <li><a href="cart.php"><img src="img/cart_icon.svg" alt=""></a></li>
                 <li>
                     <a href="profilepage.php">
                         <img src="<?php if(!isset($_SESSION['userID'])) echo "img/login_icon.svg";
