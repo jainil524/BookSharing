@@ -46,7 +46,7 @@ function loginFunction() {
     var form = document.getElementById("login");
     var err = document.getElementById("error-msg");
 
-    xmlxhr.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
             console.log(this.response);
@@ -68,9 +68,9 @@ function loginFunction() {
             }
         }
     }
-    xmlxhr.open('POST', 'php/login.php', true);
+    xmlhttp.open('POST', 'php/login.php', true);
     let FormDetails = new FormData(form);
-    xmlxhr.send(FormDetails);
+    xmlhttp.send(FormDetails);
 }
 
 function signUpFunction() {
