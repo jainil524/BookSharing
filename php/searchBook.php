@@ -18,7 +18,7 @@ if (mysqli_num_rows($result)) {
     while ($row = mysqli_fetch_array($result)) {
         $returnString .= "<a href='view.php?id=" . $row['book_id'] . "' class='book-container'>" .
             "<div class='bookimg'>" .
-            "<img src='" . (file_exists('../' . $row["book_coverpage"]) == false ? '../img/logo_with_text.png' : $row["book_coverpage"]) . "'>" .
+            "<img src='" .  (file_exists($row["book_coverpage"]) == false ? 'img/logo_with_text.png' : $row["book_coverpage"]) . "'>" .
             "</div>" .
             "<div class='description'>" .
             "<h4 class='book-name'>" . $row['book_name'] . "</h4>" .
