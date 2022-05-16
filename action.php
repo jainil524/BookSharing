@@ -109,8 +109,8 @@ if (!$con) {
                 <input type="email" value="<?php echo $raw['delivery_guy_email']; ?>" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="dob">DOB</label> <input type="date" value="<?php echo (empty($newraw['dgd'])?date("d-m-Y"):date("d-m-Y",$newraw['dgd'])) ?>" name="dob" class="form-control" id="exampleInputPassword1">
-            </div>
+                <label for="dob">DOB</label> <input type="date" value="<?php echo (!empty($newraw['dgd'])?"":date("Y-m-d",strtotime($newraw['dgd']))) ?>" name="dob" class="form-control" id="exampleInputPassword1">
+            </div> 
             <div class="form-group">
                 <label for="addr">Address</label>
                 <input type="text" value="<?php echo $raw['delivery_guy_address']; ?>" name="addr" class="form-control" id="exampleInputPassword1" placeholder="Address" required>
