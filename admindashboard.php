@@ -17,7 +17,7 @@ require "php/navbar.php";
         $StaticsticQuery = "SELECT COUNT(user_id) As userCount,
                                 (SELECT COUNT(Book_id) FROM book_transaction WHERE buyer_id IS NOT NULL) As SoldBookCount,
                                 (SELECT COUNT(Book_id) FROM book_transaction WHERE buyer_id IS  NULL) As AvailableBookCount,
-                                (SELECT COUNT(delivery_guy_id) FROM delivery_guy WHERE status = 0) As DeliveryGuyCount,
+                                (SELECT COUNT(delivery_guy_id) FROM delivery_guy WHERE status = 1) As DeliveryGuyCount,
                                 (SELECT SUM(book_price)*5/100 FROM book_transaction WHERE buyer_id IS NOT NULL) As TotalRevenue
                                 FROM user 
                                 WHERE IsRestricted = 0";
@@ -110,7 +110,7 @@ require "php/navbar.php";
             }
 
             ?>
-            <a href="user.php">More Details</a>
+            <a href="user.php">More</a>
         </div>
 
         <!-- Delivery and report both -->
@@ -142,7 +142,7 @@ require "php/navbar.php";
                     ?>
 
                 </table>
-                <a href="deliveryGuys.php">More Details</a>
+                <a href="deliveryGuys.php">More</a>
             </div>
 
             <!-- Delivery and report both -->
@@ -170,7 +170,7 @@ require "php/navbar.php";
                     }
                     ?>
                 </table>
-                <a href="reports.php">More Details</a>
+                <a href="reports.php">More</a>
             </div>
         </div>
     </div>
