@@ -19,12 +19,21 @@ require "php/navbar.php";
                 <th>Name</th>
                 <th>Email</th>
                 <th>Status</th>
+                <th>Report Count</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $query = "SELECT user_id, user_name,email,IsRestricted  FROM user ORDER BY IsRestricted DESC";
+            $query = "SELECT 
+                        user_id, 
+                        user_name,
+                        email,
+                        (SELECT COUNT(reporter_user) FROM reports WHERE reporter_user = user_id) AS reportcount,
+                        (SELECT COUNT(warn_user_id) FROM warn_user_delivery_guy WHERE warn_user_id  = user_id) AS warncount,
+                        IsRestricted  
+                        FROM user 
+                        ORDER BY IsRestricted DESC";
             $userResult = mysqli_query($con, $query);
             $no = 1;
             if (mysqli_num_rows($userResult) != 0) {
@@ -34,10 +43,11 @@ require "php/navbar.php";
                         <td>' . $user["user_name"] . '</td>
                         <td>' . $user["email"] . '</td>
                         <td class="status">' . ($user["IsRestricted"] == 0 ? "Active" : "Deactive") . '</td>
+                        <td>' . $user['reportcount'].'</td>
                         <td>
                             <div class="actionBtn ">
                                 <img class="buttonCursor" title="Restrict user" src="img/restrict_icon.svg" onclick="restrictUser(event,' . $user["user_id"] . ',`' . $user["user_name"] . '`)">
-                                <img class="buttonCursor" title="Warn user" src="img/warning_icon.svg"  onclick="warnUser(`' . $user["user_name"] . '`,' . $user["user_id"] . ')">
+                                <img class="buttonCursor" src="img/warning_icon.svg"  '.($user['warncount']>0?"title='You already warned {$user['user_name']}'":"title='Warn user'").' '.($user['warncount']>0?"":'onclick="warnUser(`' . $user["user_name"] . '`,' . $user["user_id"] . ')"').' disabled="'.($user['warncount']>0?"true":"false").'" '.($user['warncount']>0?"style='cursor:not-allowed;'":"").'">
                             </div>
                         </td>
                     </tr>';

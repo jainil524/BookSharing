@@ -73,7 +73,6 @@ require "php/LoginCheck.php";
               <textarea name="bdesc" cols="30" rows="10" placeholder="Ex. It provides a clear, easy to follow, introduction to Python programming."><?php echo (isset($EditDBookInfoResult['book_description']) == true ? $EditDBookInfoResult['book_description'] : "") ?></textarea>
             </span>
           </div>
-
         </div>
 
         <div class="button">
