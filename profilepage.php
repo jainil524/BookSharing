@@ -69,7 +69,7 @@ $address = "";
         <div class="profile_container ProfileActive">
             <?php if($_SESSION['role']=="user"){?>
             <div class="header">
-                <img src="img/close.svg" class="Formactive" id="CloseIcon" onclick="MakeFormDisable()">
+                <img src="img/close.svg" class="Formactive" id="CloseIcon" onclick="MakeFormDisable(0)">
                 <h1>Edit Profile</h1>
                 <img src="img/edit_icon.svg" alt="" onclick="MakeFormEditable()" id="EditIcon">
                 <img src="img/done.svg" alt="" onclick="SendData()" class="Formactive" id="SubmitIcon">

@@ -76,22 +76,24 @@ function MakeFormEditable() {
     userdetails[1].focus();
 }
 
+
 //make form disable if user don't want to edit details  
-function MakeFormDisable() {
+function MakeFormDisable(type) {
 
     EditIcon.classList.remove("Formactive");
     submitIcon.classList.add("Formactive");
     CloseIcon.classList.add("Formactive");
     DpIcon.classList.add("Formactive");
-
-    userdetails.forEach((detailsInput, index) => {
-        detailsInput.setAttribute("disabled", "disabled");
-        if (IsEdited == true || IsSubmited == false) {
-            detailsInput.value = OldInputValues[index];
-            IsSubmited = false;
-            IsEdited = false;
-        }
-    })
+    if (type == 0) {
+        userdetails.forEach((detailsInput, index) => {
+            detailsInput.setAttribute("disabled", "disabled");
+            if (IsEdited == true || IsSubmited == false) {
+                detailsInput.value = OldInputValues[index];
+                IsSubmited = false;
+                IsEdited = false;
+            }
+        })
+    }
 }
 
 //show user a preview of an image before user uploaded it
@@ -118,7 +120,7 @@ function SendData() {
                     document.querySelector(".response div:first-child img").src = "img/Happy_icon.svg";
                     Msgresponse.style.borderColor = "green";
                     IsSubmited = false;
-                    MakeFormDisable();
+                    MakeFormDisable(1);
                     Msgresponse.classList.remove("Formactive");
                     setTimeout(() => { Msgresponse.classList.add("Formactive"); }, 3000);
                 } else {
