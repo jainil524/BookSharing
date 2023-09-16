@@ -35,7 +35,7 @@ if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
                         book_publish_year = '" . $book_publish_year . "',
                         book_description = '" . $book_description . "',
                         book_coverpage='" . $book_cover . "', 
-                        category_id='" . $_POST['category'] . "' 
+                        book_category='" . $_POST['category'] . "' 
                         WHERE book_id = ".$_POST['Isedited']." ";
 
     mysqli_query($con, $UpdateBookInfo);
@@ -73,7 +73,7 @@ if (isset($_POST['Isedited']) && $_POST['Isedited'] != ""){
     $book_price = $_POST['bprice'];
 
     if (!mysqli_error($con)) {
-      $sql = "INSERT INTO book_transaction(book_name,book_price,book_author,book_publish_year,book_description,book_coverpage,seller_id,category_id) VALUES('$book_name',$book_price,'$book_author',$book_publish_year,'$book_description','$book_cover',{$_SESSION['userID']},".$POST['category'].")";
+      $sql = "INSERT INTO book_transaction(book_name,book_price,book_author,book_publish_year,book_description,book_coverpage,seller_id,book_category) VALUES('$book_name',$book_price,'$book_author',$book_publish_year,'$book_description','$book_cover',{$_SESSION['userID']},".$POST['category'].")";
       mysqli_query($con, $sql);
       echo "Success";
     } else {

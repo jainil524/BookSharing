@@ -48,8 +48,8 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
                     book_author,
                     book_publish_year,
                     book_price,
-                    category_id,
-                    (SELECT category_type FROM category WHERE category.category_id = book_transaction.category_id) AS category
+                    book_category,
+                    (SELECT category_type FROM category WHERE category.category_id = book_transaction.book_category) AS category
                 FROM 
                     book_transaction 
                 WHERE 
