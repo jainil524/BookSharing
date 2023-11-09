@@ -26,8 +26,8 @@ Rlchecker("DeliveryGuy", 403, "Access Denied", "You don't have access to this pa
         <tbody>
             <?php
             $query = "SELECT book_id,book_name,seller_id , buyer_id,
-                        (SELECT address FROM user WHERE user_id = bt.seller_id) as pickaddr ,
-                        (SELECT address FROM user WHERE user_id = bt.buyer_id) as dropaddr,
+                        (SELECT `address` FROM user WHERE user_id = bt.seller_id) as pickaddr ,
+                        (SELECT `address` FROM user WHERE user_id = bt.buyer_id) as dropaddr,
                         (SELECT user_name FROM user WHERE user_id = bt.seller_id) as seller,
                         (SELECT user_name FROM user WHERE user_id = bt.buyer_id) as buyer   
                         FROM book_transaction bt 

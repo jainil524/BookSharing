@@ -17,7 +17,7 @@ $warning = "warning";
         <!-- OTP container -->
         <div class="BookPin subcontainer">
             <?php
-                $SelectBookPinQuery = "SELECT book_name,dg.delivery_guy_name dgn,BookPin FROM book_transaction bt INNER JOIN delivery_guy dg ON dg.delivery_guy_id = bt.delivery_guy_id   WHERE buyer_id = " . $_SESSION['userID'];
+                $SelectBookPinQuery = "SELECT book_name,dg.delivery_guy_name dgn,BookPin FROM book_transaction bt INNER JOIN delivery_guy dg ON dg.delivery_guy_id = bt.delivery_guy_id   WHERE buyer_id = " . $_SESSION['userID'] . " AND IsDelivered = 0";
                 $SelectBookPinFire = mysqli_query($con, $SelectBookPinQuery);
                 if(mysqli_num_rows($SelectBookPinFire) != 0){
                     while ($SelectBookPinResult = mysqli_fetch_assoc($SelectBookPinFire)) {

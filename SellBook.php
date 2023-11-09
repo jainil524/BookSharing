@@ -58,7 +58,7 @@ require "php/LoginCheck.php";
 
           <div class="input-box">
             <span class="details">Publish Year
-              <input type="number" min="1900" max="2022" placeholder="Ex. <?= date("Y")?>" name="byear" value="<?php echo (isset($EditDBookInfoResult['book_publish_year']) == true ? $EditDBookInfoResult['book_publish_year'] : "") ?>">
+              <input type="number" min="1900" max="<?= date("Y")?>" placeholder="Ex. <?= date("Y")?>" name="byear" value="<?php echo (isset($EditDBookInfoResult['book_publish_year']) == true ? $EditDBookInfoResult['book_publish_year'] : "") ?>">
             </span>
           </div>
 
