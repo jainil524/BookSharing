@@ -9,11 +9,10 @@ const emptyspace = document.querySelector('.nonespace');
 const usersshow = document.querySelector('.chattedwithusersection');
 const userlist = document.querySelector('#allusers');
 
-sendmsg.addEventListener("click", sendrequest);
 let chatinter = false;
 var xmlxhr = new XMLHttpRequest();
 
-function sendrequest() {
+sendmsg.addEventListener("click", () => {
     xmlxhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             msg.value = "";
@@ -23,12 +22,11 @@ function sendrequest() {
     xmlxhr.open("POST", "php/chatsend.php", true);
     let formD = new FormData(form);
     xmlxhr.send(formD);
-}
+})
 
 function DeleteChat(e, userID, msgID) {
     var confirmation = confirm("Are sure to delete this msg?");
     if (confirmation) {
-        let xmlxhr = new XMLHttpRequest();
         xmlxhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.response.endsWith('successfully')) {
@@ -47,8 +45,7 @@ function DeleteChat(e, userID, msgID) {
 }
 
 function userid(id) {
-    var rid = "Rid=" + id;
-    ajax("userview", rusercontainer, rusercontainer, rid, true);
+    ajax("userview", rusercontainer, rusercontainer, "Rid=" + id, true);
 
     if (chatinter != false) clearInterval(chatinter);
     form.style.display = "flex";
@@ -58,25 +55,18 @@ function userid(id) {
 }
 
 function usersSearches() {
-    let xmlxhr = new XMLHttpRequest();
     xmlxhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response == "") {
                 userlist.innerHTML = "<span class='NoUser'>No User Found</span>";
             } else {
-                userlist.innerHTML = this.responseText;
+                userlist.innerHTML = JSON.parse(this.response);
             }
         }
     }
     xmlxhr.open('POST', 'php/userview.php', true);
     let FormDetails = new FormData(searchuserform);
     xmlxhr.send(FormDetails);
-}
-
-function firstfocuser() {
-    if (!userlist.contains(document.querySelector(".NoUser"))) {
-        usersection.querySelector(".user").click();
-    }
 }
 
 function chttedwithusersection() {

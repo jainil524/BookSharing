@@ -23,4 +23,4 @@ while ($row = mysqli_fetch_assoc($res)) {
 	$AllChat .= '<span class="timer">' . substr($row['send_time'], 11, 5) . '</span></div></div>';
 }
 
-echo $AllChat;
+echo json_encode($AllChat);

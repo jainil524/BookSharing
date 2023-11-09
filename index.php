@@ -11,8 +11,28 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
 ?>
 <div class="dashboard">
     <div id="search_bar">
-        <img src="./img/search.png" id="search-icon">
-        <input type="search" oninput="search()" id="book-name" name="book-name" placeholder="Search a book">
+        <div>
+            <img src="./img/search.png" id="search-icon">
+            <input type="search" oninput="search()" id="book-name" name="book-name" placeholder="Search a book">
+        </div>
+        <div class="filtercon">
+            <div class="filterRemove">
+                <span class="Category_name"></span>
+                <span class="remIcon buttonCursor"><img src="img/close.svg"  onclick="RemoveCategory()"></span>
+            </div>
+            <div class="filterIcon">
+                <img src="img/filter_icon.svg" class="buttonCursor">
+            </div>
+            <div class="filterOptions">
+                <?php
+                    $SelectCategoriesQuery = "SELECT * FROM category";
+                    $SelectCategoriesFire = mysqli_query($con,$SelectCategoriesQuery);
+                    while($SelectCategoriesResult = mysqli_fetch_assoc($SelectCategoriesFire)){
+                        echo '<span class="buttonCursor" onclick="Category(`'.$SelectCategoriesResult['category_type'].'`)">'.$SelectCategoriesResult['category_type'].'</span>';
+                    }
+                ?>
+            </div>
+        </div>
     </div>
     <div id="main">
         <?php
@@ -21,12 +41,27 @@ if (isset($_SESSION['uesrID']) && (isset($_SESSION["role"]) && $_SESSION["role"]
             $IsSessionStarted = "AND  NOT seller_id = " . $_SESSION["userID"];
         }
 
-        $query = "SELECT * FROM book_transaction WHERE buyer_id IS NULL " . $IsSessionStarted;
+        $query = "SELECT 
+                    book_id,
+                    book_name,
+                    book_coverpage,
+                    book_author,
+                    book_publish_year,
+                    book_price,
+                    book_category,
+                    (SELECT category_type FROM category WHERE category.category_id = book_transaction.book_category) AS category
+                FROM 
+                    book_transaction 
+                WHERE 
+                    buyer_id IS NULL 
+                    ".$IsSessionStarted."
+                LIMIT 
+                    100";
         $result = mysqli_query($con, $query);
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result)) {
-                echo "<a href='view.php?id=" . $row["book_id"] . "' class='book-container'>" .
+                echo "<a href='view.php?id=" . $row["book_id"] . "' class='book-container' data-category=".$row['category'].">" .
                     "<div class='bookimg'>" .
                     "<img src='" . (file_exists($row["book_coverpage"]) == false ? 'img/logo_with_text.png' : $row["book_coverpage"]) . "'>" .
                     "</div>" .

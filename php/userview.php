@@ -13,10 +13,10 @@ if (isset($_POST['usersearch'])) {
 					            <span>" . $row['user_name'] . "</span>
 				            </div>";
             }
-            echo $users;
+            echo json_encode($users);
         }
     } else {
-        echo $_SESSION['userlist'];
+        echo json_encode($_SESSION['userlist']);
     }
 } else {
     if (!empty($_POST['Rid'])) {
@@ -40,9 +40,9 @@ if (isset($_POST['usersearch'])) {
                             <li></li>
                         </ul>';
 
-            echo $AllChat;
+            echo json_encode($AllChat);
         }
     } else {
-        echo "There is no user found";
+        echo json_encode("There is no user found");
     }
 }

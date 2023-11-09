@@ -6,7 +6,7 @@
     box-sizing: border-box;
     outline: none;
     font-family: var(--FontFamily);
-    font-size: .9rem;
+    font-size: 1rem;
     -webkit-user-drag: none;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 :root {
-    --FontFamily: 'Poppins';
+    --FontFamily: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --DarkThemeColor: rgb(40, 40, 40);
     --MsgConteinerBGColor: #e9bf6931;
     --BodyBGColor: rgba(153, 144, 94, .5);
@@ -37,11 +37,4 @@ body {
 
 .buttonCursor {
     cursor: pointer;
-}
-
-button:focus,
-a:focus,
-input:focus textarea:focus,
-li:focus {
-    outline: .9px solid black !important;
 }

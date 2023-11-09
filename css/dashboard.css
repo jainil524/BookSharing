@@ -12,23 +12,95 @@
     width: 90%;
     height: 2rem;
     display: flex;
-    border: 1px solid black;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.44);
     margin: auto;
     margin-top: 74px;
 }
 
-#search_bar img {
+#search_bar div:first-child {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    border-right: 1px solid rgba(0, 0, 0, 0.44);
+}
+
+#search_bar div img {
+    vertical-align: middle;
     width: 1.2rem;
     height: 1.2rem;
     margin: auto;
 }
 
-#search_bar input {
+#search_bar div input {
     width: 95%;
     height: 100%;
     font-size: 1.1rem;
     border: none;
+    outline: none;
     padding: 0 1rem;
+}
+
+.filtercon {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#search_bar .filtercon .filterRemove {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: .4rem .2rem;
+    background-color: #eee;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.filterRemove .Category_name {
+    width: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filterRemove .remIcon {
+    width: 1.3rem !important;
+    height: 1.3rem !important;
+}
+
+.filterRemove .remIcon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: .6;
+}
+
+.filtercon .filterOptions {
+    z-index: 999999;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: .51rem 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.24);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.filterOptions span {
+    display: block;
+    padding: .3rem;
+    margin-bottom: .2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+#search_bar .filtercon .filterIcon:hover~.filterOptions,
+#search_bar .filterOptions:hover {
+    visibility: visible;
+    pointer-events: all;
 }
 
 .book-container {
@@ -87,8 +159,6 @@
     justify-content: center;
     font-size: 3rem;
     user-select: none;
-    font-family: POPPINS;
-    /* background: linear-gradient(to right, rgb(116, 116, 116) 20%, rgb(185, 185, 180) 40%, rgb(143, 143, 134) 60%, rgb(202, 193, 193) 80%);*/
     background: linear-gradient(to right, rgb(101 203 139) 50%, rgb(56 99 72) 70%);
     background-size: 200% auto;
     color: #000;

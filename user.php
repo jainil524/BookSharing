@@ -62,7 +62,7 @@ require "php/navbar.php";
 
     <div class="report-pop-up" onclick="closePopup(event)">
         <div class="pop-up">
-            <div class="heading">Warn to <span></span> </div>
+            <div class="heading">Warn to - <span></span> </div>
             <textarea name="reason" id="reason"></textarea>
             <button onclick="warn()">Warn</button>
         </div>

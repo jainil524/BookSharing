@@ -182,7 +182,7 @@
     content: '';
     width: 100%;
     height: 1px;
-    background-color: #000;
+    background-color: #fff;
     position: absolute;
     bottom: -.5rem;
     right: 0;
@@ -194,7 +194,7 @@
     border: none;
     color: var(--textcolor);
     border-radius: 5rem;
-    background-color: #000;
+    background-color: var(--logocolorlight);
     padding: .8rem 2rem;
     margin: 2rem auto;
     cursor: pointer;

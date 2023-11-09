@@ -49,14 +49,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	} else {
 		$SelectUserResult = mysqli_fetch_assoc($SelectUserFire);
 		$_SESSION["role"] = "user";
-		$_SESSION['username'] = $SelectUserResult['user_name'];
-		$_SESSION["fname"] = $SelectUserResult["fname"];
 		$_SESSION["userID"] = $SelectUserResult["user_id"];
-		$_SESSION["email"] = $SelectUserResult["email"];
-		$_SESSION["pincode"] = $SelectUserResult["pincode"];
-		$_SESSION["Address"] = $SelectUserResult["address"];
+		$_SESSION['username'] = $SelectUserResult['user_name'];
 		$_SESSION["userphoto"] = $SelectUserResult["Profile_photo"];
 		$_SESSION['lgcheck'] = true;
-		echo "successUser";
+				echo "successUser";
 	}
 }

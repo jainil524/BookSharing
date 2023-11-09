@@ -14,7 +14,7 @@
 	<title>CHATTING APPLICATION</title>
 </head>
 
-<body onsubmit="return false;" onload="firstfocuser()">
+<body onsubmit="return false;">
 <div class="main-container">
 	<div class="chattedwithusersection">
 		<div id="searchuser">
@@ -47,10 +47,10 @@
 
 				if (mysqli_num_rows($res1)) {
 					$row1 = mysqli_fetch_assoc($res1);
-					$imgPath = (isset($row['Profile_photo']) ? $row['Profile_photo'] : 'media\profile_photos\default_photo.svg');
+					// $imgPath = (($row['Profile_photo']) ? $row['Profile_photo'] : 'media\profile_photos\default_photo.svg');
 
 					$users .= "<div class='user' tabindex='1' onclick='userid({$row1["user_id"]})'>
-									<img src='" . $imgPath . "'>
+									<img src='" . $row1['Profile_photo'] . "'>
 									<span>{$row1['user_name']}</span>
 								</div>";
 				}
@@ -108,6 +108,4 @@
 </div>
 </body>
 <script type="text/javascript" src="js/chat_send.js"></script>
-<!-- rM=c6S_n|8SWI{o*-->
-<!-- id18675036_book_sharing -->
 </html>

@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
- :root {
+:root {
     /* --maincolor: linear-gradient(135deg, #65f8a7, teal); */
     --maincolor: #f8f9fa;
 }
 
 .sell-container {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,10 +31,14 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.input-box.textAreaBox {
+    width: 100% !important;
+}
+
 textarea {
-    height: 100px;
+    height: 150px;
     max-width: 100%;
-    width: 294px;
+    width: 100%;
     resize: none;
     border-radius: 5px;
     padding: 5px 10px;
@@ -113,9 +115,9 @@ form .img-box label.details {
 }
 
 #UploadCover {
+    background-color: white !important;
     padding: 8px 12px;
-    background: #65cb8b;
-    color: var(--textcolor);
+    color: black;
 }
 
 .user-details .img-box:hover {

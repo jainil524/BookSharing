@@ -1,6 +1,6 @@
 //to hide every this exept loader
 document.querySelector("body #loader+*").style.display = "none";
-
+document.querySelector("body").style.overflow = "hidden";
 
 //to hide loader when page load completly
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector(".imgContainer .secondWave").style.animation = "unset";
 
         document.querySelector("body #loader+*").style.display = "flex";
-    }, 1600);
+        document.querySelector("body").style.overflow = "auto";
+
+    }, 1770);
 
 });

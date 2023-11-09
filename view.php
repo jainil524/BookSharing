@@ -5,7 +5,7 @@ $css_file_name = "view";
 require "php/dbconfig.php";
 require "php/navbar.php";
 
-$select_book_query = "SELECT * FROM book_transaction LEFT JOIN user ON book_transaction.seller_id = user.user_id WHERE book_id = " . $_GET["id"];
+$select_book_query = "SELECT *,(SELECT category_type FROM category WHERE category_id = bl.book_category) AS category FROM book_transaction bl LEFT JOIN user ON bl.seller_id = user.user_id WHERE book_id = " . $_GET["id"];
 $fire_query = mysqli_query($con, $select_book_query);
 $book = mysqli_fetch_assoc($fire_query);
 
@@ -34,6 +34,11 @@ if (empty($book) || isset($book["buyer_id"])) {
                     <div class="author">
                         <h5>Author:</h5>
                         <h3><?php echo $book["book_author"]; ?></h3>
+                    </div>
+
+                    <div class="author">
+                        <h5>Category:</h5>
+                        <h3><?php echo $book["category"]; ?></h3>
                     </div>
 
                     <div class="publisher">

@@ -74,8 +74,8 @@
                 <li><a href="notification.php"><img src="img/notification_icon.svg" alt=""></a></li>
                 <li>
                     <a href="profilepage.php">
-                        <img src="<?php if (empty($_SESSION['profile_photo']) == true) echo (isset($_SESSION['userphoto']) ? $_SESSION["userphoto"] : "img/login_icon.svg");
-                                    else echo $_SESSION['profile_photo'] ?>" alt="">
+                        <img src="<?php if(!isset($_SESSION['userID'])) echo "img/login_icon.svg";
+                                    else echo $_SESSION['userphoto'] ?>" alt="">
                     </a>
                 </li>
             <?php } ?>
