@@ -1,3 +1,4 @@
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Open+Sans:wght@500&family=Poppins&family=Space+Mono:wght@400;700&display=swap');
 body {
     font-size: 26px;
@@ -64,7 +65,7 @@ body {
         width: 95%;
     }
 }
-
+</style>
 <link rel="stylesheet" href="css/error.css">
 <div class="container">
     <h1><?php echo $erro_code; ?></h1>
