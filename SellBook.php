@@ -42,21 +42,6 @@ require "php/LoginCheck.php";
           </div>
 
           <div class="input-box">
-            <span class="details"> Category
-              <select name="category">
-                <option value="#">Select Category</option>
-                <?php
-                  $SelectCategoryQuery = "SELECT * FROM category";
-                  $SelectCategoryFire = mysqli_query($con,$SelectCategoryQuery);
-                    while($SelectCategoryResult = mysqli_fetch_assoc($SelectCategoryFire)){
-                      echo '<option value="'.$SelectCategoryResult['category_id'].'">'.$SelectCategoryResult['category_type'].'</option>';
-                    }
-                ?>
-              </select>
-            </span>
-          </div>
-
-          <div class="input-box">
             <span class="details">Publish Year
               <input type="number" min="1900" max="<?= date("Y")?>" placeholder="Ex. <?= date("Y")?>" name="byear" value="<?php echo (isset($EditDBookInfoResult['book_publish_year']) == true ? $EditDBookInfoResult['book_publish_year'] : "") ?>">
             </span>

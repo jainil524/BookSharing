@@ -2,11 +2,13 @@ async function ajax(filename, successElement, errorElement, formdata, isContentT
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            console.log(successElement, errorElement,this.response);
+
             let data = this.response;
             if (data == "success") {
-                successElement.innerHTML = JSON.parse(this.response);
+                successElement.innerHTML = this.response;
             } else {
-                errorElement.innerHTML = JSON.parse(this.response);
+                errorElement.innerHTML = this.response;
             }
         }
     }
